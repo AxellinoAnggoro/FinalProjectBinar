@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    tools:context=".view.ui.otp.OtpFragment">
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvMasukkanOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/masukkan_otp"
+        app:layout_constraintTop_toTopOf="@id/btnBack"
+        android:textSize="24sp"
+        android:layout_marginTop="35dp"
+        android:textColor="@color/neutral05"
+        android:fontFamily="@font/poppinsbold"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvKetikOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ketik_6_digit_kode_yang_dikirimkan"
+        app:layout_constraintTop_toBottomOf="@id/tvMasukkanOtp"
+        android:layout_marginTop="24dp"
+        android:textSize="12sp"
+        android:textColor="@color/neutral05"
+        android:fontFamily="@font/poppinsregular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/setOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="adadadadadada"
+        android:textSize="12sp"
+        android:textColor="@color/neutral05"
+        android:fontFamily="@font/poppinsregular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvKetikOtp"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/linearLay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setOtp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextDigit1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:maxLength="1"
+                android:layout_margin="5dp"
+                android:background="@drawable/radius_otp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+
+            <EditText
+                android:id="@+id/editTextDigit2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:maxLength="1"
+                android:layout_margin="5dp"
+                android:background="@drawable/radius_otp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+
+            <EditText
+                android:id="@+id/editTextDigit3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:maxLength="1"
+                android:layout_margin="5dp"
+                android:background="@drawable/radius_otp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+
+            <EditText
+                android:id="@+id/editTextDigit4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:maxLength="1"
+                android:layout_margin="5dp"
+                android:background="@drawable/radius_otp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+
+            <EditText
+                android:id="@+id/editTextDigit5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:maxLength="1"
+                android:layout_margin="5dp"
+                android:background="@drawable/radius_otp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+
+            <EditText
+                android:id="@+id/editTextDigit6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:maxLength="1"
+                android:layout_margin="5dp"
+                android:background="@drawable/radius_otp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+    </LinearLayout>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvKirimUlang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kirim_ulang"
+        android:textSize="12sp"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/alert01"
+        android:fontFamily="@font/poppinsbold"
+        app:layout_constraintTop_toBottomOf="@id/linearLay"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mintaKodeViaEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvKirimUlang"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/minta_kode_baru_via_email"
+        android:textSize="14sp"
+        android:layout_marginTop="43dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:textColor="@color/darkblue04"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
