@@ -1,12 +1,10 @@
 package com.example.finalproject.view.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.MenuView.ItemView
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.databinding.ItemDestinasiBinding
+import com.example.finalproject.model.ItemDestinasi
 
 class HomeAdapter(private val itemList : List<ItemDestinasi>) : RecyclerView.Adapter<HomeAdapter.ItemViewHolder>(){
     class ItemViewHolder(private val binding: ItemDestinasiBinding) : RecyclerView.ViewHolder(binding.root) {

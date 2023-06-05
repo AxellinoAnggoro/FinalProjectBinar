@@ -1,4 +1,4 @@
-package com.example.finalproject.view.ui.adapter
+package com.example.finalproject.model
 
 data class ItemDestinasi(
     val img : Int,

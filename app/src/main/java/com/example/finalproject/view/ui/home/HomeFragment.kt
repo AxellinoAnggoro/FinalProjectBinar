@@ -1,6 +1,5 @@
 package com.example.finalproject.view.ui.home
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentHomeBinding
 import com.example.finalproject.view.ui.adapter.HomeAdapter
-import com.example.finalproject.view.ui.adapter.ItemDestinasi
+import com.example.finalproject.model.ItemDestinasi
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
