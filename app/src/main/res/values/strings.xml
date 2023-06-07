@@ -40,4 +40,17 @@
     <string name="maaf_anda_harus_login_terlebih_dahulu">Maaf, Anda harus login terlebih dahulu!</string>
     <string name="promosi">Promosi</string>
     <string name="syarat_dan_ketentuan_berlaku">Syarat dan Ketentuan berlaku!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="punya_nama_keluarga">Punya Nama Keluarga?</string>
+    <string name="nama_keluarga">Nama Keluarga</string>
+    <string name="potter">Potter</string>
+    <string name="title">Title</string>
+    <string name="mr">Mr.</string>
+    <string name="harry">Harry</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="dd_mm_yy">dd/mm/yy</string>
+    <string name="kewarganegaraan">Kewarganegaraan</string>
+    <string name="ktp_paspor">KTP/Paspor</string>
+    <string name="negara_penerbit">Negara Penerbit</string>
 </resources>
