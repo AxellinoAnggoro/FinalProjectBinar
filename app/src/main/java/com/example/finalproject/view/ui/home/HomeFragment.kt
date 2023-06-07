@@ -40,6 +40,10 @@ class HomeFragment : Fragment() {
         )
         homeAdapter = HomeAdapter(itemDestinasi)
         binding.rvDestinasi.adapter = homeAdapter
+
+        binding.btnTriger.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_nonLoginHasilPencarianFragment)
+        }
     }
 
 

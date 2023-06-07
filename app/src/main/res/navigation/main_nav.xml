@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_homeFragment_to_nonLoginAccountFragment"
             app:destination="@id/nonLoginAccountFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_nonLoginHasilPencarianFragment"
+            app:destination="@id/nonLoginHasilPencarianFragment" />
     </fragment>
     <fragment
         android:id="@+id/nonLoginHistoryFragment"
@@ -102,4 +105,9 @@
             android:id="@+id/action_nonLoginAccountFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/nonLoginHasilPencarianFragment"
+        android:name="com.example.finalproject.view.ui.hasilpencarian.NonLoginHasilPencarianFragment"
+        android:label="fragment_non_login_hasil_pencarian"
+        tools:layout="@layout/fragment_non_login_hasil_pencarian" />
 </navigation>

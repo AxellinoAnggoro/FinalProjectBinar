@@ -21,6 +21,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnTriger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="btn triger jadwal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvHeiMauKemana"
