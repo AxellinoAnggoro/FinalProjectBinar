@@ -53,4 +53,5 @@
     <string name="kewarganegaraan">Kewarganegaraan</string>
     <string name="ktp_paspor">KTP/Paspor</string>
     <string name="negara_penerbit">Negara Penerbit</string>
+    <string name="data_diri_pemesanan">Data Diri Pemesanan</string>
 </resources>

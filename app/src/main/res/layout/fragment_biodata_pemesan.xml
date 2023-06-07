@@ -18,8 +18,9 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:background="@color/darkblue05"
             android:layout_width="match_parent"
+            app:titleTextColor="@color/white"
             android:layout_height="?attr/actionBarSize"
             app:layout_anchor="@id/constraintLayout"
             app:layout_anchorGravity="center"
@@ -27,153 +28,200 @@
             app:title="Biodata Pemesanan" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvNamaLengkap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="@string/nama_lengkap"
-        android:textColor="@color/purple_700"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/app_bar" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputName"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Harry"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvNamaLengkap">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvSwitchKeluarga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppinsregular"
-        android:text="@string/punya_nama_keluarga"
-        android:textColor="@color/neutral05"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/inputName" />
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switchKeluarga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/inputName" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvNamaKeluarga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvDataDiri"
+        android:layout_width="343dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="@string/nama_keluarga"
-        android:textColor="@color/purple_700"
-        android:textSize="14sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSwitchKeluarga" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputNamaKeluarga"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/potter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvNamaKeluarga">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:background="@drawable/roundedtop_cardview">
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvNoTelp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="@string/nomor_telepon"
-        android:textColor="@color/purple_700"
-        android:textSize="14sp"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDataDiriPemesanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_diri_pemesanan"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+    
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="343dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="-5dp"
+        app:layout_constraintTop_toBottomOf="@id/cvDataDiri"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/inputNamaKeluarga" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputNoTelp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/potter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvNoTelp">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:background="@drawable/outline_cardview">
 
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvNamaLengkap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="@string/nama_lengkap"
+                    android:textColor="@color/darkblue05"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="@string/email"
-        android:textColor="@color/purple_700"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/inputNoTelp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputNameLay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="311dp"
+                    android:layout_height="45dp"
+                    android:hint="Harry"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvNamaLengkap">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputEmail"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/contoh_example_gmail_com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEmail">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvSwitchKeluarga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:text="@string/punya_nama_keluarga"
+                    android:textColor="@color/neutral05"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/inputNameLay" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchKeluarga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/inputNameLay" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvNamaKeluarga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="@string/nama_keluarga"
+                    android:textColor="@color/darkblue05"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSwitchKeluarga" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputNamaKeluarga"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="311dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/potter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvNamaKeluarga">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvNoTelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="@string/nomor_telepon"
+                    android:textColor="@color/darkblue05"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/inputNamaKeluarga" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputNoTelp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="311dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/potter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvNoTelp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="@string/email"
+                    android:textColor="@color/darkblue05"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/inputNoTelp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputEmail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="311dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/contoh_example_gmail_com"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvEmail"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
