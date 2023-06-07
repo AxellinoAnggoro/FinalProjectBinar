@@ -36,4 +36,8 @@
     <string name="akun">Akun</string>
     <string name="pilih_tanggal">Pilih Tanggal</string>
     <string name="masukkan_kota_atau_negara">Masukkan kota atau Negara</string>
+    <string name="riwayat_pesanan">Riwayat Pesanan</string>
+    <string name="maaf_anda_harus_login_terlebih_dahulu">Maaf, Anda harus login terlebih dahulu!</string>
+    <string name="promosi">Promosi</string>
+    <string name="syarat_dan_ketentuan_berlaku">Syarat dan Ketentuan berlaku!</string>
 </resources>

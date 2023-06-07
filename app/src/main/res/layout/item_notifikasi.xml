@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvNotif"
+        android:layout_width="328dp"
+        android:layout_height="90dp"
+        android:backgroundTint="@color/neutral02"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+            
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivNotif"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_notif"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPromosi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:text="@string/promosi"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/neutral03"
+                android:textSize="10sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivNotif"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTglPromosi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20 Maret, 14:04"
+                android:textSize="10sp"
+                android:textColor="@color/neutral03"
+                android:fontFamily="@font/poppinsregular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDapatkanPotongan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dapatkan Potongan 50% Tiket!"
+                android:layout_marginStart="18dp"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/neutral05"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/tvPromosi"
+                app:layout_constraintStart_toEndOf="@id/ivNotif"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvSyaratDanKetentuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppinsregular"
+                android:text="@string/syarat_dan_ketentuan_berlaku"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivNotif"
+                app:layout_constraintTop_toBottomOf="@id/tvDapatkanPotongan" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
