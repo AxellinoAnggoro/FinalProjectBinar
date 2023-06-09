@@ -55,4 +55,8 @@
     <string name="negara_penerbit">Negara Penerbit</string>
     <string name="data_diri_pemesanan">Data Diri Pemesanan</string>
     <string name="passenger_1_adult">Passenger 1 - Adult</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="masukkan_password_baru">Masukkan Password Baru</string>
+    <string name="ulangi_password_baru">Ulangi Password Baru</string>
+    <string name="simpan">Simpan</string>
 </resources>
