@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp">
-    
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDetailPenerbangan"
         android:layout_width="343dp"
@@ -19,6 +19,26 @@
             android:background="@drawable/radius_otp">
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Booking Code: "
+                android:fontFamily="@font/poppinsmedium"
+                android:textColor="@color/neutral05"
+                android:textSize="16sp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvBookCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="453653657"
+                android:layout_toEndOf="@id/tvTop"
+                android:fontFamily="@font/poppinsbold"
+                android:textColor="@color/darkblue05"
+                android:textSize="16sp"/>
+
+
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvJamBerangkat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -26,6 +46,7 @@
                 android:textColor="@color/neutral05"
                 android:fontFamily="@font/poppinsbold"
                 android:textSize="14sp"
+                android:layout_below="@id/tvTop"
                 />
 
             <com.google.android.material.textview.MaterialTextView
@@ -79,7 +100,7 @@
                 android:layout_toEndOf="@+id/icBunga"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvBookingCode"
+                android:id="@+id/tvAirlineCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="JT - 203"
@@ -90,11 +111,11 @@
                 android:layout_toEndOf="@+id/icBunga"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/informasi"
+                android:id="@+id/informasiPenumpang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Informasi: "
-                android:layout_below="@+id/tvBookingCode"
+                android:layout_below="@+id/tvAirlineCode"
                 android:layout_toEndOf="@+id/icBunga"
                 android:layout_marginTop="15dp"
                 app:fontFamily="@font/poppinsbold"
@@ -102,37 +123,72 @@
                 android:textSize="14sp"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/informasiSatu"
+                android:id="@+id/informasiPenumpangSatu"
                 android:layout_width="wrap_content"
-                android:layout_height="17dp"
-                android:fontFamily="@font/poppinsregular"
-                android:textSize="12sp"
-                android:layout_below="@+id/informasi"
+                android:layout_height="20dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="14sp"
+                android:layout_below="@+id/informasiPenumpang"
                 android:layout_toEndOf="@id/icBunga"
-                android:textColor="@color/neutral05"
-                android:text="Baggage 20kg"/>
+                android:textColor="@color/darkblue05"
+                android:text="Penumpang 1: "/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/informasiDua"
+                android:id="@+id/namaPenumpangSatu"
                 android:layout_width="wrap_content"
-                android:layout_height="17dp"
-                android:fontFamily="@font/poppinsregular"
-                android:textSize="12sp"
-                android:layout_below="@+id/informasiSatu"
-                android:layout_toEndOf="@id/icBunga"
-                android:textColor="@color/neutral05"
-                android:text="Cabin baggage 7kg"/>
+                android:layout_height="20dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="14sp"
+                android:layout_below="@+id/informasiPenumpang"
+                android:layout_toEndOf="@id/informasiPenumpangSatu"
+                android:textColor="@color/darkblue05"
+                android:text="Mr. Harry Potter"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/informasiTiga"
+                android:id="@+id/informasiPenumpangDua"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="14sp"
+                android:layout_below="@+id/idPenumpangSatu"
+                android:layout_toEndOf="@id/icBunga"
+                android:textColor="@color/darkblue05"
+                android:text="Penumpang 2: "/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/idPenumpangSatu"
                 android:layout_width="wrap_content"
                 android:layout_height="17dp"
                 android:fontFamily="@font/poppinsregular"
                 android:textSize="12sp"
-                android:layout_below="@+id/informasiDua"
-                android:layout_toEndOf="@id/icBunga"
+                android:layout_below="@+id/informasiPenumpangSatu"
+                android:layout_toRightOf="@id/icBunga"
                 android:textColor="@color/neutral05"
-                android:text="In Flight Entertainment"/>
+                android:text="ID: 1234567"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/namaPenumpangDua"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="14sp"
+                android:layout_below="@+id/idPenumpangSatu"
+                android:layout_toEndOf="@id/informasiPenumpangDua"
+                android:textColor="@color/darkblue05"
+                android:text="Miss Hermione"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/idPenumpangDua"
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="12sp"
+                android:layout_below="@+id/informasiPenumpangDua"
+                android:layout_toRightOf="@id/icBunga"
+                android:textColor="@color/neutral05"
+                android:text="ID: 456789"/>
+
+
 
             <View
                 android:id="@+id/horizontalLine2"
@@ -141,7 +197,7 @@
                 android:layout_marginBottom="12dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/neutral02"
-                android:layout_below="@id/informasiTiga"/>
+                android:layout_below="@id/idPenumpangDua"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvJamDatang"
@@ -179,6 +235,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_below="@id/tvTop"
                 android:text="Keberangkatan"
                 android:textSize="12sp"
                 android:fontFamily="@font/poppinsbold"

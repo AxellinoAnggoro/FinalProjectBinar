@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="10dp">
+    
+    <androidx.cardview.widget.CardView
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingVertical="12dp"
+            android:paddingHorizontal="16dp"
+            android:background="ca">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnUnpaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/alert01"
+                android:fontFamily="@font/poppinsregular"
+                app:cornerRadius="16dp"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="22dp"
+                android:text="Unpaid"
+                android:textAllCaps="false"/>
+
+            <ImageView
+                android:id="@+id/icLocation1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_location"
+                android:layout_below="@id/btnUnpaid"
+                android:layout_marginEnd="12.35dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvAsalPenerbangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jakarta"
+                android:layout_below="@id/btnUnpaid"
+                android:layout_toRightOf="@id/icLocation1"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="14sp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTanggalBerangkat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 Maret 2023"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/neutral05"
+                android:layout_below="@id/tvAsalPenerbangan"
+                android:layout_toRightOf="@id/icLocation1"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvJamBerangkat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="19:10"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/neutral05"
+                android:layout_below="@id/tvTanggalBerangkat"
+                android:layout_toRightOf="@id/icLocation1"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDurasiPenerbangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4h 0m"
+                android:layout_centerHorizontal="true"
+                android:textSize="12sp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/neutral05"
+                android:layout_below="@id/tvAsalPenerbangan" />
+
+            <ImageView
+                android:id="@+id/panahDurasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/panah"
+                android:layout_below="@id/tvDurasiPenerbangan"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:id="@+id/union"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/union"
+                android:layout_below="@id/tvDurasiPenerbangan"
+                android:layout_toRightOf="@id/panahDurasi"
+                android:layout_marginTop="-2.5dp"
+                android:layout_centerHorizontal="true"/>
+            
+            <ImageView
+                android:id="@+id/icLocation2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tvDurasiPenerbangan"
+                android:src="@drawable/ic_location"
+                android:layout_below="@id/btnUnpaid"
+                android:layout_marginEnd="12.35dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTujuanPenerbangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Melbourne"
+                android:layout_below="@id/btnUnpaid"
+                android:layout_toEndOf="@+id/icLocation2"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="14sp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTanggalDatang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 Maret 2023"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/neutral05"
+                android:layout_below="@id/tvTujuanPenerbangan"
+                android:layout_toRightOf="@id/icLocation2"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvJamDatang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23:10"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/neutral05"
+                android:layout_below="@id/tvTanggalDatang"
+                android:layout_toRightOf="@id/icLocation2"/>
+
+            <View
+                android:id="@+id/horizontalLine1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/neutral02"
+                android:layout_below="@id/tvJamDatang"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvBookCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Booking Code: "
+                android:layout_below="@id/horizontalLine1"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="14sp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class: "
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="8dp"
+                android:layout_below="@id/horizontalLine1"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="14sp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvInputBookCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvBookCode"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="12sp"
+                android:textColor="@color/neutral05"
+                android:text="453653657"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvInputClass"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvClass"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="12sp"
+                android:textColor="@color/neutral05"
+                android:text="Economy"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IDR 4.000.000"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tvClass"
+                android:textColor="@color/darkblue05"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="14sp"/>
+
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
