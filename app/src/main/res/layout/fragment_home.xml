@@ -93,7 +93,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvJakarta"
+                    android:id="@+id/tvPilihFrom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jakarta (JKTA)"
@@ -111,7 +111,7 @@
                     android:layout_height="1dp"
                     android:background="@color/neutral02"
                     android:layout_marginTop="14dp"
-                    app:layout_constraintTop_toBottomOf="@id/tvJakarta"
+                    app:layout_constraintTop_toBottomOf="@id/tvPilihFrom"
                     app:layout_constraintStart_toEndOf="@id/ivPesawat"/>
 
 
@@ -136,6 +136,7 @@
                     app:layout_constraintStart_toEndOf="@id/ivPesawatDua" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvPilihTo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Melbourne (MLB)"

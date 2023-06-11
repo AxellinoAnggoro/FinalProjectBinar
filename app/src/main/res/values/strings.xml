@@ -59,4 +59,9 @@
     <string name="masukkan_password_baru">Masukkan Password Baru</string>
     <string name="ulangi_password_baru">Ulangi Password Baru</string>
     <string name="simpan">Simpan</string>
+    <string name="pencarian_terkini">Pencarian terkini</string>
+    <string name="hapus">Hapus</string>
+    <string name="dewasa">Dewasa</string>
+    <string name="anak">Anak</string>
+    <string name="bayi">Bayi</string>
 </resources>

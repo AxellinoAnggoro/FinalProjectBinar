@@ -1,4 +1,4 @@
-package com.example.finalproject.view.ui.bottomsheet
+package com.example.finalproject.view.ui.bottomsheetpenumpang
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,25 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.finalproject.R
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-class BottomSheetFragment : BottomSheetDialogFragment() {
+class BottomSheetPenumpangFragment : BottomSheetDialogFragment() {
 
-    companion object{
+    companion object {
         val bottomTag : String = "TAG"
     }
 
 
-    private lateinit var viewModel: BottomSheetViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_bottom_sheet, container, false)
+        return inflater.inflate(R.layout.fragment_bottom_sheet_penumpang, container, false)
     }
 
 

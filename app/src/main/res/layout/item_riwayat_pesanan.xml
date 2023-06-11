@@ -15,7 +15,8 @@
             android:layout_height="match_parent"
             android:paddingVertical="12dp"
             android:paddingHorizontal="16dp"
-            android:background="ca">
+            android:background="@drawable/radius_otp"
+            >
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnUnpaid"
