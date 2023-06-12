@@ -13,6 +13,7 @@ import com.example.finalproject.databinding.FragmentHomeBinding
 import com.example.finalproject.view.ui.adapter.HomeAdapter
 import com.example.finalproject.model.ItemDestinasi
 import com.example.finalproject.view.ui.bottomsheet.BottomSheetFragment
+import com.example.finalproject.view.ui.bottomsheetdatepicker.BottomSheetDatePickerFragment
 import com.example.finalproject.view.ui.bottomsheetpenumpang.BottomSheetPenumpangFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,8 +51,11 @@ class HomeFragment : Fragment() {
         binding.tvPilihFrom.setOnClickListener {
             BottomSheetFragment().show(requireActivity().supportFragmentManager,BottomSheetFragment.bottomTag)
         }
-        binding.etPassengers.setOnClickListener {
+        binding.setPassengers.setOnClickListener {
             BottomSheetPenumpangFragment().show(requireActivity().supportFragmentManager,BottomSheetPenumpangFragment.bottomTag)
+        }
+        binding.setReturn.setOnClickListener {
+            BottomSheetDatePickerFragment().show(requireActivity().supportFragmentManager,BottomSheetDatePickerFragment.bottomTag)
         }
     }
 

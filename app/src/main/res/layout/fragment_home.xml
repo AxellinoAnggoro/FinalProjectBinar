@@ -104,7 +104,7 @@
                     android:textColor="@color/neutral05"
                     app:layout_constraintStart_toEndOf="@id/tvFrom"
                     app:layout_constraintTop_toTopOf="parent"/>
-                
+
                 <View
                     android:id="@+id/lineView"
                     android:layout_width="225dp"
@@ -204,13 +204,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvDepartur"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDepature"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setDepature"
                 android:layout_width="105dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
+                android:layout_marginStart="11dp"
+                android:text="1 Maret 2023"
+                android:textSize="14sp"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsmedium"
                 app:layout_constraintStart_toEndOf="@id/ivKalender"
                 app:layout_constraintTop_toBottomOf="@id/tvDepartur" />
+            
+            <View
+                android:id="@+id/viewLine1"
+                android:layout_width="105dp"
+                android:layout_height="1dp"
+                android:background="@color/neutral02"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="11dp"
+                app:layout_constraintTop_toBottomOf="@id/setDepature"
+                app:layout_constraintStart_toEndOf="@id/ivKalender"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvReturn"
@@ -232,14 +246,14 @@
                 android:layout_marginStart="11dp"
                 android:layout_marginTop="3dp"
                 android:src="@drawable/ic_kalender"
-                app:layout_constraintStart_toEndOf="@id/etDepature"
+                app:layout_constraintStart_toEndOf="@id/setDepature"
                 app:layout_constraintTop_toBottomOf="@id/tvReturn" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etReturn"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setReturn"
                 android:layout_width="105dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
+                android:layout_marginStart="8dp"
                 android:text="@string/pilih_tanggal"
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="14sp"
@@ -247,18 +261,28 @@
                 app:layout_constraintStart_toEndOf="@id/ivKalenderDua"
                 app:layout_constraintTop_toBottomOf="@id/tvReturn" />
 
+            <View
+                android:id="@+id/viewLine2"
+                android:layout_width="105dp"
+                android:layout_height="1dp"
+                android:background="@color/neutral02"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@id/setReturn"
+                app:layout_constraintStart_toEndOf="@id/ivKalenderDua"/>
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvPassengers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="62dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginStart="63dp"
+                android:layout_marginTop="22dp"
                 android:fontFamily="@font/poppinsregular"
                 android:text="@string/passengers"
                 android:textColor="@color/neutral03"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etDepature" />
+                app:layout_constraintTop_toBottomOf="@id/viewLine1" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivPerson"
@@ -270,26 +294,42 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPassengers" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPassengers"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setPassengers"
                 android:layout_width="105dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
+                android:text="2 Penumpang"
+                android:textSize="14sp"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="4dp"
                 app:layout_constraintStart_toEndOf="@id/ivPerson"
                 app:layout_constraintTop_toBottomOf="@id/tvPassengers" />
+
+            <View
+                android:id="@+id/viewLine3"
+                android:layout_width="105dp"
+                android:layout_height="1dp"
+                android:background="@color/neutral02"
+                android:layout_marginTop="11dp"
+                android:layout_marginStart="14dp"
+                app:layout_constraintTop_toBottomOf="@id/setPassengers"
+                app:layout_constraintStart_toEndOf="@id/ivPerson"/>
+
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvSeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="22dp"
                 android:layout_marginEnd="70dp"
                 android:fontFamily="@font/poppinsregular"
                 android:text="@string/seat_class"
                 android:textColor="@color/neutral03"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etReturn" />
+                app:layout_constraintTop_toBottomOf="@id/viewLine2" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivSeat"
@@ -298,16 +338,31 @@
                 android:layout_marginStart="11dp"
                 android:layout_marginTop="3dp"
                 android:src="@drawable/ic_seat"
-                app:layout_constraintStart_toEndOf="@id/etDepature"
+                app:layout_constraintStart_toEndOf="@id/setDepature"
                 app:layout_constraintTop_toBottomOf="@id/tvSeat" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etSeat"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setSeat"
                 android:layout_width="105dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="10dp"
+                android:text="Business"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsmedium"
+                android:textColor="@color/neutral05"
                 app:layout_constraintStart_toEndOf="@id/ivSeat"
                 app:layout_constraintTop_toBottomOf="@id/tvSeat" />
+
+            <View
+                android:id="@+id/viewLine4"
+                android:layout_width="105dp"
+                android:layout_height="1dp"
+                android:background="@color/neutral02"
+                android:layout_marginTop="11dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@id/setSeat"
+                app:layout_constraintStart_toEndOf="@id/ivSeat"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
