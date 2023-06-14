@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
@@ -65,6 +66,11 @@ class NonLoginHasilPencarianFragment : Fragment() {
         )
         pencarianAdapter = PencarianAdapter(itemHasilPencarian)
         binding.rvHasilPencarian.adapter = pencarianAdapter
+
+
+        binding.topAppBar.setNavigationOnClickListener{
+            findNavController().navigate(R.id.action_nonLoginHasilPencarianFragment_to_homeFragment)
+        }
 
     }
 }

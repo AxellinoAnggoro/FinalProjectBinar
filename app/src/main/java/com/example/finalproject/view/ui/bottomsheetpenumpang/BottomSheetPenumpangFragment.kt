@@ -1,11 +1,13 @@
 package com.example.finalproject.view.ui.bottomsheetpenumpang
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentBottomSheetPenumpangBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -17,7 +19,7 @@ class BottomSheetPenumpangFragment : BottomSheetDialogFragment() {
     }
     lateinit var binding : FragmentBottomSheetPenumpangBinding
 
-    var num = 0
+    private var count = 0
 
 
     override fun onCreateView(
@@ -32,34 +34,50 @@ class BottomSheetPenumpangFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //adult
-        binding.icPlus.setOnClickListener {
-            num++
-            binding.input.text = num.toString()
+        binding.ivClose.setOnClickListener {
+            dismiss()
         }
+
+        //dewasa
         binding.icMinus.setOnClickListener {
-            num--
-            binding.input.text = num.toString()
+            if (count > 0){
+                count--
+                binding.input.text = count.toString()
+            }
         }
-        //child
-        binding.icPlus2.setOnClickListener {
-            num++
-            binding.input2.text = num.toString()
+
+        binding.icPlus.setOnClickListener {
+            count++
+            binding.input.text = count.toString()
         }
+
+        //anak
         binding.icMinus2.setOnClickListener {
-            num--
-            binding.input2.text = num.toString()
+            if (count > 0){
+                count--
+                binding.input2.text = count.toString()
+            }
         }
-        //baby
-        binding.icPlus3.setOnClickListener {
-            num++
-            binding.input3.text = num.toString()
+
+        binding.icPlus2.setOnClickListener {
+            count++
+            binding.input2.text = count.toString()
         }
+
+        //bayi
         binding.icMinus3.setOnClickListener {
-            num--
-            binding.input3.text = num.toString()
+            if (count > 0){
+                count--
+                binding.input3.text = count.toString()
+            }
+        }
+
+        binding.icPlus3.setOnClickListener {
+            count++
+            binding.input3.text = count.toString()
         }
     }
+
 
 
 

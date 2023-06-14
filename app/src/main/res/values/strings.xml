@@ -65,4 +65,7 @@
     <string name="anak">Anak</string>
     <string name="bayi">Bayi</string>
     <string name="pilih">Pilih</string>
+    <string name="economy">Economy</string>
+    <string name="selamat">Selamat</string>
+    <string name="transaksi_pembayaran_tiket_sukses">Transaksi Pembayaran Tiket Sukses!</string>
 </resources>

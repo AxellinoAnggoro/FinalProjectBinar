@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.archit.calendardaterangepicker.customviews.CalendarListener
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentBottomSheetDatePickerBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import java.text.SimpleDateFormat
+import java.util.*
 
 class BottomSheetDatePickerFragment : BottomSheetDialogFragment() {
 
@@ -33,6 +36,22 @@ class BottomSheetDatePickerFragment : BottomSheetDialogFragment() {
         binding.icClose.setOnClickListener {
             dismiss()
         }
+
+        binding.calendar.setCalendarListener(object : CalendarListener{
+            override fun onDateRangeSelected(startDate: Calendar, endDate: Calendar) {
+                val dateFormat = SimpleDateFormat("EEEE, d MMMM yyyy",Locale("id","ID"))
+                val startDateText = dateFormat.format(startDate.time)
+                val endDateText = dateFormat.format(endDate.time)
+                binding.setDate.text = startDateText.toString()
+                binding.setDate2.text = endDateText.toString()
+
+
+            }
+
+            override fun onFirstDateSelected(startDate: Calendar) {
+
+            }
+        })
     }
 
 

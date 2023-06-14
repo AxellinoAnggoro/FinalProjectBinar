@@ -109,5 +109,9 @@
         android:id="@+id/nonLoginHasilPencarianFragment"
         android:name="com.example.finalproject.view.ui.hasilpencarian.NonLoginHasilPencarianFragment"
         android:label="fragment_non_login_hasil_pencarian"
-        tools:layout="@layout/fragment_non_login_hasil_pencarian" />
+        tools:layout="@layout/fragment_non_login_hasil_pencarian" >
+        <action
+            android:id="@+id/action_nonLoginHasilPencarianFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

@@ -15,6 +15,7 @@ import com.example.finalproject.model.ItemDestinasi
 import com.example.finalproject.view.ui.bottomsheet.BottomSheetFragment
 import com.example.finalproject.view.ui.bottomsheetdatepicker.BottomSheetDatePickerFragment
 import com.example.finalproject.view.ui.bottomsheetpenumpang.BottomSheetPenumpangFragment
+import com.example.finalproject.view.ui.bottomsheetseatclass.BottomSheetSeatClassFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,7 +45,7 @@ class HomeFragment : Fragment() {
         homeAdapter = HomeAdapter(itemDestinasi)
         binding.rvDestinasi.adapter = homeAdapter
 
-        binding.btnTriger.setOnClickListener {
+        binding.btnCariPenerbangan.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_nonLoginHasilPencarianFragment)
         }
 
@@ -56,6 +57,9 @@ class HomeFragment : Fragment() {
         }
         binding.setReturn.setOnClickListener {
             BottomSheetDatePickerFragment().show(requireActivity().supportFragmentManager,BottomSheetDatePickerFragment.bottomTag)
+        }
+        binding.setSeat.setOnClickListener {
+            BottomSheetSeatClassFragment().show(requireActivity().supportFragmentManager,BottomSheetSeatClassFragment.bottomTag)
         }
     }
 
