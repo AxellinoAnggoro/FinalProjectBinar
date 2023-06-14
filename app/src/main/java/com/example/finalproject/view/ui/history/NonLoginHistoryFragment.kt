@@ -6,13 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
+import com.example.finalproject.databinding.FragmentNonLoginHistoryBinding
 
 class NonLoginHistoryFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = NonLoginHistoryFragment()
-    }
+    lateinit var binding : FragmentNonLoginHistoryBinding
 
     private lateinit var viewModel: NonLoginHistoryViewModel
 
@@ -20,13 +20,17 @@ class NonLoginHistoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_non_login_history, container, false)
+        binding = FragmentNonLoginHistoryBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(NonLoginHistoryViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnMasuk.setOnClickListener {
+            findNavController().navigate(R.id.action_nonLoginHistoryFragment_to_loginFragment)
+        }
     }
+
+
 
 }
