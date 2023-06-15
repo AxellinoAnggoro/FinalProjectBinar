@@ -2,10 +2,12 @@ package com.example.finalproject.view.ui.login
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentLoginBinding
@@ -14,13 +16,13 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
 
-
     lateinit var binding : FragmentLoginBinding
+    lateinit var loginVm : LoginViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentLoginBinding.inflate(layoutInflater,container,false)
         return binding.root
     }
@@ -28,12 +30,38 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        loginVm = ViewModelProvider(this)[LoginViewModel::class.java]
+
         binding.btnMasuk.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+            authLogin()
         }
         binding.tvDaftarDisini.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
 
+    fun authLogin() {
+        val email = binding.inputEmail.text.toString()
+        val password = binding.inputPassword.text.toString()
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.inputEmailLay.error = "Invalid Email"
+            binding.inputEmailLay.requestFocus()
+            return
+        }else if (password.isEmpty()){
+            binding.inputPassLay.error = "Password is empty"
+            binding.inputPassLay.requestFocus()
+            return
+        }else{
+            loginVm.authorizeLogin(email, password)
+            loginVm.responseLogin.observe(viewLifecycleOwner){
+                if (it.status == "Success"){
+                    Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                }else{
+                    Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
 }

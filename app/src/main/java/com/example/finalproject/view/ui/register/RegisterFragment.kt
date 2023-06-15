@@ -60,7 +60,7 @@ class RegisterFragment : Fragment() {
             binding.inputRegNamaLay.requestFocus()
             return
         } else if (password.length < 8) {
-            binding.inputRegPassLay.error = "Password still empty"
+            binding.inputRegPassLay.error = "Minimum password length is 8"
             binding.inputRegPassLay.requestFocus()
             return
         } else {

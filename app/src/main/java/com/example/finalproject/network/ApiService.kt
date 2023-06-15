@@ -1,5 +1,7 @@
 package com.example.finalproject.network
 
+import android.provider.ContactsContract.CommonDataKinds.Email
+import com.example.finalproject.model.login.LoginResponse
 import com.example.finalproject.model.users.RegisterResponse
 import retrofit2.Call
 import retrofit2.http.Field
@@ -16,5 +18,10 @@ interface ApiService {
         @Field("phoneNumber") phoneNumber:String,
     ) : Call<RegisterResponse>
 
-
+    @FormUrlEncoded
+    @POST("user/login")
+    fun postLogin(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ) : Call<LoginResponse>
 }
