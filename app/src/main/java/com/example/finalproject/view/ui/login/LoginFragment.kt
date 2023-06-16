@@ -1,7 +1,10 @@
 package com.example.finalproject.view.ui.login
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +21,7 @@ class LoginFragment : Fragment() {
 
     lateinit var binding : FragmentLoginBinding
     lateinit var loginVm : LoginViewModel
+    lateinit var loginPref : SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +35,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         loginVm = ViewModelProvider(this)[LoginViewModel::class.java]
+        loginPref = requireContext().getSharedPreferences("login_data", Context.MODE_PRIVATE)
 
         binding.btnMasuk.setOnClickListener {
             authLogin()
@@ -40,7 +45,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    fun authLogin() {
+    private fun authLogin() {
         val email = binding.inputEmail.text.toString()
         val password = binding.inputPassword.text.toString()
 
@@ -54,14 +59,23 @@ class LoginFragment : Fragment() {
             return
         }else{
             loginVm.authorizeLogin(email, password)
-            loginVm.responseLogin.observe(viewLifecycleOwner){
-                if (it.status == "Success"){
+            loginVm.responseLogin.observe(viewLifecycleOwner){ response ->
+                if (response.status == "Success"){
                     Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
+                    val token = response.data.token
+                    storeToken(token)
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 }else{
                     Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()
                 }
             }
+
         }
+    }
+
+    private fun storeToken(token : String){
+        val save = loginPref.edit()
+        save.putString("token", token)
+        save.apply()
     }
 }

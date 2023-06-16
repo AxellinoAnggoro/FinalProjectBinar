@@ -1,8 +1,10 @@
 package com.example.finalproject.view.ui.home
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +28,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
     private lateinit var homeAdapter: HomeAdapter
+    lateinit var homePref : SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,6 +39,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        homePref = requireContext().getSharedPreferences("login_data", Context.MODE_PRIVATE)
+        val token = homePref.getString("token", "")
+
+        Log.d("HomeFragment", "Token: $token")
 
         val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,false)
         binding.rvDestinasi.layoutManager = layoutManager
