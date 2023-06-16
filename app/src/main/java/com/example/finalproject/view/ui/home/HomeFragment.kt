@@ -1,10 +1,13 @@
 package com.example.finalproject.view.ui.home
 
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -58,8 +61,24 @@ class HomeFragment : Fragment() {
         binding.setReturn.setOnClickListener {
             BottomSheetDatePickerFragment().show(requireActivity().supportFragmentManager,BottomSheetDatePickerFragment.bottomTag)
         }
+        binding.setDepature.setOnClickListener {
+            BottomSheetDatePickerFragment().show(requireActivity().supportFragmentManager,BottomSheetDatePickerFragment.bottomTag)
+        }
         binding.setSeat.setOnClickListener {
             BottomSheetSeatClassFragment().show(requireActivity().supportFragmentManager,BottomSheetSeatClassFragment.bottomTag)
+        }
+
+        binding.btnSwitch.setOnCheckedChangeListener{_, isChecked ->
+            if (isChecked){
+                binding.setDepature.isEnabled =true
+                binding.setReturn.isEnabled = true
+                binding.setReturn.setTextColor(resources.getColor(R.color.darkblue05))
+            }else{
+                binding.setDepature.isEnabled = true
+                binding.setReturn.isEnabled = false
+                binding.setReturn.setTextColor(resources.getColor(R.color.neutral03))
+            }
+
         }
     }
 

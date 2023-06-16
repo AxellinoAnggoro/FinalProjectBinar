@@ -247,9 +247,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/pilih_tanggal"
+                android:enabled="false"
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="14sp"
-                android:textColor="@color/darkblue04"
+                android:textColor="@color/neutral03"
                 app:layout_constraintStart_toEndOf="@id/ivKalenderDua"
                 app:layout_constraintTop_toBottomOf="@id/tvReturn" />
 
@@ -399,20 +400,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bottomNav"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:scrollIndicators="left"-->
-<!--        app:itemIconTint="@color/darkblue05"-->
-<!--        app:itemTextColor="@color/darkblue05"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:menu="@menu/menu" />-->
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
@@ -420,6 +407,18 @@
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="60dp"-->
     <!--        android:scrollIndicators="left"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:menu="@menu/menu" />-->
+
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--        android:id="@+id/bottomNav"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="60dp"-->
+    <!--        android:scrollIndicators="left"-->
+    <!--        app:itemIconTint="@color/darkblue05"-->
+    <!--        app:itemTextColor="@color/darkblue05"-->
     <!--        app:layout_constraintBottom_toBottomOf="parent"-->
     <!--        app:layout_constraintEnd_toEndOf="parent"-->
     <!--        app:layout_constraintStart_toStartOf="parent"-->
