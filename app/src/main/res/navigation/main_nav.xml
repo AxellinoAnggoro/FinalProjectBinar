@@ -80,6 +80,9 @@
         <action
             android:id="@+id/action_nonLoginHistoryFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_nonLoginHistoryFragment_to_historyFragment2"
+            app:destination="@id/historyFragment2" />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"
