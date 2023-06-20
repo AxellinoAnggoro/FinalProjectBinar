@@ -1,19 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.ui.account.AccountFragment">
+    tools:context=".view.ui.account.AccountFragment"
+    android:layout_marginStart="24dp">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAkun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsbold"
         android:text="Akun"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="36dp"
+        android:textColor="@color/neutral05"
+        android:textSize="24sp"/>
+
+    <ImageView
+        android:id="@+id/icEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAkun"
+        android:src="@drawable/fi_edit_3"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvUbahProfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="Ubah Profil"
+        android:textColor="@color/neutral05"
+        android:layout_toEndOf="@+id/icEdit"
+        android:layout_below="@+id/tvAkun"
+        android:textSize="14sp"
+        android:clickable="true"/>
+
+    <View
+        android:id="@+id/horizontalLine1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/neutral02"
+        android:layout_below="@id/icEdit"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+    <ImageView
+        android:id="@+id/icSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/horizontalLine1"
+        android:src="@drawable/fi_settings"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvPengaturanAkun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="Pengaturan Akun"
+        android:textColor="@color/neutral05"
+        android:layout_toEndOf="@+id/icSetting"
+        android:layout_below="@+id/horizontalLine1"
+        android:textSize="14sp"
+        android:clickable="true"/>
+
+    <View
+        android:id="@+id/horizontalLine2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/neutral02"
+        android:layout_below="@id/icSetting"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+    <ImageView
+        android:id="@+id/icSignOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/horizontalLine2"
+        android:src="@drawable/fi_log_out"
+        android:layout_marginEnd="20dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvKeluar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="Keluar"
+        android:textColor="@color/neutral05"
+        android:layout_toEndOf="@+id/icSignOut"
+        android:layout_below="@+id/horizontalLine2"
+        android:textSize="14sp"
+        android:clickable="true"/>
+
+    <View
+        android:id="@+id/horizontalLine3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/neutral02"
+        android:layout_below="@id/icSignOut"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
