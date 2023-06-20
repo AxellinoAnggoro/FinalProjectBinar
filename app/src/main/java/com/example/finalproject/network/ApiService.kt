@@ -12,6 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface ApiService {
     @FormUrlEncoded
@@ -37,8 +38,9 @@ interface ApiService {
     @PUT("user/{id}")
     fun updateUser(
         @Header("Authorization") token: String,
+        @Path("id") userId: Int,
         @Field("name") name: String,
         @Field("email") email: String,
-        @Field("password") password: String,
+        @Field("phoneNumber") phoneNumber: String
     ): Call<NewUsers>
 }

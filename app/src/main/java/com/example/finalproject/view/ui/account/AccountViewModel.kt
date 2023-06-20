@@ -18,7 +18,7 @@ class AccountViewModel @Inject constructor(private val api : ApiService) : ViewM
     val liveDataProfile : MutableLiveData<NewUsers> = MutableLiveData()
 
     fun updateProfile(token: String ,name: String, email : String, phoneNumber: String){
-        api.updateUser("Bearer $token", name, email, phoneNumber).enqueue(object : Callback<NewUsers>{
+        api.updateUser("Bearer $token", 10, name, email, phoneNumber).enqueue(object : Callback<NewUsers>{
             override fun onResponse(call: Call<NewUsers>, response: Response<NewUsers>) {
                 if (response.isSuccessful){
                     liveDataProfile.value = response.body()
