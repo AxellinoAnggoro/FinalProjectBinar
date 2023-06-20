@@ -1,11 +1,13 @@
 package com.example.finalproject.network
 
 import android.provider.ContactsContract.CommonDataKinds.Email
+import com.example.finalproject.model.flight.FlightsResponse
 import com.example.finalproject.model.login.LoginResponse
 import com.example.finalproject.model.users.RegisterResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
@@ -24,4 +26,10 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String
     ) : Call<LoginResponse>
+
+    @GET("flight")
+    fun getAllFlight() : Call<List<FlightsResponse>>
+
+//    @GET("user/{id}")
+//    fun getUserById() : Call<>
 }

@@ -1,4 +1,4 @@
-package com.example.finalproject.model.flights
+package com.example.finalproject.model.flight
 
 
 import com.google.gson.annotations.SerializedName
