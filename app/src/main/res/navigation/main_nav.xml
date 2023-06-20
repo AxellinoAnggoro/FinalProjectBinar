@@ -85,7 +85,11 @@
         android:id="@+id/accountFragment"
         android:name="com.example.finalproject.view.ui.account.AccountFragment"
         android:label="fragment_account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_accountUbahProfileFragment"
+            app:destination="@id/accountUbahProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/notificationFragment"
         android:name="com.example.finalproject.view.ui.notification.NotificationFragment"
@@ -104,6 +108,9 @@
         <action
             android:id="@+id/action_nonLoginAccountFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_nonLoginAccountFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/nonLoginHasilPencarianFragment"
@@ -114,4 +121,8 @@
             android:id="@+id/action_nonLoginHasilPencarianFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/accountUbahProfileFragment"
+        android:name="com.example.finalproject.view.ui.account.AccountUbahProfileFragment"
+        android:label="AccountUbahProfileFragment" />
 </navigation>
