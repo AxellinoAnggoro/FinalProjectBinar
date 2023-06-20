@@ -1,9 +1,11 @@
 package com.example.finalproject.view.ui.account
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.finalproject.model.profile.NewUsers
+import com.example.finalproject.model.users.RegisterResponse
 import com.example.finalproject.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
@@ -13,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AccountViewModel @Inject constructor(private val api : ApiService) : ViewModel() {
-    private val liveDataProfile : MutableLiveData<NewUsers> = MutableLiveData()
+    val liveDataProfile : MutableLiveData<NewUsers> = MutableLiveData()
 
     fun updateProfile(token: String ,name: String, email : String, phoneNumber: String){
         api.updateUser("Bearer $token", name, email, phoneNumber).enqueue(object : Callback<NewUsers>{

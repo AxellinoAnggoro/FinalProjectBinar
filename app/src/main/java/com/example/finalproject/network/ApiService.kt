@@ -33,6 +33,7 @@ interface ApiService {
     @GET("flight")
     fun getAllFlight(): Call<List<FlightsResponse>>
 
+    @FormUrlEncoded
     @PUT("user/{id}")
     fun updateUser(
         @Header("Authorization") token: String,
