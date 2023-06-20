@@ -1,9 +1,15 @@
-package com.example.finalproject.view.ui.account
-
-import androidx.lifecycle.ViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-
+//package com.example.finalproject.view.ui.account
+//
+//import androidx.lifecycle.MutableLiveData
+//import androidx.lifecycle.ViewModel
+//import com.example.finalproject.model.profile.NewUsers
+//import com.example.finalproject.network.ApiService
+//import dagger.hilt.android.lifecycle.HiltViewModel
+//import javax.inject.Inject
+//
 //@HiltViewModel
-class AccountViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
-}
+//class AccountViewModel @Inject constructor(private val api : ApiService) : ViewModel() {
+//    private val liveDataProfile : MutableLiveData<NewUsers> = MutableLiveData()
+//
+//    fun updateProfile
+//}
