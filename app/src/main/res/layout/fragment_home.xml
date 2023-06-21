@@ -144,6 +144,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="14dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:src="@drawable/ic_switch"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -400,6 +402,8 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->

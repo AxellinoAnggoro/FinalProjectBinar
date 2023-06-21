@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,7 @@ import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentHomeBinding
 import com.example.finalproject.view.ui.adapter.HomeAdapter
 import com.example.finalproject.model.ItemDestinasi
+import com.example.finalproject.model.datastore.PassengersPreferences
 import com.example.finalproject.view.ui.bottomsheet.BottomSheetFragment
 import com.example.finalproject.view.ui.bottomsheetdatepicker.BottomSheetDatePickerFragment
 import com.example.finalproject.view.ui.bottomsheetpenumpang.BottomSheetPenumpangFragment
@@ -28,7 +30,10 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
     private lateinit var homeAdapter: HomeAdapter
+    private val homeVm: HomeViewModel by viewModels()
     lateinit var homePref : SharedPreferences
+    private lateinit var passengersPreferences: PassengersPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -86,8 +91,20 @@ class HomeFragment : Fragment() {
                 binding.setReturn.isEnabled = false
                 binding.setReturn.setTextColor(resources.getColor(R.color.neutral03))
             }
-
         }
+
+        binding.ivSwitch.setOnClickListener {
+            val fromText = binding.tvPilihFrom.text.toString()
+            val toText = binding.tvPilihTo.text.toString()
+
+            binding.tvPilihFrom.text = toText
+            binding.tvPilihTo.text = fromText
+        }
+
+        homeVm.getPassenger().observe(viewLifecycleOwner){
+            if(it != null) binding.setPassengers.text = "$it Penumpang"
+        }
+
     }
 
 

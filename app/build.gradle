@@ -93,7 +93,7 @@ dependencies {
     kapt "androidx.room:room-compiler:2.3.0"
     implementation "androidx.room:room-ktx:2.3.0"
 
-    //custom kalender
-//    implementation 'com.github.JoshHalvorson:calendar-date-range-picker:0.2.0'
+//    custom kalender
     implementation 'io.github.architshah248.calendar:awesome-calendar:2.0.0'
+
 }

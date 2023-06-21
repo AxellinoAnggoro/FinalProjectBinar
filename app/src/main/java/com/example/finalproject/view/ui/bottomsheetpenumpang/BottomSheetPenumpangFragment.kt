@@ -8,19 +8,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentBottomSheetPenumpangBinding
+import com.example.finalproject.model.datastore.PassengersPreferences
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BottomSheetPenumpangFragment : BottomSheetDialogFragment() {
+
+    private lateinit var passengersPreferences: PassengersPreferences
+    lateinit var binding : FragmentBottomSheetPenumpangBinding
+    private val passengerVm: BottomSheetPenumpangViewModel by viewModels()
+
+    private lateinit var dataStorePreferences : PassengersPreferences
+    private val _passengerData = MutableLiveData<String>()
+    val passengerData : LiveData<String> = _passengerData
+
+    private var countDewasa = 0
+    private var countAnak = 0
+    private var countBayi = 0
 
     companion object {
         val bottomTag : String = "TAG"
     }
-    lateinit var binding : FragmentBottomSheetPenumpangBinding
-
-    private var count = 0
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,43 +52,60 @@ class BottomSheetPenumpangFragment : BottomSheetDialogFragment() {
             dismiss()
         }
 
+        binding.btnSimpan.setOnClickListener {
+            passengerVm.setPassenger((countDewasa + countAnak + countBayi).toString())
+            dismiss()
+
+        }
+        countAdult()
+        countChild()
+        countBaby()
+
+
+    }
+
+    private fun countAdult(){
         //dewasa
         binding.icMinus.setOnClickListener {
-            if (count > 0){
-                count--
-                binding.input.text = count.toString()
+            if (countDewasa > 0){
+                countDewasa--
+                binding.input.text = countDewasa.toString()
             }
         }
 
         binding.icPlus.setOnClickListener {
-            count++
-            binding.input.text = count.toString()
+            countDewasa++
+            binding.input.text = countDewasa.toString()
         }
+    }
 
-        //anak
+    private fun countChild(){
+        //anak-anak
         binding.icMinus2.setOnClickListener {
-            if (count > 0){
-                count--
-                binding.input2.text = count.toString()
+            if (countAnak > 0){
+                countAnak--
+                binding.input2.text = countAnak.toString()
             }
         }
 
         binding.icPlus2.setOnClickListener {
-            count++
-            binding.input2.text = count.toString()
+            countAnak++
+            binding.input2.text = countAnak.toString()
         }
+    }
 
+    private fun countBaby(){
         //bayi
         binding.icMinus3.setOnClickListener {
-            if (count > 0){
-                count--
-                binding.input3.text = count.toString()
+            if (countBayi > 0){
+                countBayi--
+                binding.input3.text = countBayi.toString()
             }
         }
 
         binding.icPlus3.setOnClickListener {
-            count++
-            binding.input3.text = count.toString()
+            countBayi++
+            binding.input3.text = countBayi.toString()
         }
     }
 

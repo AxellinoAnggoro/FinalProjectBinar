@@ -283,12 +283,12 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDaftar"
+            android:id="@+id/btnSimpan"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="147dp"
             app:cornerRadius="16dp"
-            android:text="@string/daftar"
+            android:text="@string/simpan"
             android:fontFamily="@font/poppinsregular"
             android:textAllCaps="false"
             android:backgroundTint="@color/darkblue04"
