@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -71,6 +71,9 @@
         <action
             android:id="@+id/action_homeFragment_to_nonLoginHasilPencarianFragment"
             app:destination="@id/nonLoginHasilPencarianFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bottomSheetFragment"
+            app:destination="@id/bottomSheetFragment" />
     </fragment>
     <fragment
         android:id="@+id/nonLoginHistoryFragment"
@@ -128,4 +131,13 @@
         android:id="@+id/accountUbahProfileFragment"
         android:name="com.example.finalproject.view.ui.account.AccountUbahProfileFragment"
         android:label="AccountUbahProfileFragment" />
+    <fragment
+        android:id="@+id/bottomSheetFragment"
+        android:name="com.example.finalproject.view.ui.bottomsheet.BottomSheetFragment"
+        android:label="fragment_bottom_sheet"
+        tools:layout="@layout/fragment_bottom_sheet" >
+        <action
+            android:id="@+id/action_bottomSheetFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

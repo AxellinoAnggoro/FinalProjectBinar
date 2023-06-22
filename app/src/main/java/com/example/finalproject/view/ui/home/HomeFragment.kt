@@ -32,6 +32,8 @@ class HomeFragment : Fragment() {
     private lateinit var homeAdapter: HomeAdapter
     private val homeVm: HomeViewModel by viewModels()
     lateinit var homePref : SharedPreferences
+    lateinit var fromPref : SharedPreferences
+    lateinit var toPref : SharedPreferences
     private lateinit var passengersPreferences: PassengersPreferences
 
     override fun onCreateView(
@@ -46,7 +48,16 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         homePref = requireContext().getSharedPreferences("login_data", Context.MODE_PRIVATE)
+        fromPref = requireContext().getSharedPreferences("data_asal", Context.MODE_PRIVATE)
+        toPref = requireContext().getSharedPreferences("data_tujuan", Context.MODE_PRIVATE)
+
         val token = homePref.getString("token", "")
+        val from = fromPref.getString("city", "")
+        val to = toPref.getString("city", "")
+
+        binding.tvPilihFrom.text = from
+        binding.tvPilihTo.text = to
+
 
         Log.d("HomeFragment", "Token: $token")
 
@@ -66,8 +77,14 @@ class HomeFragment : Fragment() {
         }
 
         binding.tvPilihFrom.setOnClickListener {
-            BottomSheetFragment().show(requireActivity().supportFragmentManager,BottomSheetFragment.bottomTag)
+//            BottomSheetFragment().show(requireActivity().supportFragmentManager,BottomSheetFragment.bottomTag)
+            findNavController().navigate(R.id.action_homeFragment_to_bottomSheetFragment)
         }
+
+        binding.tvPilihTo.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_bottomSheetFragment)
+        }
+
         binding.setPassengers.setOnClickListener {
             BottomSheetPenumpangFragment().show(requireActivity().supportFragmentManager,BottomSheetPenumpangFragment.bottomTag)
         }

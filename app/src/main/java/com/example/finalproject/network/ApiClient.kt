@@ -2,9 +2,11 @@ package com.example.finalproject.network
 
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -46,6 +48,12 @@ object ApiClient {
     @Provides
     fun provideContext(application: Application): Context {
         return application
+    }
+
+    @Singleton
+    @Provides
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences("preferences", Context.MODE_PRIVATE)
     }
 
 //    val instance : ApiService by lazy {

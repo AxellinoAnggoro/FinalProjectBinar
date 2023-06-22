@@ -1,6 +1,8 @@
 package com.example.finalproject.network
 
 import android.provider.ContactsContract.CommonDataKinds.Email
+import com.example.finalproject.model.airports.Airport
+import com.example.finalproject.model.airports.AirportsResponse
 import com.example.finalproject.model.flight.FlightsResponse
 import com.example.finalproject.model.login.LoginResponse
 import com.example.finalproject.model.profile.NewUsers
@@ -33,6 +35,9 @@ interface ApiService {
 
     @GET("flight")
     fun getAllFlight(): Call<List<FlightsResponse>>
+
+    @GET("airports")
+    fun getAllCity() : Call<AirportsResponse>
 
     @FormUrlEncoded
     @PUT("user/{id}")
