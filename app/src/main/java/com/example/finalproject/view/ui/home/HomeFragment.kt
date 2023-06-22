@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
 
         val token = homePref.getString("token", "")
         val from = fromPref.getString("city", "")
-        val to = toPref.getString("city", "")
+        val to = toPref.getString("city", "asdf")
 
         binding.tvPilihFrom.text = from
         binding.tvPilihTo.text = to
@@ -82,7 +82,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.tvPilihTo.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_bottomSheetFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_bottomSheetTujuanFragment)
         }
 
         binding.setPassengers.setOnClickListener {
