@@ -9,22 +9,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.findFragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewModelScope
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentBottomSheetSeatClassBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textview.MaterialTextView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BottomSheetSeatClassFragment : BottomSheetDialogFragment() {
 
     lateinit var binding : FragmentBottomSheetSeatClassBinding
+    private val viewModel: BottomSheetSeatClassViewModel by viewModels()
+    private lateinit var seatClassName : String
 
     companion object {
         val bottomTag : String = "TAGSEATCLASS"
     }
-
-    private lateinit var viewModel: BottomSheetSeatClassViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,62 +45,78 @@ class BottomSheetSeatClassFragment : BottomSheetDialogFragment() {
         binding.btnClose.setOnClickListener {
             dismiss()
         }
+        binding.cv1.setOnClickListener{ selectedSeatClass(0)}
+        binding.cv2.setOnClickListener{ selectedSeatClass(1)}
+        binding.cv3.setOnClickListener{ selectedSeatClass(2)}
+        binding.cv4.setOnClickListener{ selectedSeatClass(3)}
 
-        binding.cv1.setOnClickListener {
-            resetCardViews()
-            binding.cv1.setBackgroundColor(resources.getColor(R.color.darkblue05))
-            binding.tvEconomy.setTextColor(resources.getColor(R.color.neutral01))
-            binding.tvHarga.setTextColor(resources.getColor(R.color.neutral01))
-            binding.ivChecklist.setImageDrawable(resources.getDrawable(R.drawable.ic_checklist))
-        }
-
-        binding.cv2.setOnClickListener {
-            resetCardViews()
-            binding.cv2.setBackgroundColor(resources.getColor(R.color.darkblue05))
-            binding.tvEconomy2.setTextColor(resources.getColor(R.color.neutral01))
-            binding.tvHarga2.setTextColor(resources.getColor(R.color.neutral01))
-            binding.ivChecklist2.setImageDrawable(resources.getDrawable(R.drawable.ic_checklist))
-        }
-
-        binding.cv3.setOnClickListener {
-            resetCardViews()
-            binding.cv3.setBackgroundColor(resources.getColor(R.color.darkblue05))
-            binding.tvEconomy3.setTextColor(resources.getColor(R.color.neutral01))
-            binding.tvHarga3.setTextColor(resources.getColor(R.color.neutral01))
-            binding.ivChecklist3.setImageDrawable(resources.getDrawable(R.drawable.ic_checklist))
-        }
-
-        binding.cv4.setOnClickListener {
-            resetCardViews()
-            binding.cv4.setBackgroundColor(resources.getColor(R.color.darkblue05))
-            binding.tvEconomy4.setTextColor(resources.getColor(R.color.neutral01))
-            binding.tvHarga4.setTextColor(resources.getColor(R.color.neutral01))
-            binding.ivChecklist4.setImageDrawable(resources.getDrawable(R.drawable.ic_checklist))
+        binding.btnSimpan.setOnClickListener {
+            viewModel.setSeat(seatClassName)
+            dismiss()
         }
     }
 
-    private fun resetCardViews() {
-        binding.cv1.setBackgroundColor(resources.getColor(android.R.color.transparent))
-        binding.cv2.setBackgroundColor(resources.getColor(android.R.color.transparent))
-        binding.cv3.setBackgroundColor(resources.getColor(android.R.color.transparent))
-        binding.cv4.setBackgroundColor(resources.getColor(android.R.color.transparent))
+    private fun selectedSeatClass(selectIndex: Int) {
+        val seatClassList = listOf(
+            binding.cv1,
+            binding.cv2,
+            binding.cv3,
+            binding.cv4
+        )
 
-        binding.tvEconomy.setTextColor(resources.getColor(R.color.neutral05))
-        binding.tvEconomy2.setTextColor(resources.getColor(R.color.neutral05))
-        binding.tvEconomy3.setTextColor(resources.getColor(R.color.neutral05))
-        binding.tvEconomy4.setTextColor(resources.getColor(R.color.neutral05))
-
-        binding.tvHarga.setTextColor(resources.getColor(R.color.darkblue05))
-        binding.tvHarga2.setTextColor(resources.getColor(R.color.darkblue05))
-        binding.tvHarga3.setTextColor(resources.getColor(R.color.darkblue05))
-        binding.tvHarga4.setTextColor(resources.getColor(R.color.darkblue05))
-
-
-        binding.ivChecklist.setImageDrawable(null)
-        binding.ivChecklist2.setImageDrawable(null)
-        binding.ivChecklist3.setImageDrawable(null)
-        binding.ivChecklist4.setImageDrawable(null)
+        seatClassList.forEachIndexed{index, seatClass ->
+            val isSelected = (index == selectIndex)
+            val textColor = if (isSelected){
+                R.color.white
+            }else{
+                R.color.neutral05
+            }
+            val backgroundColorRes = if (isSelected){
+                R.color.darkblue05
+            }else{
+                R.color.white
+            }
+            seatClass.setBackgroundColor(resources.getColor(backgroundColorRes))
+            seatClass.findViewById<MaterialTextView>(getSeatClassTextView(index)).setTextColor(resources.getColor(textColor))
+            seatClass.findViewById<MaterialTextView>(getSeatClassHargaTextView(index)).setTextColor(resources.getColor(textColor))
+            seatClass.findViewById<ShapeableImageView>(getSeatClassSuccess(index)).visibility= if (isSelected){
+                View.VISIBLE
+            }else{
+                View.GONE
+            }
+            if (isSelected){
+                seatClassName = seatClass.findViewById<MaterialTextView>(getSeatClassTextView(index)).text.toString()
+            }
+        }
     }
 
+    private fun getSeatClassSuccess(index: Int): Int {
+        return when(index){
+            0 ->R.id.ivChecklist
+            1 ->R.id.ivChecklist2
+            2 ->R.id.ivChecklist3
+            3 ->R.id.ivChecklist4
+            else -> throw IllegalArgumentException("Invalid index")
+        }
+    }
 
+    private fun getSeatClassHargaTextView(index: Int): Int {
+        return when(index){
+            0 ->R.id.tvHargaEconomy
+            1 ->R.id.tvHargaPremiumEconomy
+            2 ->R.id.tvHargaBusiness
+            3 ->R.id.tvHargaFirstClass
+            else -> throw IllegalArgumentException("Invalid index")
+        }
+    }
+
+    private fun getSeatClassTextView(index: Int): Int {
+        return when(index){
+            0 ->R.id.tvEconomy
+            1 ->R.id.tvPremiumEconomy
+            2 ->R.id.tvBusiness
+            3 ->R.id.tvFirstClass
+            else -> throw IllegalArgumentException("Invalid index")
+        }
+    }
 }

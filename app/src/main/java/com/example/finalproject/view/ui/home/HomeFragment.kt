@@ -123,7 +123,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setSeatClass() {
-
+        homeVm.getSeatClass().observe(viewLifecycleOwner){
+            if (it != ""){
+                binding.setSeat.text =it
+                binding.setSeat.setTextColor(ContextCompat.getColor(requireContext(),R.color.neutral05))
+            }
+        }
     }
 
     private fun setTanggalPulang() {

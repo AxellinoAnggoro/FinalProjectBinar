@@ -16,4 +16,6 @@ class HomeViewModel @Inject constructor (private val preferences: PassengersPref
     fun getTanggalBerangkat():LiveData<String> = preferences.getTanggalKeberangkatan().asLiveData()
 
     fun getTanggalPulang():LiveData<String> = preferences.getTanggalPulang().asLiveData()
+
+    fun getSeatClass():LiveData<String> = preferences.getSeat().asLiveData()
 }

@@ -68,4 +68,7 @@
     <string name="economy">Economy</string>
     <string name="selamat">Selamat</string>
     <string name="transaksi_pembayaran_tiket_sukses">Transaksi Pembayaran Tiket Sukses!</string>
+    <string name="premium_economy">Premium Economy</string>
+    <string name="business">Business</string>
+    <string name="first_class">First Class</string>
 </resources>
