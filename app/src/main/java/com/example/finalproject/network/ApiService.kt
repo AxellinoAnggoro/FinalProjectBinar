@@ -8,6 +8,7 @@ import com.example.finalproject.model.login.LoginResponse
 import com.example.finalproject.model.otp.OtpResponse
 import com.example.finalproject.model.profile.NewUsers
 import com.example.finalproject.model.register.RegisterResponse
+import com.example.finalproject.model.reset.ResponseReset
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -56,4 +57,11 @@ interface ApiService {
         @Field("email") email: String,
         @Field("otp") otp : Int
     ) : Call<OtpResponse>
+
+    @FormUrlEncoded
+    @PUT("user/reset-password")
+    fun postNewPass(
+        @Field("email") email: String,
+        @Field("password") password : String
+    ) : Call<ResponseReset>
 }

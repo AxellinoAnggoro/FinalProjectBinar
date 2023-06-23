@@ -40,6 +40,11 @@ class LoginFragment : Fragment() {
         binding.btnMasuk.setOnClickListener {
             authLogin()
         }
+
+        binding.tvLupasPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_resetPasswordFragment)
+        }
+
         binding.tvDaftarDisini.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
