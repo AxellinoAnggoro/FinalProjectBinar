@@ -20,6 +20,7 @@ import com.example.finalproject.view.ui.adapter.HomeAdapter
 import com.example.finalproject.model.ItemDestinasi
 import com.example.finalproject.model.datastore.PassengersPreferences
 import com.example.finalproject.view.ui.bottomsheet.BottomSheetFragment
+import com.example.finalproject.view.ui.bottomsheet.BottomSheetTujuanFragment
 import com.example.finalproject.view.ui.bottomsheetdatepicker.BottomSheetDatePickerFragment
 import com.example.finalproject.view.ui.bottomsheetpenumpang.BottomSheetPenumpangFragment
 import com.example.finalproject.view.ui.bottomsheetseatclass.BottomSheetSeatClassFragment
@@ -35,6 +36,10 @@ class HomeFragment : Fragment() {
     lateinit var fromPref : SharedPreferences
     lateinit var toPref : SharedPreferences
     private lateinit var passengersPreferences: PassengersPreferences
+
+    companion object{
+        var isSwitchOn = false
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -98,17 +103,7 @@ class HomeFragment : Fragment() {
             BottomSheetSeatClassFragment().show(requireActivity().supportFragmentManager,BottomSheetSeatClassFragment.bottomTag)
         }
 
-        binding.btnSwitch.setOnCheckedChangeListener{_, isChecked ->
-            if (isChecked){
-                binding.setDepature.isEnabled =true
-                binding.setReturn.isEnabled = true
-                binding.setReturn.setTextColor(resources.getColor(R.color.darkblue05))
-            }else{
-                binding.setDepature.isEnabled = true
-                binding.setReturn.isEnabled = false
-                binding.setReturn.setTextColor(resources.getColor(R.color.neutral03))
-            }
-        }
+        binding.btnSwitch.setOnCheckedChangeListener{_, isChecked -> isSwitchOn = isChecked }
 
         binding.ivSwitch.setOnClickListener {
             val fromText = binding.tvPilihFrom.text.toString()
@@ -121,10 +116,33 @@ class HomeFragment : Fragment() {
         homeVm.getPassenger().observe(viewLifecycleOwner){
             if(it != null) binding.setPassengers.text = "$it Penumpang"
         }
+        setTanggalKeberangkatan()
+        setTanggalPulang()
+        setSeatClass()
 
     }
 
+    private fun setSeatClass() {
 
+    }
+
+    private fun setTanggalPulang() {
+        homeVm.getTanggalPulang().observe(viewLifecycleOwner){
+            if (it!=""){
+                binding.setReturn.text = it.substringAfter(", ")
+                binding.setReturn.setTextColor(ContextCompat.getColor(requireContext(),R.color.neutral05))
+            }
+        }
+    }
+
+    private fun setTanggalKeberangkatan() {
+        homeVm.getTanggalBerangkat().observe(viewLifecycleOwner){
+            if (it!=""){
+                binding.setDepature.text = it.substringAfter(", ")
+                binding.setDepature.setTextColor(ContextCompat.getColor(requireContext(),R.color.neutral05))
+            }
+        }
+    }
 
 
 }

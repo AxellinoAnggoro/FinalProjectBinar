@@ -100,35 +100,62 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.archit.calendardaterangepicker.customviews.DateRangeCalendarView
-        android:id="@+id/calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        custom:disable_date_color="#ABABAB"
-        custom:layout_constraintTop_toBottomOf="@id/constraintLayout"
-        custom:layout_constraintEnd_toEndOf="parent"
-        custom:layout_constraintStart_toStartOf="parent"
-        custom:range_color="@color/darkblue02"
-        custom:selected_date_circle_color="@color/darkblue04"
-        custom:title_color="@color/neutral05">
-    </com.archit.calendardaterangepicker.customviews.DateRangeCalendarView>
+        <LinearLayout
+            android:id="@+id/linearLay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            custom:layout_constraintStart_toStartOf="parent"
+            custom:layout_constraintEnd_toEndOf="parent"
+            custom:layout_constraintTop_toBottomOf="@id/constraintLayout">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnMasuk"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="122dp"
-        app:cornerRadius="16dp"
-        android:text="@string/pilih"
-        android:textAllCaps="false"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="200dp"
-        android:fontFamily="@font/poppinsregular"
-        android:backgroundTint="@color/darkblue04"
-        app:layout_constraintTop_toBottomOf="@id/calendar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.archit.calendardaterangepicker.customviews.DateRangeCalendarView
+                android:id="@+id/calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                custom:disable_date_color="#ABABAB"
+                custom:date_selection_mode="free_range"
+                custom:layout_constraintTop_toBottomOf="@id/constraintLayout"
+                custom:layout_constraintEnd_toEndOf="parent"
+                custom:layout_constraintStart_toStartOf="parent"
+                custom:range_color="@color/darkblue02"
+                custom:selected_date_circle_color="@color/darkblue04"
+                custom:title_color="@color/neutral05"/>
+
+            <com.archit.calendardaterangepicker.customviews.DateRangeCalendarView
+                android:id="@+id/calendarSingel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                custom:disable_date_color="#ABABAB"
+                android:visibility="gone"
+                custom:date_selection_mode="single"
+                custom:layout_constraintTop_toBottomOf="@id/constraintLayout"
+                custom:layout_constraintEnd_toEndOf="parent"
+                custom:layout_constraintStart_toStartOf="parent"
+                custom:range_color="@color/darkblue02"
+                custom:selected_date_circle_color="@color/darkblue04"
+                custom:title_color="@color/neutral05"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPilih"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="122dp"
+            app:cornerRadius="16dp"
+            android:text="@string/pilih"
+            android:textAllCaps="false"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="200dp"
+            android:fontFamily="@font/poppinsregular"
+            android:backgroundTint="@color/darkblue04"
+            app:layout_constraintTop_toBottomOf="@id/linearLay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

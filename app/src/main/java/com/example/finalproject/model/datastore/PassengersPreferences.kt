@@ -28,4 +28,33 @@ class PassengersPreferences @Inject constructor(private val datastore: DataStore
     fun getPassenger(): Flow<String> = datastore.data.map {
         it[stringPreferencesKey("passenger")] ?: ""
     }
+
+    suspend fun setSeat(seat:String){
+        datastore.edit {
+            it[stringPreferencesKey("seatClass")] = seat
+        }
+    }
+
+    fun getSeat():Flow<String> = datastore.data.map {
+        it[stringPreferencesKey("seatClass")] ?:""
+    }
+
+    suspend fun setTanggalKeberangkatan(date:String){
+        datastore.edit {
+            it[stringPreferencesKey("tanggalKeberangkatan")] = date
+        }
+    }
+    fun getTanggalKeberangkatan():Flow<String> = datastore.data.map {
+        it[stringPreferencesKey("tanggalKeberangkatan")] ?:""
+    }
+
+    suspend fun setTanggalPulang(date: String){
+        datastore.edit {
+            it[stringPreferencesKey("tanggalPulang")] = date
+        }
+    }
+
+    fun getTanggalPulang():Flow<String> = datastore.data.map {
+        it[stringPreferencesKey("tanggalPulang")] ?:""
+    }
 }

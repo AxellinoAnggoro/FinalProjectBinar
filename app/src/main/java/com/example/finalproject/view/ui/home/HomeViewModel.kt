@@ -12,4 +12,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor (private val preferences: PassengersPreferences) : ViewModel() {
     fun getPassenger(): LiveData<String> = preferences.getPassenger().asLiveData()
+
+    fun getTanggalBerangkat():LiveData<String> = preferences.getTanggalKeberangkatan().asLiveData()
+
+    fun getTanggalPulang():LiveData<String> = preferences.getTanggalPulang().asLiveData()
 }
