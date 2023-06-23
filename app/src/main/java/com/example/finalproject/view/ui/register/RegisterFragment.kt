@@ -1,6 +1,8 @@
 package com.example.finalproject.view.ui.register
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Patterns
@@ -20,6 +22,7 @@ class RegisterFragment : Fragment() {
 
     lateinit var binding: FragmentRegisterBinding
     lateinit var regisVm: RegisterViewModel
+    lateinit var pref : SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +36,7 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         regisVm = ViewModelProvider(this)[RegisterViewModel::class.java]
+        pref = requireContext().getSharedPreferences("data_regis", Context.MODE_PRIVATE)
 
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
@@ -67,6 +71,8 @@ class RegisterFragment : Fragment() {
             regisVm.addDataRegis(name, email, password, phone)
             regisVm.responseRegister.observe(viewLifecycleOwner) {
                 if (it.status == "success") {
+                    val dataEmail = it.data.newUserResponse.email
+                    storeEmail(dataEmail)
                     Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_registerFragment_to_otpFragment)
                 } else {
@@ -74,5 +80,11 @@ class RegisterFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun storeEmail(email : String){
+        val save = pref.edit()
+        save.putString("email", email)
+        save.apply()
     }
 }

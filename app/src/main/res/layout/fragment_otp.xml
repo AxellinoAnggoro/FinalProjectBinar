@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp"
     tools:context=".view.ui.otp.OtpFragment">
 
@@ -12,146 +12,157 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_back"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvMasukkanOtp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/masukkan_otp"
-        app:layout_constraintTop_toTopOf="@id/btnBack"
-        android:textSize="24sp"
         android:layout_marginTop="35dp"
-        android:textColor="@color/neutral05"
         android:fontFamily="@font/poppinsbold"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:text="@string/masukkan_otp"
+        android:textColor="@color/neutral05"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnBack" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvKetikOtp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppinsregular"
         android:text="@string/ketik_6_digit_kode_yang_dikirimkan"
-        app:layout_constraintTop_toBottomOf="@id/tvMasukkanOtp"
-        android:layout_marginTop="24dp"
-        android:textSize="12sp"
         android:textColor="@color/neutral05"
-        android:fontFamily="@font/poppinsregular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/setOtp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="adadadadadada"
         android:textSize="12sp"
-        android:textColor="@color/neutral05"
-        android:fontFamily="@font/poppinsregular"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvKetikOtp"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <LinearLayout
-        android:id="@+id/linearLay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setOtp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@id/tvMasukkanOtp" />
 
-            <EditText
-                android:id="@+id/editTextDigit1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:inputType="number"
-                android:maxLength="1"
-                android:gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/radius_otp"
-                />
-
-            <EditText
-                android:id="@+id/editTextDigit2"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:inputType="number"
-                android:maxLength="1"
-                android:gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/radius_otp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
-
-            <EditText
-                android:id="@+id/editTextDigit3"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:inputType="number"
-                android:maxLength="1"
-                android:gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/radius_otp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
-
-            <EditText
-                android:id="@+id/editTextDigit4"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:inputType="number"
-                android:maxLength="1"
-                android:gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/radius_otp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
-
-            <EditText
-                android:id="@+id/editTextDigit5"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:inputType="number"
-                android:maxLength="1"
-                android:gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/radius_otp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
-
-            <EditText
-                android:id="@+id/editTextDigit6"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:inputType="number"
-                android:maxLength="1"
-                android:gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/radius_otp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
-    </LinearLayout>
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvKirimUlang"
+        android:id="@+id/tvEmailOtp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/kirim_ulang"
-        android:textSize="12sp"
-        android:layout_marginTop="24dp"
-        android:textColor="@color/alert01"
         android:fontFamily="@font/poppinsbold"
-        app:layout_constraintTop_toBottomOf="@id/linearLay"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:text="adadadadadada"
+        android:textColor="@color/neutral05"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvKetikOtp" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/mintaKodeViaEmail"
+    <com.chaos.view.PinView
+        android:id="@+id/pinview"
+        style="@style/PinWidget.PinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvKirimUlang"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmailOtp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="24dp"
+        android:cursorVisible="true"
+        android:inputType="number"
+        android:itemBackground="@color/white"
+        app:hideLineWhenFilled="false"
+        app:itemCount="6"
+        app:itemHeight="50dp"
+        app:itemRadius="16dp"
+        app:itemWidth="50dp"
+        app:lineColor="@color/neutral02"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linearLay"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tvEmailOtp">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextDigit1"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:background="@drawable/radius_otp"-->
+<!--                android:gravity="center"-->
+<!--                android:inputType="number"-->
+<!--                android:maxLength="1" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextDigit2"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:background="@drawable/radius_otp"-->
+<!--                android:gravity="center"-->
+<!--                android:inputType="number"-->
+<!--                android:maxLength="1" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextDigit3"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:background="@drawable/radius_otp"-->
+<!--                android:gravity="center"-->
+<!--                android:inputType="number"-->
+<!--                android:maxLength="1" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextDigit4"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:background="@drawable/radius_otp"-->
+<!--                android:gravity="center"-->
+<!--                android:inputType="number"-->
+<!--                android:maxLength="1" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextDigit5"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:background="@drawable/radius_otp"-->
+<!--                android:gravity="center"-->
+<!--                android:inputType="number"-->
+<!--                android:maxLength="1" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/editTextDigit6"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:background="@drawable/radius_otp"-->
+<!--                android:gravity="center"-->
+<!--                android:inputType="number"-->
+<!--                android:maxLength="1" />-->
+<!--        </LinearLayout>-->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVerifikasi"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        app:cornerRadius="16dp"
+        android:text="Verifikasi"
+        android:fontFamily="@font/poppinsregular"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/darkblue04"
+        app:layout_constraintTop_toBottomOf="@id/pinview"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/minta_kode_baru_via_email"
-        android:textSize="14sp"
-        android:layout_marginTop="43dp"
-        android:fontFamily="@font/poppinssemibold"
-        android:textColor="@color/darkblue04"
-        />
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

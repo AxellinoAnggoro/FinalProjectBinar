@@ -96,4 +96,6 @@ dependencies {
 //    custom kalender
     implementation 'io.github.architshah248.calendar:awesome-calendar:2.0.0'
 
+    //otp
+    implementation 'io.github.chaosleung:pinview:1.4.4'
 }

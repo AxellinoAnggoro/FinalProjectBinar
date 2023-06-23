@@ -5,8 +5,9 @@ import com.example.finalproject.model.airports.Airport
 import com.example.finalproject.model.airports.AirportsResponse
 import com.example.finalproject.model.flight.FlightsResponse
 import com.example.finalproject.model.login.LoginResponse
+import com.example.finalproject.model.otp.OtpResponse
 import com.example.finalproject.model.profile.NewUsers
-import com.example.finalproject.model.users.RegisterResponse
+import com.example.finalproject.model.register.RegisterResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -48,4 +49,11 @@ interface ApiService {
         @Field("email") email: String,
         @Field("phoneNumber") phoneNumber: String
     ): Call<NewUsers>
+
+    @FormUrlEncoded
+    @POST("user/verify")
+    fun postOtp(
+        @Field("email") email: String,
+        @Field("otp") otp : Int
+    ) : Call<OtpResponse>
 }
