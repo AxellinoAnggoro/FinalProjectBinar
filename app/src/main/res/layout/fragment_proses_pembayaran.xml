@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.ui.prosespembayaran.ProsesPembayaranFragment">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:background="@color/darkblue05"
+            app:titleTextColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_anchor="@+id/constraintLayout"
+            app:layout_anchorGravity="center"
+            app:navigationIcon="@drawable/ic_back_white"
+            app:title="Proses Pembayaran" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvProsesPembayaran"
+        android:layout_width="350dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="20dp"
+        app:cardElevation="20dp"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/outline_cardview_purple">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPassengers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Passengers:"
+                android:textColor="@color/neutral05"
+                android:textSize="14sp"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+            
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setTypePassengers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="2 Adults, 1 baby"
+                android:textColor="@color/darkblue05"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@id/tvPassengers"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/icLocation1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_location"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tvPassengers"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setKeberangkatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Jakarta"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/icLocation1"
+                app:layout_constraintTop_toBottomOf="@id/setTypePassengers"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setTglBerangkat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="5 Maret 2023"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/icLocation1"
+                app:layout_constraintTop_toBottomOf="@id/setKeberangkatan"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setJamBerangkat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="19.10"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/icLocation1"
+                app:layout_constraintTop_toBottomOf="@id/setTglBerangkat"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setEstimasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="4h 0m"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="47dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintStart_toEndOf="@id/setKeberangkatan"
+                app:layout_constraintTop_toBottomOf="@id/setTypePassengers"/>
+            
+            <View
+                android:id="@+id/horizontalView"
+                android:layout_width="36dp"
+                android:layout_height="1dp"
+                android:orientation="horizontal"
+                android:background="@color/neutral02"
+                android:layout_marginStart="26dp"
+                app:layout_constraintTop_toBottomOf="@id/setEstimasi"
+                app:layout_constraintStart_toEndOf="@id/setTglBerangkat"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/union"
+                android:layout_width="3dp"
+                android:layout_height="5dp"
+                android:src="@drawable/union"
+                android:background="@color/neutral02"
+                android:layout_marginTop="-2.5dp"
+                app:layout_constraintTop_toBottomOf="@id/setEstimasi"
+                app:layout_constraintStart_toEndOf="@id/horizontalView"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/icLocation2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_location"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/setTypePassengers"
+                app:layout_constraintStart_toEndOf="@id/setEstimasi"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setKedatangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Melbourne"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/icLocation2"
+                app:layout_constraintTop_toBottomOf="@id/setTypePassengers"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setTglKedatangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="5 Maret 2023"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/icLocation2"
+                app:layout_constraintTop_toBottomOf="@id/setKedatangan"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setJamKedatangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="21.10"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/icLocation2"
+                app:layout_constraintTop_toBottomOf="@id/setTglKedatangan"/>
+            
+            <View
+                android:id="@+id/horizontalView2"
+                android:layout_width="308dp"
+                android:layout_height="1dp"
+                android:orientation="horizontal"
+                android:background="@color/neutral02"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/setJamBerangkat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvBookingCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Booking Code:"
+                android:textSize="12sp"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintTop_toBottomOf="@id/horizontalView2"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setBookingCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="453653657"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBookingCode"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Booking Code:"
+                android:textSize="12sp"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@id/horizontalView2"
+                app:layout_constraintStart_toEndOf="@id/tvBookingCode"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/setClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Economy"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="16dp"
+                app:layout_goneMarginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/tvBookingCode"
+                app:layout_constraintTop_toBottomOf="@id/tvClass"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:textSize="12sp"
+                android:textColor="@color/neutral05"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/horizontalView2"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IDR 9.850.000"
+                android:textColor="@color/darkblue05"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tvTotal"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+    
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvGopay"
+        android:layout_width="340dp"
+        android:layout_height="36dp"
+        android:backgroundTint="@color/neutral04"
+        android:layout_marginTop="23dp"
+        app:layout_constraintTop_toBottomOf="@id/cvProsesPembayaran"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gopay"
+                android:textColor="@color/neutral01"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsmedium"
+                android:layout_marginStart="16sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+            
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_keyboard_arrow_down_24"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/expandableLayout"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cvGopay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCardNumberGopay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Card Number"
+            android:textSize="14sp"
+            android:textColor="@color/neutral05"
+            android:fontFamily="@font/poppinsmedium"
+            android:layout_marginTop="19dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+        
+        <EditText
+            android:id="@+id/inputNoGopay"
+            android:layout_width="296dp"
+            android:layout_height="wrap_content"
+            android:hint="+628123456789"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/neutral03"
+            android:fontFamily="@font/poppinsregular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCardNumberGopay"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvNameGopay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gopay Name"
+            android:textSize="14sp"
+            android:textColor="@color/neutral05"
+            android:fontFamily="@font/poppinsmedium"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@id/inputNoGopay"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/inputNameGopay"
+            android:layout_width="296dp"
+            android:layout_height="wrap_content"
+            android:hint="Masukan Nama"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/neutral03"
+            android:fontFamily="@font/poppinsregular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNameGopay"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo_gopay"
+            app:layout_constraintTop_toBottomOf="@id/inputNameGopay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

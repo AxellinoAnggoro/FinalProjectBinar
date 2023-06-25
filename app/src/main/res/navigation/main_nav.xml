@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/detailPenerbanganFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -171,4 +171,14 @@
             android:id="@+id/action_resetPasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/prosesPembayaranFragment"
+        android:name="com.example.finalproject.view.ui.prosespembayaran.ProsesPembayaranFragment"
+        android:label="fragment_proses_pembayaran"
+        tools:layout="@layout/fragment_proses_pembayaran" />
+    <fragment
+        android:id="@+id/detailPenerbanganFragment"
+        android:name="com.example.finalproject.view.ui.detailpenerbangan.DetailPenerbanganFragment"
+        android:label="fragment_detail_penerbangan"
+        tools:layout="@layout/fragment_detail_penerbangan" />
 </navigation>
