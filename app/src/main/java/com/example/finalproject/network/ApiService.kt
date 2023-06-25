@@ -1,9 +1,8 @@
 package com.example.finalproject.network
 
-import android.provider.ContactsContract.CommonDataKinds.Email
-import com.example.finalproject.model.airports.Airport
 import com.example.finalproject.model.airports.AirportsResponse
-import com.example.finalproject.model.flight.FlightsResponse
+import com.example.finalproject.model.flight.DataFlight
+import com.example.finalproject.model.flight.FlightResponse
 import com.example.finalproject.model.login.LoginResponse
 import com.example.finalproject.model.otp.OtpResponse
 import com.example.finalproject.model.profile.NewUsers
@@ -36,7 +35,7 @@ interface ApiService {
     ): Call<LoginResponse>
 
     @GET("flight")
-    fun getAllFlight(): Call<List<FlightsResponse>>
+    fun getAllFlight(): Call<List<DataFlight>>
 
     @GET("airports")
     fun getAllCity() : Call<AirportsResponse>
@@ -64,4 +63,5 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password : String
     ) : Call<ResponseReset>
+
 }

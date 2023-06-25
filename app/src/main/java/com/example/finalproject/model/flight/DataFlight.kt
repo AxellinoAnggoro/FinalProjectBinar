@@ -3,7 +3,7 @@ package com.example.finalproject.model.flight
 
 import com.google.gson.annotations.SerializedName
 
-data class Data(
+data class DataFlight(
     @SerializedName("admin_id")
     val adminId: Int,
     @SerializedName("airline")
@@ -13,7 +13,7 @@ data class Data(
     @SerializedName("arrival")
     val arrival: Int,
     @SerializedName("arrivalAirport")
-    val arrivalAirport: Any,
+    val arrivalAirport: ArrivalAirport,
     @SerializedName("arrival_time")
     val arrivalTime: String,
     @SerializedName("business_price")
@@ -23,7 +23,7 @@ data class Data(
     @SerializedName("departure")
     val departure: Int,
     @SerializedName("departureAirport")
-    val departureAirport: Any,
+    val departureAirport: DepartureAirport,
     @SerializedName("departure_time")
     val departureTime: String,
     @SerializedName("economyClass_price")

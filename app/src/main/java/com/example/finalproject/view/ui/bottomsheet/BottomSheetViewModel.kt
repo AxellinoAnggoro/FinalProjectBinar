@@ -26,7 +26,7 @@ class BottomSheetViewModel @Inject constructor(private val api : ApiService) : V
                     val airportList = response.body()?.data?.airport
                     liveDataFromTo.value = airportList
                 } else {
-                    Log.e("From To Dialog VM", "Error View Model")
+                    Log.e("BottomSheet VM", "Error View Model")
                 }
             }
 
