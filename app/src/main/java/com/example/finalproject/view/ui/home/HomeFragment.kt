@@ -11,14 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentHomeBinding
-import com.example.finalproject.view.ui.adapter.HomeAdapter
 import com.example.finalproject.model.ItemDestinasi
 import com.example.finalproject.model.datastore.PassengersPreferences
+import com.example.finalproject.model.flight.DataFlight
 import com.example.finalproject.view.ui.bottomsheet.BottomSheetFragment
 import com.example.finalproject.view.ui.bottomsheet.BottomSheetTujuanFragment
 import com.example.finalproject.view.ui.bottomsheetdatepicker.BottomSheetDatePickerFragment
@@ -31,7 +32,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
     private lateinit var homeAdapter: HomeAdapter
-    private val homeVm: HomeViewModel by viewModels()
+//    private var homeVm: HomeViewModel by viewModels()
+    lateinit var homeVm : HomeViewModel
     lateinit var homePref : SharedPreferences
     lateinit var fromPref : SharedPreferences
     lateinit var toPref : SharedPreferences
@@ -66,16 +68,31 @@ class HomeFragment : Fragment() {
 
         Log.d("HomeFragment", "Token: $token")
 
-        val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,false)
-        binding.rvDestinasi.layoutManager = layoutManager
-        val itemDestinasi = listOf(
-            ItemDestinasi(R.drawable.iv_destinasi,"Jakarta -> Bangkok","AirAsia","20 Mei 2023","Rp.2000.000"),
-            ItemDestinasi(R.drawable.iv_destinasi,"Jakarta -> Bangkok","AirAsia","20 Mei 2023","Rp.2000.000"),
-            ItemDestinasi(R.drawable.iv_destinasi,"Jakarta -> Bangkok","AirAsia","20 Mei 2023","Rp.2000.000"),
-            ItemDestinasi(R.drawable.iv_destinasi,"Jakarta -> Bangkok","AirAsia","20 Mei 2023","Rp.2000.000")
-        )
-        homeAdapter = HomeAdapter(itemDestinasi)
-        binding.rvDestinasi.adapter = homeAdapter
+//        val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,false)
+//        binding.rvDestinasi.layoutManager = layoutManager
+//        val itemDestinasi = listOf(
+//            ItemDestinasi(R.drawable.iv_destinasi,"Jakarta -> Bangkok","AirAsia","20 Mei 2023","Rp.2000.000"),
+//            ItemDestinasi(R.drawable.iv_destinasi,"Jakarta -> Bangkok","AirAsia","20 Mei 2023","Rp.2000.000"),
+//            ItemDestinasi(R.drawable.iv_destinasi,"Jakarta -> Bangkok","AirAsia","20 Mei 2023","Rp.2000.000"),
+//            ItemDestinasi(R.drawable.iv_destinasi,"Jakarta -> Bangkok","AirAsia","20 Mei 2023","Rp.2000.000")
+//        )
+//        homeAdapter = HomeAdapter(itemDestinasi)
+//        binding.rvDestinasi.adapter = homeAdapter
+
+        homeAdapter = HomeAdapter(emptyList())
+        binding.rvDestinasi.apply {
+            layoutManager = LinearLayoutManager(context,RecyclerView.HORIZONTAL,false)
+            adapter = homeAdapter
+        }
+
+        homeVm = ViewModelProvider(this)[HomeViewModel::class.java]
+        homeVm.fetchFav()
+        homeVm.liveDataFav.observe(viewLifecycleOwner){ dataFavList->
+            dataFavList?.let { fav->
+                homeAdapter.updateData(fav as List<DataFlight>)
+            }
+        }
+
 
         binding.btnCariPenerbangan.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_nonLoginHasilPencarianFragment)

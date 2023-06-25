@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="167dp"
+        android:layout_width="wrap_content"
         android:layout_height="194dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,10 +29,10 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvDestinasi"
+                android:id="@+id/tvAsal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jakarta -> Bangkok"
+                android:text="Jakarta"
                 android:textSize="12sp"
                 android:textColor="@color/neutral05"
                 android:layout_marginTop="6dp"
@@ -40,6 +40,30 @@
                 android:fontFamily="@font/poppinssemibold"
                 app:layout_constraintTop_toBottomOf="@id/ivDestinasi"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPembatas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" -> "
+                android:textSize="12sp"
+                android:textColor="@color/neutral05"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/poppinssemibold"
+                app:layout_constraintTop_toBottomOf="@id/ivDestinasi"
+                app:layout_constraintLeft_toRightOf="@id/tvAsal" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTujuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bangkok"
+                android:textSize="12sp"
+                android:textColor="@color/neutral05"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/poppinssemibold"
+                app:layout_constraintTop_toBottomOf="@id/ivDestinasi"
+                app:layout_constraintLeft_toRightOf="@id/tvPembatas" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvJenisPesawat"
@@ -50,7 +74,7 @@
                 android:textColor="@color/darkblue05"
                 android:fontFamily="@font/poppinsbold"
                 android:layout_marginStart="9dp"
-                app:layout_constraintTop_toBottomOf="@id/tvDestinasi"
+                app:layout_constraintTop_toBottomOf="@id/tvAsal"
                 app:layout_constraintStart_toStartOf="parent"
                 />
 
@@ -71,13 +95,26 @@
                 android:id="@+id/tvMulaiDari"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mulai dari IDR 950.000"
+                android:text="Mulai dari IDR "
                 android:textSize="12sp"
                 android:textColor="@color/alert01"
                 android:fontFamily="@font/poppinsregular"
                 android:layout_marginStart="9dp"
                 app:layout_constraintTop_toBottomOf="@id/tvTanggal"
                 app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100.000"
+                android:textSize="12sp"
+                android:textColor="@color/alert01"
+                android:fontFamily="@font/poppinsregular"
+                android:layout_marginStart="9dp"
+                app:layout_constraintTop_toBottomOf="@id/tvTanggal"
+                app:layout_constraintLeft_toRightOf="@id/tvMulaiDari"
                 />
 
 

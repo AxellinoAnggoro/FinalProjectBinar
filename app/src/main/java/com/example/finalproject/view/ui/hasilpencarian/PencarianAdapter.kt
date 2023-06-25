@@ -2,14 +2,23 @@ package com.example.finalproject.view.ui.hasilpencarian
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.databinding.ItemHasilPencarianBinding
 import com.example.finalproject.model.flight.DataFlight
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PencarianAdapter(private var listFlight: List<DataFlight?>) :
+class PencarianAdapter(
+    private var listFlight: List<DataFlight?>,
+//    private val listener: OnItemClickListener
+) :
     RecyclerView.Adapter<PencarianAdapter.ViewHolder>() {
+
+//    interface OnItemClickListener{
+//
+//    }
+
     class ViewHolder(var binding: ItemHasilPencarianBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindFlight(itemFlight: DataFlight) {
