@@ -8,7 +8,7 @@ import com.example.finalproject.model.flight.DataFlight
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PencarianAdapter(private var listFlight: List<DataFlight>) :
+class PencarianAdapter(private var listFlight: List<DataFlight?>) :
     RecyclerView.Adapter<PencarianAdapter.ViewHolder>() {
     class ViewHolder(var binding: ItemHasilPencarianBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -26,6 +26,8 @@ class PencarianAdapter(private var listFlight: List<DataFlight>) :
                     tvJamTiba.text = setArrival
                     tvInisial.text = itemFlight.departureAirport.city
                     tvInisialDua.text = itemFlight.arrivalAirport.city
+                    tvHarga.text = itemFlight.economyClassPrice.toString()
+                    tvClassPesawat.text = itemFlight.airline.airlineName
                 }
             }
         }
@@ -51,8 +53,7 @@ class PencarianAdapter(private var listFlight: List<DataFlight>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val flight = listFlight[position]
-        holder.bindFlight(flight)
+        holder.bindFlight(listFlight[position]!!)
     }
 
     override fun getItemCount(): Int {

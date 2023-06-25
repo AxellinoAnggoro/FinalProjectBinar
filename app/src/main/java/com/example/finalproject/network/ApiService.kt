@@ -34,8 +34,11 @@ interface ApiService {
         @Field("password") password: String
     ): Call<LoginResponse>
 
+//    @GET("flight")
+//    fun getAllFlight(): Call<List<DataFlight>>
+
     @GET("flight")
-    fun getAllFlight(): Call<List<DataFlight>>
+    fun getAllFlight(): Call<FlightResponse>
 
     @GET("airports")
     fun getAllCity() : Call<AirportsResponse>

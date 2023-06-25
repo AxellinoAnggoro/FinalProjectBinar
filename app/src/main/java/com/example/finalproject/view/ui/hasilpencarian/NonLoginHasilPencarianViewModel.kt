@@ -1,5 +1,6 @@
 package com.example.finalproject.view.ui.hasilpencarian
 
+import android.provider.ContactsContract.Data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,25 +16,24 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiService) : ViewModel() {
-    private val _flightData = MutableLiveData<List<DataFlight>?>()
-    val flightData: LiveData<List<DataFlight>?> = _flightData
+    var liveDataFlight : MutableLiveData<List<DataFlight?>?> = MutableLiveData()
 
-    fun getFlights(){
-        api.getAllFlight().enqueue(object : Callback<List<DataFlight>>{
+    fun fetchTicket(){
+        api.getAllFlight().enqueue(object : Callback<FlightResponse>{
             override fun onResponse(
-                call: Call<List<DataFlight>>,
-                response: Response<List<DataFlight>>
+                call: Call<FlightResponse>,
+                response: Response<FlightResponse>
             ) {
-                if (response.isSuccessful){
-                    val flights = response.body()
-                    _flightData.value = flights
-                }else{
-                    Log.e("Hasil Pencarian VM", "Error View Model")
+                if (response.isSuccessful) {
+                    val ticketList = response.body()?.data
+                    liveDataFlight.value = ticketList
+                } else {
+                    Log.e("Flight Search VM", "Error View Model")
                 }
             }
 
-            override fun onFailure(call: Call<List<DataFlight>>, t: Throwable) {
-                Log.e("Hasil Pencarian VM", "API call failed: ${t.message}")
+            override fun onFailure(call: Call<FlightResponse>, t: Throwable) {
+                Log.e("Flight Search VM", "Error View Model")
             }
 
         })

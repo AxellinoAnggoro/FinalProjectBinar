@@ -14,7 +14,9 @@ import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentNonLoginHasilPencarianBinding
 import com.example.finalproject.model.ItemHasilPencarian
 import com.example.finalproject.model.ItemJadwal
+import com.example.finalproject.model.flight.DataFlight
 import com.example.finalproject.view.ui.adapter.JadwalAdapter
+import com.example.finalproject.view.ui.bottomsheet.BottomSheetAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,9 +44,11 @@ class NonLoginHasilPencarianFragment : Fragment() {
 
 
         flightSearchVm = ViewModelProvider(this)[NonLoginHasilPencarianViewModel::class.java]
-        flightSearchVm.getFlights()
-        flightSearchVm.flightData.observe(viewLifecycleOwner) { dataFlightList ->
-            flightAdapter.updateData(dataFlightList!!)
+        flightSearchVm.fetchTicket()
+        flightSearchVm.liveDataFlight.observe(viewLifecycleOwner) { dataFlightList ->
+            dataFlightList?.let { flight ->
+                flightAdapter.updateData(flight as List<DataFlight>)
+            }
         }
 
 
