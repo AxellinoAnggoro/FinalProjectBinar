@@ -100,7 +100,7 @@ class HomeFragment : Fragment() {
 
         binding.tvPilihFrom.setOnClickListener {
 //            BottomSheetFragment().show(requireActivity().supportFragmentManager,BottomSheetFragment.bottomTag)
-            findNavController().navigate(R.id.action_homeFragment_to_bottomSheetFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_bottomSheetTujuanFragment)
         }
 
         binding.tvPilihTo.setOnClickListener {

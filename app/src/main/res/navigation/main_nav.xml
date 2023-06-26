@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/prosesPembayaranFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -178,7 +178,11 @@
         android:id="@+id/prosesPembayaranFragment"
         android:name="com.example.finalproject.view.ui.prosespembayaran.ProsesPembayaranFragment"
         android:label="fragment_proses_pembayaran"
-        tools:layout="@layout/fragment_proses_pembayaran" />
+        tools:layout="@layout/fragment_proses_pembayaran" >
+        <action
+            android:id="@+id/action_prosesPembayaranFragment_to_bottomSheetPaymentSuccessFragment2"
+            app:destination="@id/bottomSheetPaymentSuccessFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/detailPenerbanganFragment"
         android:name="com.example.finalproject.view.ui.detailpenerbangan.DetailPenerbanganFragment"
@@ -188,4 +192,18 @@
             android:id="@+id/action_detailPenerbanganFragment_to_nonLoginHasilPencarianFragment"
             app:destination="@id/nonLoginHasilPencarianFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/bottomSheetPaymentSuccessFragment2"
+        android:name="com.example.finalproject.view.ui.bottomsheetpaymentsuccess.BottomSheetPaymentSuccessFragment"
+        android:label="fragment_bottom_sheet_payment_success"
+        tools:layout="@layout/fragment_bottom_sheet_payment_success" >
+        <action
+            android:id="@+id/action_bottomSheetPaymentSuccessFragment2_to_rincianPenerbanganFragment2"
+            app:destination="@id/rincianPenerbanganFragment2" />
+    </dialog>
+    <fragment
+        android:id="@+id/rincianPenerbanganFragment2"
+        android:name="com.example.finalproject.view.ui.rincianpenerbangan.RincianPenerbanganFragment"
+        android:label="fragment_rincian_penerbangan"
+        tools:layout="@layout/fragment_rincian_penerbangan" />
 </navigation>
