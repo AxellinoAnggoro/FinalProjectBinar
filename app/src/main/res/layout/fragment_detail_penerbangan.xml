@@ -182,7 +182,7 @@
                 android:id="@+id/setInformasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Baggage"
+                android:text="Baggage "
                 android:textColor="@color/neutral05"
                 android:textSize="12sp"
                 android:fontFamily="@font/poppinsregular"
@@ -191,16 +191,38 @@
                 app:layout_constraintTop_toBottomOf="@id/tvInformasi"/>
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/jmlBaggage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/neutral05"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppinsregular"
+                app:layout_constraintTop_toBottomOf="@id/tvInformasi"
+                app:layout_constraintLeft_toRightOf="@+id/setInformasi"/>
+
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/setInformasi2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cabin baggage 7 kg."
+                android:text="Cabin baggage "
                 android:textColor="@color/neutral05"
                 android:textSize="12sp"
                 android:fontFamily="@font/poppinsregular"
                 android:layout_marginStart="48dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/setInformasi"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/jmlCabin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7"
+                android:textColor="@color/neutral05"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppinsregular"
+                app:layout_constraintTop_toBottomOf="@id/jmlBaggage"
+                app:layout_constraintLeft_toRightOf="@id/setInformasi2"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/setInformasi3"

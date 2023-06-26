@@ -1,23 +1,29 @@
 package com.example.finalproject.view.ui.hasilpencarian
 
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AdapterView.OnItemClickListener
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.finalproject.R
 import com.example.finalproject.databinding.ItemHasilPencarianBinding
+import com.example.finalproject.model.detail.DataDetail
 import com.example.finalproject.model.flight.DataFlight
+import com.example.finalproject.view.ui.detailpenerbangan.DetailPenerbanganFragment
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PencarianAdapter(
     private var listFlight: List<DataFlight?>,
-//    private val listener: OnItemClickListener
+    private val listener: OnItemClickListener
 ) :
     RecyclerView.Adapter<PencarianAdapter.ViewHolder>() {
 
-//    interface OnItemClickListener{
-//
-//    }
+    interface OnItemClickListener{
+        fun onItemClick(data: DataFlight)
+    }
 
     class ViewHolder(var binding: ItemHasilPencarianBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -28,6 +34,7 @@ class PencarianAdapter(
                     val setDeparture = getHourFromDateTime(departureTime)
                     val arrivalTime = itemFlight.arrivalTime
                     val setArrival = getHourFromDateTime(arrivalTime)
+                    val idTicket = itemFlight.id
 
 //                    tvJamBerangkat.text = itemFlight.departureTime
 //                    tvJamTiba.text = itemFlight.arrivalTime
@@ -62,7 +69,13 @@ class PencarianAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindFlight(listFlight[position]!!)
+        val listFlight = listFlight[position]
+        holder.bindFlight(listFlight!!)
+
+        holder.itemView.setOnClickListener {
+            val clickedFlight = listFlight!!
+            listener.onItemClick(clickedFlight)
+        }
     }
 
     override fun getItemCount(): Int {

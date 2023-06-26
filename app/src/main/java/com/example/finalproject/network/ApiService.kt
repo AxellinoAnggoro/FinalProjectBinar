@@ -1,6 +1,7 @@
 package com.example.finalproject.network
 
 import com.example.finalproject.model.airports.AirportsResponse
+import com.example.finalproject.model.detail.FlightIdResponse
 import com.example.finalproject.model.flight.DataFlight
 import com.example.finalproject.model.flight.FlightResponse
 import com.example.finalproject.model.login.LoginResponse
@@ -39,6 +40,11 @@ interface ApiService {
 
     @GET("flight")
     fun getAllFlight(): Call<FlightResponse>
+
+    @GET("flight/{id}")
+    fun getFlightById(
+        @Path("id") userId: Int
+    ): Call<FlightIdResponse>
 
     @GET("airports")
     fun getAllCity() : Call<AirportsResponse>
