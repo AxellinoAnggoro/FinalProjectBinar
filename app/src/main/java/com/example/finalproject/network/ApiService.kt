@@ -6,7 +6,7 @@ import com.example.finalproject.model.flight.DataFlight
 import com.example.finalproject.model.flight.FlightResponse
 import com.example.finalproject.model.login.LoginResponse
 import com.example.finalproject.model.otp.OtpResponse
-import com.example.finalproject.model.profile.NewUsers
+import com.example.finalproject.model.profile.User
 import com.example.finalproject.model.register.RegisterResponse
 import com.example.finalproject.model.reset.ResponseReset
 import retrofit2.Call
@@ -49,15 +49,24 @@ interface ApiService {
     @GET("airports")
     fun getAllCity() : Call<AirportsResponse>
 
+//    @FormUrlEncoded
+//    @PUT("user/{id}")
+//    fun updateUser(
+//        @Header("Authorization") token: String,
+//        @Path("id") userId: Int,
+//        @Field("name") name: String,
+//        @Field("email") email: String,
+//        @Field("phoneNumber") phoneNumber: String
+//    ): Call<NewUsers>
+
     @FormUrlEncoded
-    @PUT("user/{id}")
+    @PUT("user/update")
     fun updateUser(
         @Header("Authorization") token: String,
-        @Path("id") userId: Int,
         @Field("name") name: String,
         @Field("email") email: String,
         @Field("phoneNumber") phoneNumber: String
-    ): Call<NewUsers>
+    ) : Call<User>
 
     @FormUrlEncoded
     @POST("user/verify")
