@@ -60,14 +60,16 @@
     </com.google.android.material.card.MaterialCardView>
     
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvInputDataDiri"
         android:layout_width="343dp"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:layout_marginTop="-5dp"
         app:layout_constraintTop_toBottomOf="@id/cvDataDiri"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/outline_cardview">
@@ -89,7 +91,7 @@
                     android:id="@+id/inputNameLay"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="311dp"
-                    android:layout_height="45dp"
+                    android:layout_height="60dp"
                     android:hint="Harry"
                     android:layout_marginTop="4dp"
                     android:layout_marginStart="16dp"
@@ -143,7 +145,7 @@
                     android:id="@+id/inputNamaKeluarga"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="311dp"
-                    android:layout_height="45dp"
+                    android:layout_height="60dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
@@ -175,7 +177,7 @@
                     android:id="@+id/inputNoTelp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="311dp"
-                    android:layout_height="45dp"
+                    android:layout_height="60dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
@@ -206,7 +208,7 @@
                     android:id="@+id/inputEmailLay"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="311dp"
-                    android:layout_height="45dp"
+                    android:layout_height="60dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
@@ -228,14 +230,22 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-    <Button
-        android:id="@+id/btnSave"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Simpan"
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSimpan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        app:cornerRadius="16dp"
+        android:text="@string/simpan"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppinsregular"
+        android:backgroundTint="@color/darkblue04"
+        app:layout_constraintTop_toBottomOf="@id/cvInputDataDiri"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

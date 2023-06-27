@@ -120,7 +120,17 @@ class HomeFragment : Fragment() {
             BottomSheetSeatClassFragment().show(requireActivity().supportFragmentManager,BottomSheetSeatClassFragment.bottomTag)
         }
 
-        binding.btnSwitch.setOnCheckedChangeListener{_, isChecked -> isSwitchOn = isChecked }
+        binding.btnSwitch.setOnCheckedChangeListener{_, isChecked -> isSwitchOn = isChecked
+            if (isChecked){
+                binding.btnRoundTrip.visibility = View.VISIBLE
+            }else{
+                binding.btnRoundTrip.visibility = View.GONE
+            }
+        }
+
+        binding.btnRoundTrip.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_nonLoginHasilPencarianRoundFragment)
+        }
 
         binding.ivSwitch.setOnClickListener {
             val fromText = binding.tvPilihFrom.text.toString()

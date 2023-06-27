@@ -58,6 +58,7 @@ class BottomSheetDatePickerFragment : BottomSheetDialogFragment() {
                 setTanggalKeberangkatan(tanggalBerangkat)
                 if (tanggalPulang != "-") setTanggalPulang(tanggalPulang)
             }
+            dismiss()
         }
         setDateRange()
         setDateSingel()

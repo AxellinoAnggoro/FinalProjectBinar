@@ -203,6 +203,9 @@
         <action
             android:id="@+id/action_detailPenerbanganFragment_to_biodataPemesanFragment"
             app:destination="@id/biodataPemesanFragment" />
+        <action
+            android:id="@+id/action_detailPenerbanganFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <dialog
         android:id="@+id/bottomSheetPaymentSuccessFragment2"
@@ -217,7 +220,11 @@
         android:id="@+id/rincianPenerbanganFragment2"
         android:name="com.example.finalproject.view.ui.rincianpenerbangan.RincianPenerbanganFragment"
         android:label="fragment_rincian_penerbangan"
-        tools:layout="@layout/fragment_rincian_penerbangan" />
+        tools:layout="@layout/fragment_rincian_penerbangan" >
+        <action
+            android:id="@+id/action_rincianPenerbanganFragment2_to_prosesPembayaranFragment"
+            app:destination="@id/prosesPembayaranFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nonLoginHasilPencarianReturnFragment"
         android:name="com.example.finalproject.view.ui.hasilpencarian.NonLoginHasilPencarianReturnFragment"
@@ -249,5 +256,21 @@
         android:id="@+id/biodataPemesanFragment"
         android:name="com.example.finalproject.view.ui.checkout.BiodataPemesanFragment"
         android:label="fragment_biodata_pemesan"
-        tools:layout="@layout/fragment_biodata_pemesan" />
+        tools:layout="@layout/fragment_biodata_pemesan" >
+        <action
+            android:id="@+id/action_biodataPemesanFragment_to_detailPenerbanganFragment"
+            app:destination="@id/detailPenerbanganFragment" />
+        <action
+            android:id="@+id/action_biodataPemesanFragment_to_biodataPenumpangFragment"
+            app:destination="@id/biodataPenumpangFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/biodataPenumpangFragment"
+        android:name="com.example.finalproject.view.ui.checkout.BiodataPenumpangFragment"
+        android:label="fragment_biodata_penumpang"
+        tools:layout="@layout/fragment_biodata_penumpang" >
+        <action
+            android:id="@+id/action_biodataPenumpangFragment_to_rincianPenerbanganFragment2"
+            app:destination="@id/rincianPenerbanganFragment2" />
+    </fragment>
 </navigation>

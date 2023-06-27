@@ -50,6 +50,11 @@ class DetailPenerbanganFragment : Fragment() {
             }
         }
 
+        binding.topAppBar.setNavigationOnClickListener{
+            findNavController().navigate(R.id.nonLoginHasilPencarianFragment)
+        }
+
     }
+
 
 }

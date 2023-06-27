@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentBiodataPemesanBinding
 import com.example.finalproject.model.BiodataPemesan
@@ -34,7 +35,7 @@ class BiodataPemesanFragment : Fragment() {
         regPref = requireContext().getSharedPreferences("data_regis", Context.MODE_PRIVATE)
         checkoutVm = ViewModelProvider(this)[CheckoutViewModel::class.java]
 
-        binding.btnSave.setOnClickListener {
+        binding.btnSimpan.setOnClickListener {
             val token = pref.getString("token", "").toString()
 
             val dataName = binding.inputName.text.toString()
@@ -48,7 +49,14 @@ class BiodataPemesanFragment : Fragment() {
             save.apply()
 
             checkoutVm.updateProfile(token, dataName, dataEmail, dataPhone)
+            findNavController().navigate(R.id.action_biodataPemesanFragment_to_biodataPenumpangFragment)
         }
+
+//        binding.topAppBar.setNavigationOnClickListener{
+//            findNavController().navigate(R.id.detailPenerbanganFragment)
+//        }
+
+
     }
 
 }

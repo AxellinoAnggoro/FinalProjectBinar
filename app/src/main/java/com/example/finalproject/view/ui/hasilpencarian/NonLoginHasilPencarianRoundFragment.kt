@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentNonLoginHasilPencarianRoundBinding
 import com.example.finalproject.model.flight.DataFlight
+import com.example.finalproject.view.ui.home.HomeFragment
 
 class NonLoginHasilPencarianRoundFragment : Fragment(), PencarianAdapter.OnItemClickListener {
     lateinit var binding : FragmentNonLoginHasilPencarianRoundBinding

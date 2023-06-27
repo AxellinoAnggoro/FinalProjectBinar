@@ -72,4 +72,7 @@
     <string name="business">Business</string>
     <string name="first_class">First Class</string>
     <string name="bayar">Bayar</string>
+    <string name="round_trip">Round Trip</string>
+    <string name="lanjut_rincian_penerbangan">Lanjut Rincian Penerbangan</string>
+    <string name="lanjut_pembayaran">Lanjut Pembayaran</string>
 </resources>
