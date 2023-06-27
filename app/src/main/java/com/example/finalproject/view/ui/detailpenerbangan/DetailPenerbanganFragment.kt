@@ -28,6 +28,10 @@ class DetailPenerbanganFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btnMasuk.setOnClickListener {
+
+        }
+
         val id = arguments?.getInt("id")
         detailVm = ViewModelProvider(this)[DetailPenerbanganViewModel::class.java]
         detailVm.fetchTicketId(id!!)

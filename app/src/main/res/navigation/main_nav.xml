@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/prosesPembayaranFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -130,6 +130,12 @@
         <action
             android:id="@+id/action_nonLoginAccountFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_nonLoginAccountFragment_to_accountUbahProfileFragment"
+            app:destination="@id/accountUbahProfileFragment" />
+        <action
+            android:id="@+id/action_nonLoginAccountFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/nonLoginHasilPencarianFragment"

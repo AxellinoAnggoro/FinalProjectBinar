@@ -29,7 +29,7 @@ class LoginViewModel @Inject constructor(private val api : ApiService) : ViewMod
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.e("Login VM", "Error View Model")
+                Log.e("Login VM Failure", "Error View Model")
             }
 
         })
