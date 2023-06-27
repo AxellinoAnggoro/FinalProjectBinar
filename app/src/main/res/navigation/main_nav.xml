@@ -83,6 +83,9 @@
         <action
             android:id="@+id/action_homeFragment_to_bottomSheetTujuanFragment"
             app:destination="@id/bottomSheetTujuanFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_nonLoginHasilPencarianRoundFragment"
+            app:destination="@id/nonLoginHasilPencarianRoundFragment" />
     </fragment>
     <fragment
         android:id="@+id/nonLoginHistoryFragment"
@@ -212,4 +215,31 @@
         android:name="com.example.finalproject.view.ui.rincianpenerbangan.RincianPenerbanganFragment"
         android:label="fragment_rincian_penerbangan"
         tools:layout="@layout/fragment_rincian_penerbangan" />
+    <fragment
+        android:id="@+id/nonLoginHasilPencarianReturnFragment"
+        android:name="com.example.finalproject.view.ui.hasilpencarian.NonLoginHasilPencarianReturnFragment"
+        android:label="fragment_non_login_hasil_pencarian_return"
+        tools:layout="@layout/fragment_non_login_hasil_pencarian_return" >
+        <action
+            android:id="@+id/action_nonLoginHasilPencarianReturnFragment_to_nonLoginHasilPencarianRoundFragment"
+            app:destination="@id/nonLoginHasilPencarianRoundFragment" />
+        <action
+            android:id="@+id/action_nonLoginHasilPencarianReturnFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nonLoginHasilPencarianRoundFragment"
+        android:name="com.example.finalproject.view.ui.hasilpencarian.NonLoginHasilPencarianRoundFragment"
+        android:label="fragment_non_login_hasil_pencarian_round"
+        tools:layout="@layout/fragment_non_login_hasil_pencarian_round" >
+        <action
+            android:id="@+id/action_nonLoginHasilPencarianRoundFragment_to_nonLoginHasilPencarianReturnFragment"
+            app:destination="@id/nonLoginHasilPencarianReturnFragment" />
+        <action
+            android:id="@+id/action_nonLoginHasilPencarianRoundFragment_to_detailPenerbanganFragment"
+            app:destination="@id/detailPenerbanganFragment" />
+        <action
+            android:id="@+id/action_nonLoginHasilPencarianRoundFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

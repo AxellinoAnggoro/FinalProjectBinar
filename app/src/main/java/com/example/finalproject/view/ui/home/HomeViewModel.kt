@@ -1,6 +1,7 @@
 package com.example.finalproject.view.ui.home
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,6 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val preferences: PassengersPreferences,
+    private val sharedPreferences: SharedPreferences,
     private val api: ApiService
 ) : ViewModel() {
     var liveDataFav : MutableLiveData<List<DataFlight?>?> = MutableLiveData()
@@ -53,5 +55,9 @@ class HomeViewModel @Inject constructor(
 
     fun getSeatClass(): LiveData<String> = preferences.getSeat().asLiveData()
 
-
+    fun saveCheckSwitch(isCheck: Boolean){
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("check",isCheck)
+        editor.apply()
+    }
 }

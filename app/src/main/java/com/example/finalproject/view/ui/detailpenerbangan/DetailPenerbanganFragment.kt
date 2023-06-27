@@ -45,6 +45,7 @@ class DetailPenerbanganFragment : Fragment() {
                 jmlCabin.text = detail.airline.cabinBaggage.toString()
                 jadwalJamPulang.text = detail.arrivalTime
                 setBandaraTujuan.text = detail.arrivalAirport.airportName
+                setHarga.text = detail.economyClassPrice.toString()
             }
         }
 
