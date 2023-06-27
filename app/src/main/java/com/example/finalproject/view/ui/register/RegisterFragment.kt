@@ -72,7 +72,9 @@ class RegisterFragment : Fragment() {
             regisVm.responseRegister.observe(viewLifecycleOwner) {
                 if (it.status == "success") {
                     val dataEmail = it.data.newUserResponse.email
-                    storeEmail(dataEmail)
+                    val dataPhone = it.data.newUserResponse.phoneNumber
+                    val dataName = it.data.newUserResponse.name
+                    storeEmail(dataEmail, dataPhone, dataName)
                     Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_registerFragment_to_otpFragment)
                 } else {
@@ -82,9 +84,11 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun storeEmail(email : String){
+    private fun storeEmail(email : String, phone : String, name : String){
         val save = pref.edit()
         save.putString("email", email)
+        save.putString("phone", phone)
+        save.putString("name", name)
         save.apply()
     }
 }

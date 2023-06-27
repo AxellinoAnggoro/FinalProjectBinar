@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp"
-    tools:context=".view.ui.register.RegisterFragment">
+    tools:context=".view.ui.account.AccountUbahProfileFragment">
 
     <ImageView
         android:id="@+id/btnBack"
@@ -56,6 +56,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputName"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -90,6 +91,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputEmail"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -123,6 +125,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputPhone"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>

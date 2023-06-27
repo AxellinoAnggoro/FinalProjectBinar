@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentDetailPenerbanganBinding
 import com.example.finalproject.model.detail.DataDetail
@@ -29,7 +30,7 @@ class DetailPenerbanganFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnMasuk.setOnClickListener {
-
+            findNavController().navigate(R.id.action_detailPenerbanganFragment_to_biodataPemesanFragment)
         }
 
         val id = arguments?.getInt("id")

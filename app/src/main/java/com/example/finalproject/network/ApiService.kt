@@ -6,6 +6,7 @@ import com.example.finalproject.model.flight.DataFlight
 import com.example.finalproject.model.flight.FlightResponse
 import com.example.finalproject.model.login.LoginResponse
 import com.example.finalproject.model.otp.OtpResponse
+import com.example.finalproject.model.passenger.ResponsePassenger
 import com.example.finalproject.model.profile.User
 import com.example.finalproject.model.register.RegisterResponse
 import com.example.finalproject.model.reset.ResponseReset
@@ -68,6 +69,11 @@ interface ApiService {
         @Field("phoneNumber") phoneNumber: String
     ) : Call<User>
 
+    @GET("user/user-info")
+    fun getUserByToken(
+        @Header("Authorization") token: String
+    ) : Call<User>
+
     @FormUrlEncoded
     @POST("user/verify")
     fun postOtp(
@@ -82,4 +88,16 @@ interface ApiService {
         @Field("password") password : String
     ) : Call<ResponseReset>
 
+    @FormUrlEncoded
+    @POST("passengers")
+    fun postPassengers(
+        @Header("Authorization") token: String,
+        @Field("name") name: String,
+        @Field("born_date") date: String,
+        @Field("citizen") citizen : String,
+        @Field("identity_number") idNumber : String,
+        @Field("publisher_country") country : String,
+        @Field("valid_until") validUntil : String,
+        @Field("booking_id") bookId : Int
+    ) : Call<ResponsePassenger>
 }

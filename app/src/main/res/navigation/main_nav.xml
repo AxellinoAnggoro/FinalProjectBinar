@@ -200,6 +200,9 @@
         <action
             android:id="@+id/action_detailPenerbanganFragment_to_nonLoginHasilPencarianFragment"
             app:destination="@id/nonLoginHasilPencarianFragment" />
+        <action
+            android:id="@+id/action_detailPenerbanganFragment_to_biodataPemesanFragment"
+            app:destination="@id/biodataPemesanFragment" />
     </fragment>
     <dialog
         android:id="@+id/bottomSheetPaymentSuccessFragment2"
@@ -242,4 +245,9 @@
             android:id="@+id/action_nonLoginHasilPencarianRoundFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/biodataPemesanFragment"
+        android:name="com.example.finalproject.view.ui.checkout.BiodataPemesanFragment"
+        android:label="fragment_biodata_pemesan"
+        tools:layout="@layout/fragment_biodata_pemesan" />
 </navigation>
