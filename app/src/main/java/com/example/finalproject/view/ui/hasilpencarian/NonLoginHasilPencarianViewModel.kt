@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.finalproject.model.detail.DataDetail
+import com.example.finalproject.model.detail.FlightIdResponse
 import com.example.finalproject.model.flight.DataFlight
 import com.example.finalproject.model.flight.FlightResponse
 import com.example.finalproject.network.ApiService
@@ -40,7 +42,6 @@ class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiSe
     }
 
     var liveDataFlightQuery: MutableLiveData<List<DataFlight?>?> = MutableLiveData()
-
     fun fetchTicketByQuery(departureAirport: String, arrivalAirport: String) {
         api.getFlightByQuery(departureAirport, arrivalAirport)
             .enqueue(object : Callback<FlightResponse> {
@@ -61,5 +62,27 @@ class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiSe
                 }
 
             })
+    }
+
+    var liveDataFlightId: MutableLiveData<DataDetail?> = MutableLiveData()
+    fun fetchTicketId(id: Int) {
+        api.getFlightById(id).enqueue(object : Callback<FlightIdResponse> {
+            override fun onResponse(
+                call: Call<FlightIdResponse>,
+                response: Response<FlightIdResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val ticketDetail = response.body()?.data
+                    liveDataFlightId.value = ticketDetail
+                } else {
+                    Log.e("Flight Detail VM", "Error View Model")
+                }
+
+            }
+
+            override fun onFailure(call: Call<FlightIdResponse>, t: Throwable) {
+                Log.e("Flight Detail VM", "Error View Model")
+            }
+        })
     }
 }

@@ -12,9 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.R
+import com.example.finalproject.Util.Utill
 import com.example.finalproject.databinding.FragmentNonLoginHasilPencarianReturnBinding
 import com.example.finalproject.model.flight.DataFlight
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class NonLoginHasilPencarianReturnFragment : Fragment(), PencarianAdapter.OnItemClickListener {
@@ -58,6 +61,8 @@ class NonLoginHasilPencarianReturnFragment : Fragment(), PencarianAdapter.OnItem
         arrivalPref = requireContext().getSharedPreferences("data_pulang", Context.MODE_PRIVATE)
         val arrival = arrivalPref.getString("arrival", "")
 
+        val idDeparture = arguments?.getInt("idDep")
+
 
         binding.tvToolbar.text = "$cityFrom < > $cityTo - $passenger Penumpang - $seatClass"
         binding.etDate.text = departure
@@ -71,24 +76,62 @@ class NonLoginHasilPencarianReturnFragment : Fragment(), PencarianAdapter.OnItem
 
 
         flightSearchVm = ViewModelProvider(this)[NonLoginHasilPencarianViewModel::class.java]
-        flightSearchVm.fetchTicket()
-        flightSearchVm.liveDataFlight.observe(viewLifecycleOwner) { dataFlightList ->
-            dataFlightList?.let { flight ->
-                flightAdapter.updateData(flight as List<DataFlight>)
-            }
-        }
+        getDepartureTicket(idDeparture)
+//        flightSearchVm.fetchTicket()
+//        flightSearchVm.liveDataFlight.observe(viewLifecycleOwner) { dataFlightList ->
+//            dataFlightList?.let { flight ->
+//                flightAdapter.updateData(flight as List<DataFlight>)
+//            }
+//        }
 
         binding.ivBackBeranda.setOnClickListener{
             findNavController().navigate(R.id.action_nonLoginHasilPencarianReturnFragment_to_homeFragment)
         }
 
+        binding.btnGanti.setOnClickListener {
+            if (findNavController().currentDestination?.id == R.id.nonLoginHasilPencarianReturnFragment) {
+//                val fragId = findNavController().currentDestination?.id
+//                findNavController().popBackStack(fragId!!,true)
+                findNavController().navigate(R.id.action_nonLoginHasilPencarianReturnFragment_to_nonLoginHasilPencarianRoundFragment)
+            }
+
+        }
+
+    }
+
+    private fun getDepartureTicket(idDeparture: Int?) {
+        flightSearchVm.fetchTicketId(idDeparture!!)
+        flightSearchVm.liveDataFlightId.observe(viewLifecycleOwner){it ->
+            val departureTime = it!!.departureTime
+            val setDeparture = getHourFromDateTime(departureTime)
+            val arrivalTime = it.arrivalTime
+            val setArrival = getHourFromDateTime(arrivalTime)
+
+            binding.tvJamKeberangkatan.text = setDeparture
+            binding.tvJamSampai.text = setArrival
+            binding.tvKotaKeberangkatan.text = it.departureAirport.city
+            binding.tvKotaSampai.text = it.arrivalAirport.city
+            val getPrice = arguments?.getInt("pricePergi")
+            val price = Utill.getPriceIdFormat(getPrice!!)
+            binding.tvHarga.text = price
+            binding.tvPesawat.text = it.airline.airlineName
+        }
+    }
+
+    private fun getHourFromDateTime(dateTime: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+        val outputFormat = SimpleDateFormat("HH:mm", Locale.US)
+
+        return try {
+            val date = inputFormat.parse(dateTime)
+            outputFormat.format(date!!)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ""
+        }
     }
 
     override fun onItemClick(data: DataFlight) {
-        val id = data.id
-        val bundle = Bundle()
-        bundle.putInt("id",id)
-        Log.d("NonLogin Frag", "onclick")
-//        findNavController().navigate(R.id.,bundle)
+
     }
 }

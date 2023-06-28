@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
+import com.example.finalproject.Util.Utill
 import com.example.finalproject.databinding.FragmentDetailPenerbanganBinding
 import com.example.finalproject.model.detail.DataDetail
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,6 +46,8 @@ class DetailPenerbanganFragment : Fragment() {
                 val setDeparture = getHourFromDateTime(departureTime)
                 val arrivalTime = detail.arrivalTime
                 val setArrival = getHourFromDateTime(arrivalTime)
+                val getPrice = detail.economyClassPrice
+                val price = Utill.getPriceIdFormat(getPrice)
 
                 jadwalJam.text = setDeparture
                 jadwalJamPulang.text = setArrival
@@ -54,7 +57,7 @@ class DetailPenerbanganFragment : Fragment() {
                 jmlBaggage.text = detail.airline.baggage.toString()
                 jmlCabin.text = detail.airline.cabinBaggage.toString()
                 setBandaraTujuan.text = detail.arrivalAirport.airportName
-                setHarga.text = detail.economyClassPrice.toString()
+                setHarga.text = price
             }
         }
 

@@ -8,6 +8,7 @@ import android.widget.AdapterView.OnItemClickListener
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
+import com.example.finalproject.Util.Utill
 import com.example.finalproject.databinding.ItemHasilPencarianBinding
 import com.example.finalproject.model.detail.DataDetail
 import com.example.finalproject.model.flight.DataFlight
@@ -35,6 +36,8 @@ class PencarianAdapter(
                     val arrivalTime = itemFlight.arrivalTime
                     val setArrival = getHourFromDateTime(arrivalTime)
                     val idTicket = itemFlight.id
+                    val getPrice = itemFlight.economyClassPrice
+                    val price = Utill.getPriceIdFormat(getPrice)
 
 //                    tvJamBerangkat.text = itemFlight.departureTime
 //                    tvJamTiba.text = itemFlight.arrivalTime
@@ -42,7 +45,7 @@ class PencarianAdapter(
                     tvJamTiba.text = setArrival
                     tvInisial.text = itemFlight.departureAirport.city
                     tvInisialDua.text = itemFlight.arrivalAirport.city
-                    tvHarga.text = itemFlight.economyClassPrice.toString()
+                    tvHarga.text = price
                     tvClassPesawat.text = itemFlight.airline.airlineName
                 }
             }

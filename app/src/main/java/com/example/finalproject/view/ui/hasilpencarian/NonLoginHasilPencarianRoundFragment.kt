@@ -72,21 +72,29 @@ class NonLoginHasilPencarianRoundFragment : Fragment(), PencarianAdapter.OnItemC
 
 
         flightSearchVm = ViewModelProvider(this)[NonLoginHasilPencarianViewModel::class.java]
-        flightSearchVm.fetchTicket()
-        flightSearchVm.liveDataFlight.observe(viewLifecycleOwner) { dataFlightList ->
-            dataFlightList?.let { flight ->
+        flightSearchVm.fetchTicketByQuery(cityFrom!!, cityTo!!)
+        flightSearchVm.liveDataFlightQuery.observe(viewLifecycleOwner){
+            it?.let { flight ->
                 flightAdapter.updateData(flight as List<DataFlight>)
             }
         }
+//        flightSearchVm.liveDataFlight.observe(viewLifecycleOwner) { dataFlightList ->
+//            dataFlightList?.let { flight ->
+//                flightAdapter.updateData(flight as List<DataFlight>)
+//            }
+//        }
 
     }
 
     override fun onItemClick(data: DataFlight) {
         val id = data.id
+        val hargaPergi = data.economyClassPrice
         val bundle = Bundle()
-        bundle.putInt("id",id)
-        Log.d("NonLogin Frag", "onclick")
+        bundle.putInt("idDep", id)
+        bundle.putInt("pricePergi", hargaPergi)
+        findNavController().navigate(
+            R.id.action_nonLoginHasilPencarianRoundFragment_to_nonLoginHasilPencarianReturnFragment,
+            bundle
+        )
     }
-
-
 }

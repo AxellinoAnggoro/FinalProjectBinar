@@ -26,7 +26,7 @@ class BottomSheetDatePickerFragment : BottomSheetDialogFragment() {
     private val setDateViewModel: BottomSheetDatePickerViewModel by viewModels()
     private var tanggalBerangkat : String = " "
     private var tanggalPulang : String = " "
-    private val tglFormat = SimpleDateFormat("EEEE, d MMMM YYYY", Locale("id,","ID"))
+    private val tglFormat = SimpleDateFormat("d-M-YYYY", Locale("id,","ID"))
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

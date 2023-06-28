@@ -198,6 +198,7 @@ class HomeFragment : Fragment() {
                 binding.setDepature.setTextColor(ContextCompat.getColor(requireContext(),R.color.neutral05))
                 val save = departurePref.edit()
                 save.putString("departure", it)
+                Log.d("departure", "departure: $it")
                 save.apply()
             }
         }
