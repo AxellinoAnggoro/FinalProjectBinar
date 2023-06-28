@@ -15,6 +15,7 @@ import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentNonLoginHasilPencarianRoundBinding
 import com.example.finalproject.model.flight.DataFlight
 import com.example.finalproject.view.ui.home.HomeFragment
+import com.example.finalproject.view.ui.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,6 +29,7 @@ class NonLoginHasilPencarianRoundFragment : Fragment(), PencarianAdapter.OnItemC
     lateinit var classPref : SharedPreferences
     lateinit var departurePref: SharedPreferences
     lateinit var arrivalPref : SharedPreferences
+    lateinit var homeVm : HomeViewModel
 
 
     override fun onCreateView(
@@ -40,6 +42,7 @@ class NonLoginHasilPencarianRoundFragment : Fragment(), PencarianAdapter.OnItemC
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        homeVm = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         fromPref = requireContext().getSharedPreferences("data_asal", Context.MODE_PRIVATE)
         val cityFrom = fromPref.getString("city","")
@@ -90,6 +93,7 @@ class NonLoginHasilPencarianRoundFragment : Fragment(), PencarianAdapter.OnItemC
         val id = data.id
         val hargaPergi = data.economyClassPrice
         val bundle = Bundle()
+        homeVm.saveIdDeparture(id)
         bundle.putInt("idDep", id)
         bundle.putInt("pricePergi", hargaPergi)
         findNavController().navigate(

@@ -1,6 +1,7 @@
 package com.example.finalproject.view.ui.detailpenerbangan.roundtrip
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,12 @@ import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentDetailPergiBinding
 import com.example.finalproject.view.ui.detailpenerbangan.DetailPenerbanganViewModel
 import com.example.finalproject.view.ui.home.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 
 
+@AndroidEntryPoint
 class DetailPergiFragment : Fragment() {
     lateinit var binding : FragmentDetailPergiBinding
     lateinit var detailVm : DetailPenerbanganViewModel
@@ -30,9 +33,11 @@ class DetailPergiFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id = arguments?.getInt("id")
+        homeVm = ViewModelProvider(this)[HomeViewModel::class.java]
+
+        val idDeparture = homeVm.getIdDep()
         detailVm = ViewModelProvider(this)[DetailPenerbanganViewModel::class.java]
-        detailVm.fetchTicketId(id!!)
+        detailVm.fetchTicketId(idDeparture!!)
         detailVm.liveDataFlightId.observe(viewLifecycleOwner){ detail ->
             if (detail!=null) {
                 binding.apply {

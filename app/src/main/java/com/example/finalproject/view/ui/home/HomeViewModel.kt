@@ -57,6 +57,20 @@ class HomeViewModel @Inject constructor(
 
     fun getSeatClass(): LiveData<String> = preferences.getSeat().asLiveData()
 
+    fun getIdDep():Int?{
+        return sharedPreferences.getInt("idDep",0)
+    }
+
+    fun getIdReturn(): Int?{
+        return sharedPreferences.getInt("idReturn",0)
+    }
+
+    fun saveIdDeparture(idDep:Int){
+        val editor = sharedPreferences.edit()
+        editor.putInt("idDep",idDep)
+        editor.apply()
+    }
+
     fun saveCheckSwitch(isCheck: Boolean){
         val editor = sharedPreferences.edit()
         editor.putBoolean("check",isCheck)

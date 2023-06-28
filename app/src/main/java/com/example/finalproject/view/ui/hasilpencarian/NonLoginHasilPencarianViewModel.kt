@@ -1,5 +1,6 @@
 package com.example.finalproject.view.ui.hasilpencarian
 
+import android.content.SharedPreferences
 import android.provider.ContactsContract.Data
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -17,7 +18,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiService) :
+class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiService, private val sharedPreferences: SharedPreferences) :
     ViewModel() {
     var liveDataFlight: MutableLiveData<List<DataFlight?>?> = MutableLiveData()
     fun fetchTicket() {
@@ -84,5 +85,11 @@ class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiSe
                 Log.e("Flight Detail VM", "Error View Model")
             }
         })
+    }
+
+    fun saveIdReturn(idReturn:Int){
+        val editor = sharedPreferences.edit()
+        editor.putInt("idReturn",idReturn)
+        editor.apply()
     }
 }

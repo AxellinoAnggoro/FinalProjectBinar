@@ -10,7 +10,7 @@
         android:id="@+id/cvDetailPenerbangan"
         android:layout_width="343dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true">
+        android:layout_gravity="center_horizontal">
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -10,9 +10,11 @@ import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentDetailPulangBinding
 import com.example.finalproject.view.ui.detailpenerbangan.DetailPenerbanganViewModel
 import com.example.finalproject.view.ui.home.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 
+@AndroidEntryPoint
 class DetailPulangFragment : Fragment() {
 
     lateinit var binding : FragmentDetailPulangBinding
@@ -29,9 +31,11 @@ class DetailPulangFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id = arguments?.getInt("id")
+        homeVm = ViewModelProvider(this)[HomeViewModel::class.java]
+        val idReturn = homeVm.getIdReturn()
+
         detailVm = ViewModelProvider(this)[DetailPenerbanganViewModel::class.java]
-        detailVm.fetchTicketId(id!!)
+        detailVm.fetchTicketId(idReturn!!)
         detailVm.liveDataFlightId.observe(viewLifecycleOwner){ detail ->
             if (detail!=null) {
                 binding.apply {
@@ -40,13 +44,13 @@ class DetailPulangFragment : Fragment() {
                     val arrivalTime = detail.arrivalTime
                     val setArrival = getHourFromDateTime(arrivalTime)
                     tvJamBerangkat.text = setDeparture
-                    tvBandara.text = detail.departureAirport.airportName
+                    tvBandaraDatang.text = detail.departureAirport.airportName
                     tvClassPesawat.text = detail.airline.airlineName
                     tvBookingCode.text = detail.flightCode
                     informasiSatu.text = "Baggage ${detail.airline.baggage}kg"
                     informasiDua.text = "Cabin Baggage ${detail.airline.cabinBaggage}kg"
                     tvJamDatang.text = setArrival
-                    tvBandaraDatang.text = detail.arrivalAirport.airportName
+                    tvBandara.text = detail.arrivalAirport.airportName
 //                setHarga.text = detail.economyClassPrice.toString()
                 }
             }

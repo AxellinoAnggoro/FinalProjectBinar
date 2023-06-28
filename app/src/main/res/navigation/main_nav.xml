@@ -236,6 +236,9 @@
         <action
             android:id="@+id/action_nonLoginHasilPencarianReturnFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_nonLoginHasilPencarianReturnFragment_to_detailPenerbanganRoundtripFragment"
+            app:destination="@id/detailPenerbanganRoundtripFragment" />
     </fragment>
     <fragment
         android:id="@+id/nonLoginHasilPencarianRoundFragment"
@@ -273,4 +276,9 @@
             android:id="@+id/action_biodataPenumpangFragment_to_rincianPenerbanganFragment2"
             app:destination="@id/rincianPenerbanganFragment2" />
     </fragment>
+    <fragment
+        android:id="@+id/detailPenerbanganRoundtripFragment"
+        android:name="com.example.finalproject.view.ui.detailpenerbangan.roundtrip.DetailPenerbanganRoundtripFragment"
+        android:label="fragment_detail_penerbangan_roundtrip"
+        tools:layout="@layout/fragment_detail_penerbangan_roundtrip" />
 </navigation>
