@@ -280,5 +280,18 @@
         android:id="@+id/detailPenerbanganRoundtripFragment"
         android:name="com.example.finalproject.view.ui.detailpenerbangan.roundtrip.DetailPenerbanganRoundtripFragment"
         android:label="fragment_detail_penerbangan_roundtrip"
-        tools:layout="@layout/fragment_detail_penerbangan_roundtrip" />
+        tools:layout="@layout/fragment_detail_penerbangan_roundtrip" >
+        <action
+            android:id="@+id/action_detailPenerbanganRoundtripFragment_to_biodataPemesanFragment"
+            app:destination="@id/biodataPemesanFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/bottomSheetLogin"
+        android:name="com.example.finalproject.view.ui.bottomsheetlogin.BottomSheetLogin"
+        android:label="fragment_bottom_sheet_login"
+        tools:layout="@layout/fragment_bottom_sheet_login" >
+        <action
+            android:id="@+id/action_bottomSheetLogin_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </dialog>
 </navigation>
