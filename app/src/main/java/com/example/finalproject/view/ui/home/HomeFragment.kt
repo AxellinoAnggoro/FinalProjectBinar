@@ -37,7 +37,10 @@ class HomeFragment : Fragment() {
     lateinit var homePref : SharedPreferences
     lateinit var fromPref : SharedPreferences
     lateinit var toPref : SharedPreferences
-    private lateinit var passengersPreferences: PassengersPreferences
+    lateinit var passengerPref : SharedPreferences
+    lateinit var classPref : SharedPreferences
+    lateinit var departurePref: SharedPreferences
+    lateinit var arrivalPref :SharedPreferences
 
     companion object{
         var isSwitchOn = false
@@ -57,6 +60,10 @@ class HomeFragment : Fragment() {
         homePref = requireContext().getSharedPreferences("login_data", Context.MODE_PRIVATE)
         fromPref = requireContext().getSharedPreferences("data_asal", Context.MODE_PRIVATE)
         toPref = requireContext().getSharedPreferences("data_tujuan", Context.MODE_PRIVATE)
+        passengerPref = requireContext().getSharedPreferences("data_penumpang", Context.MODE_PRIVATE)
+        classPref = requireContext().getSharedPreferences("data_class", Context.MODE_PRIVATE)
+        departurePref = requireContext().getSharedPreferences("data_berangkat", Context.MODE_PRIVATE)
+        arrivalPref = requireContext().getSharedPreferences("data_pulang", Context.MODE_PRIVATE)
 
         val token = homePref.getString("token", "")
         val from = fromPref.getString("city", "")
@@ -142,6 +149,10 @@ class HomeFragment : Fragment() {
 
         homeVm.getPassenger().observe(viewLifecycleOwner){
             if(it != null) binding.setPassengers.text = "$it Penumpang"
+            val save = passengerPref.edit()
+            save.putString("passenger", it)
+            save.apply()
+            Log.d("Home Frag", "$it penumpang")
         }
         setTanggalKeberangkatan()
         setTanggalPulang()
@@ -154,6 +165,9 @@ class HomeFragment : Fragment() {
             if (it != ""){
                 binding.setSeat.text =it
                 binding.setSeat.setTextColor(ContextCompat.getColor(requireContext(),R.color.neutral05))
+                val save = classPref.edit()
+                save.putString("class", it)
+                save.apply()
             }
         }
     }
@@ -163,6 +177,9 @@ class HomeFragment : Fragment() {
             if (it!=""){
                 binding.setReturn.text = it.substringAfter(", ")
                 binding.setReturn.setTextColor(ContextCompat.getColor(requireContext(),R.color.neutral05))
+                val save = arrivalPref.edit()
+                save.putString("arrival", it)
+                save.apply()
             }
         }
     }
@@ -172,6 +189,9 @@ class HomeFragment : Fragment() {
             if (it!=""){
                 binding.setDepature.text = it.substringAfter(", ")
                 binding.setDepature.setTextColor(ContextCompat.getColor(requireContext(),R.color.neutral05))
+                val save = departurePref.edit()
+                save.putString("departure", it)
+                save.apply()
             }
         }
     }

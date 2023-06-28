@@ -1,6 +1,9 @@
 package com.example.finalproject.view.ui.hasilpencarian
 
+import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -21,7 +24,9 @@ import com.example.finalproject.model.flight.DataFlight
 import com.example.finalproject.view.ui.adapter.JadwalAdapter
 import com.example.finalproject.view.ui.bottomsheet.BottomSheetAdapter
 import com.example.finalproject.view.ui.detailpenerbangan.DetailPenerbanganFragment
+import com.example.finalproject.view.ui.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class NonLoginHasilPencarianFragment : Fragment(), PencarianAdapter.OnItemClickListener {
@@ -29,6 +34,14 @@ class NonLoginHasilPencarianFragment : Fragment(), PencarianAdapter.OnItemClickL
     lateinit var binding : FragmentNonLoginHasilPencarianBinding
     private lateinit var flightSearchVm : NonLoginHasilPencarianViewModel
     private lateinit var flightAdapter : PencarianAdapter
+    lateinit var homeVm : HomeViewModel
+    lateinit var fromPref : SharedPreferences
+    lateinit var toPref : SharedPreferences
+    lateinit var passengerPref : SharedPreferences
+    lateinit var classPref : SharedPreferences
+    lateinit var departurePref: SharedPreferences
+    lateinit var arrivalPref : SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +52,29 @@ class NonLoginHasilPencarianFragment : Fragment(), PencarianAdapter.OnItemClickL
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        homeVm = ViewModelProvider(this)[HomeViewModel::class.java]
+
+        fromPref = requireContext().getSharedPreferences("data_asal", Context.MODE_PRIVATE)
+        val cityFrom = fromPref.getString("city","")
+
+        toPref = requireContext().getSharedPreferences("data_tujuan", Context.MODE_PRIVATE)
+        val cityTo = toPref.getString("city","")
+
+        passengerPref = requireContext().getSharedPreferences("data_penumpang", Context.MODE_PRIVATE)
+        val passenger = passengerPref.getString("passenger","")
+
+        classPref = requireContext().getSharedPreferences("data_class", Context.MODE_PRIVATE)
+        val seatClass = classPref.getString("class", "")
+
+        departurePref = requireContext().getSharedPreferences("data_berangkat", Context.MODE_PRIVATE)
+        val departure = departurePref.getString("departure","")
+
+        arrivalPref = requireContext().getSharedPreferences("data_pulang", Context.MODE_PRIVATE)
+        val arrival = arrivalPref.getString("arrival", "")
+
+
+        binding.toolbarTitle.text = "$cityFrom < > $cityTo - $passenger Penumpang - $seatClass"
+        binding.etDate.text = departure
 
         flightAdapter = PencarianAdapter(emptyList(),this)
         binding.rvHasilPencarian.apply {
@@ -60,7 +96,6 @@ class NonLoginHasilPencarianFragment : Fragment(), PencarianAdapter.OnItemClickL
         }
 
     }
-
     override fun onItemClick(data: DataFlight) {
         val id = data.id
         val bundle = Bundle()

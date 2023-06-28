@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.ui.hasilpencarian.NonLoginHasilPencarianFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -19,14 +18,55 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
-            android:background="@color/darkblue05"
-            app:titleTextColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
+            android:background="@color/darkblue05"
             app:layout_anchor="@+id/constraintLayout"
             app:layout_anchorGravity="center"
             app:navigationIcon="@drawable/ic_back_white"
-            app:title="JKT > MLB - 2 Penumpang - Economy" />
+            app:titleTextColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/toolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="JKT > MLB - 2 Penumpang - Economy"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Departure"
+                    android:textColor="@color/white" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputdate"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="5dp"
+                    android:minHeight="48dp"
+                    app:boxBackgroundMode="outline"
+                    app:hintAnimationEnabled="false"
+                    app:hintEnabled="false">
+
+                    <TextView
+                        android:id="@+id/etDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Masukan Tanggal"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -34,83 +74,55 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="63dp"
-        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/app_bar">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            >
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvJadwal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:listitem="@layout/item_jadwal"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/btnFilter"
         android:layout_width="77dp"
         android:layout_height="32dp"
-        android:src="@drawable/ic_filter"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_filter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/btnFilterHarga"
         android:layout_width="108dp"
         android:layout_height="32dp"
-        android:src="@drawable/ic_filter_harga"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:src="@drawable/ic_filter_harga"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btnFilter"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/btnFilter">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHasilPencarian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:listitem="@layout/item_hasil_pencarian"/>
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_hasil_pencarian" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

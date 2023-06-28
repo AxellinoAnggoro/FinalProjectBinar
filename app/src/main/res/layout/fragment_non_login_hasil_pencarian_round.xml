@@ -53,104 +53,64 @@
 
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
                     <LinearLayout
                         android:id="@+id/layout_departure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
                         <TextView
                             style="@style/TextBody12Bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
                             android:text="Departure"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="10dp" />
+                            android:textColor="@color/white" />
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/inputdate"
+
+                        <TextView
+                            android:id="@+id/etDate"
+                            style="@style/TextBody12Medium"
                             android:layout_width="wrap_content"
-                            android:layout_height="48dp"
-                            android:layout_marginTop="5dp"
-                            android:minHeight="48dp"
-                            app:hintEnabled="false"
-                            app:hintAnimationEnabled="false"
-                            app:boxBackgroundMode="outline">
+                            android:layout_height="wrap_content"
+                            android:hint="Masukan Tanggal"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white" />
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etDate"
-                                android:layout_width="180dp"
-                                android:hint="Masukan Tanggal"
-                                android:padding="2dp"
-                                android:clickable="false"
-                                android:cursorVisible="false"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:drawableEnd="@drawable/baseline_calendar_today_24"
-                                android:background="@drawable/shape_rectangle_date"
-                                android:layout_height="wrap_content"
-                                android:minHeight="48dp"
-                                android:textColor="@color/white"
-                                style="@style/TextBody12Medium"
-                                android:textColorHint="@color/white"
-                                />
-
-                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:id="@+id/layout_return"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
+                        android:layout_marginStart="100dp"
+                        android:orientation="vertical">
+
                         <TextView
                             style="@style/TextBody12Bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Return"
-                            android:textColor="@color/white"
                             android:layout_marginTop="10dp"
-                            android:layout_marginStart="20dp"
-                            />
+                            android:text="Return"
+                            android:textColor="@color/white" />
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/inputdateReturn"
+
+                        <TextView
+                            android:id="@+id/etDateReturn"
+                            style="@style/TextBody12Medium"
                             android:layout_width="wrap_content"
-                            android:layout_height="48dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginStart="10dp"
-                            android:minHeight="48dp"
-                            app:hintEnabled="false"
-                            app:hintAnimationEnabled="false"
-                            app:boxBackgroundMode="outline"
+                            android:layout_height="wrap_content"
+                            android:hint="Masukan Tanggal"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white" />
 
-                            >
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etDateReturn"
-                                android:layout_width="180dp"
-                                android:hint="Masukan Tanggal"
-                                android:padding="2dp"
-                                android:clickable="false"
-                                android:cursorVisible="false"
-                                android:focusable="false"
-                                android:focusableInTouchMode="false"
-                                android:drawableEnd="@drawable/baseline_calendar_today_24"
-                                android:background="@drawable/shape_rectangle_date"
-                                android:layout_height="wrap_content"
-                                android:minHeight="48dp"
-                                android:textColor="@color/white"
-                                android:textColorHint="@color/white"
-                                />
-<!--                            style="@style/TextBody12Medium"-->
-
-                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -184,6 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            tools:listitem="@layout/item_hasil_pencarian"
             />
 
     </LinearLayout>
