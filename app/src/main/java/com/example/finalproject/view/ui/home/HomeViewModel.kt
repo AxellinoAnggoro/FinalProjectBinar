@@ -47,6 +47,8 @@ class HomeViewModel @Inject constructor(
         })
     }
 
+
+
     fun getPassenger(): LiveData<String> = preferences.getPassenger().asLiveData()
 
     fun getTanggalBerangkat(): LiveData<String> = preferences.getTanggalKeberangkatan().asLiveData()

@@ -50,7 +50,7 @@ class PencarianAdapter(
 
         private fun getHourFromDateTime(dateTime: String): String {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
-            val outputFormat = SimpleDateFormat("HH", Locale.US)
+            val outputFormat = SimpleDateFormat("HH:mm", Locale.US)
 
             return try {
                 val date = inputFormat.parse(dateTime)

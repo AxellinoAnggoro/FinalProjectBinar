@@ -41,6 +41,9 @@ class HomeFragment : Fragment() {
     lateinit var classPref : SharedPreferences
     lateinit var departurePref: SharedPreferences
     lateinit var arrivalPref :SharedPreferences
+    lateinit var fromInput : SharedPreferences
+    lateinit var toInput : SharedPreferences
+
 
     companion object{
         var isSwitchOn = false
@@ -64,13 +67,17 @@ class HomeFragment : Fragment() {
         classPref = requireContext().getSharedPreferences("data_class", Context.MODE_PRIVATE)
         departurePref = requireContext().getSharedPreferences("data_berangkat", Context.MODE_PRIVATE)
         arrivalPref = requireContext().getSharedPreferences("data_pulang", Context.MODE_PRIVATE)
+        fromInput = requireContext().getSharedPreferences("input_from", Context.MODE_PRIVATE)
+        toInput = requireContext().getSharedPreferences("input_to", Context.MODE_PRIVATE)
 
         val token = homePref.getString("token", "")
         val from = fromPref.getString("city", "")
-        val to = toPref.getString("city", "asdf")
+        val to = toPref.getString("city", "")
 
         binding.tvPilihFrom.text = from
+        Log.d("HomeFragment", "from: $from")
         binding.tvPilihTo.text = to
+        Log.d("HomeFragment", "to: $to")
 
 
         Log.d("HomeFragment", "Token: $token")
@@ -107,7 +114,7 @@ class HomeFragment : Fragment() {
 
         binding.tvPilihFrom.setOnClickListener {
 //            BottomSheetFragment().show(requireActivity().supportFragmentManager,BottomSheetFragment.bottomTag)
-            findNavController().navigate(R.id.action_homeFragment_to_bottomSheetTujuanFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_bottomSheetFragment)
         }
 
         binding.tvPilihTo.setOnClickListener {

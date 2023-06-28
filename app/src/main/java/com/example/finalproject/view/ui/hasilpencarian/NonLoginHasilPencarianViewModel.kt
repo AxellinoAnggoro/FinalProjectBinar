@@ -15,11 +15,11 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiService) : ViewModel() {
-    var liveDataFlight : MutableLiveData<List<DataFlight?>?> = MutableLiveData()
-
-    fun fetchTicket(){
-        api.getAllFlight().enqueue(object : Callback<FlightResponse>{
+class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiService) :
+    ViewModel() {
+    var liveDataFlight: MutableLiveData<List<DataFlight?>?> = MutableLiveData()
+    fun fetchTicket() {
+        api.getAllFlight().enqueue(object : Callback<FlightResponse> {
             override fun onResponse(
                 call: Call<FlightResponse>,
                 response: Response<FlightResponse>
@@ -37,5 +37,29 @@ class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiSe
             }
 
         })
+    }
+
+    var liveDataFlightQuery: MutableLiveData<List<DataFlight?>?> = MutableLiveData()
+
+    fun fetchTicketByQuery(departureAirport: String, arrivalAirport: String) {
+        api.getFlightByQuery(departureAirport, arrivalAirport)
+            .enqueue(object : Callback<FlightResponse> {
+                override fun onResponse(
+                    call: Call<FlightResponse>,
+                    response: Response<FlightResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val ticketList = response.body()?.data
+                        liveDataFlightQuery.value = ticketList
+                    } else {
+                        Log.e("Flight Search VM", "Error View Model")
+                    }
+                }
+
+                override fun onFailure(call: Call<FlightResponse>, t: Throwable) {
+                    Log.e("Flight Search VM", "Failure View Model")
+                }
+
+            })
     }
 }

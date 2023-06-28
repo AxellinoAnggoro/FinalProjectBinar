@@ -74,5 +74,7 @@
     <string name="bayar">Bayar</string>
     <string name="round_trip">Round Trip</string>
     <string name="lanjut_rincian_penerbangan">Lanjut Rincian Penerbangan</string>
+    <string name="str_pergi">Pergi</string>
+    <string name="str_pulang">Pulang</string>
     <string name="lanjut_pembayaran">Lanjut Pembayaran</string>
 </resources>

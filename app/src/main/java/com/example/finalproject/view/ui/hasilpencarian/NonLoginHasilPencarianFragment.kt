@@ -84,9 +84,15 @@ class NonLoginHasilPencarianFragment : Fragment(), PencarianAdapter.OnItemClickL
 
 
         flightSearchVm = ViewModelProvider(this)[NonLoginHasilPencarianViewModel::class.java]
-        flightSearchVm.fetchTicket()
-        flightSearchVm.liveDataFlight.observe(viewLifecycleOwner) { dataFlightList ->
-            dataFlightList?.let { flight ->
+//        flightSearchVm.fetchTicket()
+//        flightSearchVm.liveDataFlight.observe(viewLifecycleOwner) { dataFlightList ->
+//            dataFlightList?.let { flight ->
+//                flightAdapter.updateData(flight as List<DataFlight>)
+//            }
+//        }
+        flightSearchVm.fetchTicketByQuery(cityFrom!!, cityTo!!)
+        flightSearchVm.liveDataFlightQuery.observe(viewLifecycleOwner){
+            it?.let { flight ->
                 flightAdapter.updateData(flight as List<DataFlight>)
             }
         }
