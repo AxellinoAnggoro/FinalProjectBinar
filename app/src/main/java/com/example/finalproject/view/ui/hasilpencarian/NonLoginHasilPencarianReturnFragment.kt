@@ -31,6 +31,8 @@ class NonLoginHasilPencarianReturnFragment : Fragment(), PencarianAdapter.OnItem
     lateinit var departurePref: SharedPreferences
     lateinit var arrivalPref: SharedPreferences
     lateinit var ticketAdapter: PencarianAdapter
+    lateinit var depTimePref : SharedPreferences
+
 
 
     override fun onCreateView(
@@ -65,6 +67,9 @@ class NonLoginHasilPencarianReturnFragment : Fragment(), PencarianAdapter.OnItem
         arrivalPref = requireContext().getSharedPreferences("data_pulang", Context.MODE_PRIVATE)
         val arrival = arrivalPref.getString("arrival", "")
 
+        depTimePref = requireContext().getSharedPreferences("data_berangkat", Context.MODE_PRIVATE)
+        val depTime = depTimePref.getString("departure", "")
+
         val idDeparture = arguments?.getInt("idDep")
 
 
@@ -82,7 +87,7 @@ class NonLoginHasilPencarianReturnFragment : Fragment(), PencarianAdapter.OnItem
         flightSearchVm = ViewModelProvider(this)[NonLoginHasilPencarianViewModel::class.java]
         getDepartureTicket(idDeparture)
 
-        flightSearchVm.fetchTicketByQuery(cityFrom!!, cityTo!!)
+        flightSearchVm.fetchTicketByQuery(cityFrom!!, cityTo!!, depTime!!)
         flightSearchVm.liveDataFlightQuery.observe(viewLifecycleOwner) { dataFlightList ->
             dataFlightList?.let { flight ->
                 flightAdapter.updateData(flight as List<DataFlight>)

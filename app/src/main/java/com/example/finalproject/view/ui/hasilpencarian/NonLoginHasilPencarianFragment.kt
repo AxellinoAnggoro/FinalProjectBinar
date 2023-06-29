@@ -41,6 +41,7 @@ class NonLoginHasilPencarianFragment : Fragment(), PencarianAdapter.OnItemClickL
     lateinit var classPref : SharedPreferences
     lateinit var departurePref: SharedPreferences
     lateinit var arrivalPref : SharedPreferences
+    lateinit var depTimePref : SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,6 +73,9 @@ class NonLoginHasilPencarianFragment : Fragment(), PencarianAdapter.OnItemClickL
         arrivalPref = requireContext().getSharedPreferences("data_pulang", Context.MODE_PRIVATE)
         val arrival = arrivalPref.getString("arrival", "")
 
+        depTimePref = requireContext().getSharedPreferences("data_berangkat", Context.MODE_PRIVATE)
+        val depTime = depTimePref.getString("departure", "")
+
 
         binding.toolbarTitle.text = "$cityFrom < > $cityTo - $passenger Penumpang - $seatClass"
         binding.etDate.text = departure
@@ -90,7 +94,7 @@ class NonLoginHasilPencarianFragment : Fragment(), PencarianAdapter.OnItemClickL
 //                flightAdapter.updateData(flight as List<DataFlight>)
 //            }
 //        }
-        flightSearchVm.fetchTicketByQuery(cityFrom!!, cityTo!!)
+        flightSearchVm.fetchTicketByQuery(cityFrom!!, cityTo!!, depTime!!)
         flightSearchVm.liveDataFlightQuery.observe(viewLifecycleOwner){
             it?.let { flight ->
                 flightAdapter.updateData(flight as List<DataFlight>)

@@ -78,7 +78,7 @@ class BottomSheetSeatClassFragment : BottomSheetDialogFragment() {
             }
             seatClass.setBackgroundColor(resources.getColor(backgroundColorRes))
             seatClass.findViewById<MaterialTextView>(getSeatClassTextView(index)).setTextColor(resources.getColor(textColor))
-            seatClass.findViewById<MaterialTextView>(getSeatClassHargaTextView(index)).setTextColor(resources.getColor(textColor))
+//            seatClass.findViewById<MaterialTextView>(getSeatClassHargaTextView(index)).setTextColor(resources.getColor(textColor))
             seatClass.findViewById<ShapeableImageView>(getSeatClassSuccess(index)).visibility= if (isSelected){
                 View.VISIBLE
             }else{
@@ -100,15 +100,15 @@ class BottomSheetSeatClassFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun getSeatClassHargaTextView(index: Int): Int {
-        return when(index){
-            0 ->R.id.tvHargaEconomy
-            1 ->R.id.tvHargaPremiumEconomy
-            2 ->R.id.tvHargaBusiness
-            3 ->R.id.tvHargaFirstClass
-            else -> throw IllegalArgumentException("Invalid index")
-        }
-    }
+//    private fun getSeatClassHargaTextView(index: Int): Int {
+//        return when(index){
+//            0 ->R.id.tvHargaEconomy
+//            1 ->R.id.tvHargaPremiumEconomy
+//            2 ->R.id.tvHargaBusiness
+//            3 ->R.id.tvHargaFirstClass
+//            else -> throw IllegalArgumentException("Invalid index")
+//        }
+//    }
 
     private fun getSeatClassTextView(index: Int): Int {
         return when(index){

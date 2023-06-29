@@ -43,8 +43,8 @@ class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiSe
     }
 
     var liveDataFlightQuery: MutableLiveData<List<DataFlight?>?> = MutableLiveData()
-    fun fetchTicketByQuery(departureAirport: String, arrivalAirport: String) {
-        api.getFlightByQuery(departureAirport, arrivalAirport)
+    fun fetchTicketByQuery(departureAirport: String, arrivalAirport: String, departureTime: String) {
+        api.getFlightByQuery(departureAirport, arrivalAirport, departureTime)
             .enqueue(object : Callback<FlightResponse> {
                 override fun onResponse(
                     call: Call<FlightResponse>,
