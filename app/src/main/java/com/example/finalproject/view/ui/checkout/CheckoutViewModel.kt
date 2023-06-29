@@ -55,7 +55,7 @@ class CheckoutViewModel @Inject constructor(private val api: ApiService) : ViewM
                 }
 
                 override fun onFailure(call: Call<Passengers>, t: Throwable) {
-                    Log.e("Bio Penumpang VM", "Error View Model")
+                    Log.e("Bio Penumpang VM", "Failure View Model")
                 }
 
             })

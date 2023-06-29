@@ -266,10 +266,13 @@
         <action
             android:id="@+id/action_biodataPemesanFragment_to_biodataPenumpangFragment"
             app:destination="@id/biodataPenumpangFragment" />
+        <action
+            android:id="@+id/action_biodataPemesanFragment_to_bioPenumpangFragment"
+            app:destination="@id/bioPenumpangFragment" />
     </fragment>
     <fragment
         android:id="@+id/biodataPenumpangFragment"
-        android:name="com.example.finalproject.view.ui.checkout.BiodataPenumpangFragment"
+        android:name="com.example.finalproject.view.ui.checkout.tes.BiodataPenumpangFragment"
         android:label="fragment_biodata_penumpang"
         tools:layout="@layout/fragment_biodata_penumpang" >
         <action
@@ -294,4 +297,13 @@
             android:id="@+id/action_bottomSheetLogin_to_loginFragment"
             app:destination="@id/loginFragment" />
     </dialog>
+    <fragment
+        android:id="@+id/bioPenumpangFragment"
+        android:name="com.example.finalproject.view.ui.checkout.BioPenumpangFragment"
+        android:label="fragment_bio_penumpang"
+        tools:layout="@layout/fragment_bio_penumpang" >
+        <action
+            android:id="@+id/action_bioPenumpangFragment_to_rincianPenerbanganFragment2"
+            app:destination="@id/rincianPenerbanganFragment2" />
+    </fragment>
 </navigation>

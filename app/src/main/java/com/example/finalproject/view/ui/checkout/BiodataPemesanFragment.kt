@@ -63,7 +63,7 @@ class BiodataPemesanFragment : Fragment() {
             checkoutVm.liveDataProfile.observe(viewLifecycleOwner){
                 if (it != null){
                     Toast.makeText(context, "Profile Updated", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_biodataPemesanFragment_to_biodataPenumpangFragment)
+                    findNavController().navigate(R.id.action_biodataPemesanFragment_to_bioPenumpangFragment)
                 }else{
                     Toast.makeText(context, "Profile Update Failed", Toast.LENGTH_SHORT).show()
                 }

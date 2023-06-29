@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".view.ui.checkout.BiodataPenumpangFragment">
+    tools:context=".view.ui.checkout.tes.BiodataPenumpangFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

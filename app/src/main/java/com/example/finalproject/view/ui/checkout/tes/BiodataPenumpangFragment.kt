@@ -1,4 +1,4 @@
-package com.example.finalproject.view.ui.checkout
+package com.example.finalproject.view.ui.checkout.tes
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -7,16 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.R
-import com.example.finalproject.databinding.FragmentBiodataPemesanBinding
 import com.example.finalproject.databinding.FragmentBiodataPenumpangBinding
-import com.example.finalproject.model.passenger.Penumpang
-import com.example.finalproject.model.passenger.PenumpangRequest
+import com.example.finalproject.view.ui.checkout.BioAdapter
+import com.example.finalproject.view.ui.checkout.CheckViewModel
+import com.example.finalproject.view.ui.checkout.CheckoutViewModel
 import com.example.finalproject.view.ui.home.HomeViewModel
 
 class BiodataPenumpangFragment : Fragment() {
