@@ -1,11 +1,11 @@
-package com.example.finalproject.model.passenger
+package com.example.finalproject.model.passenger.get
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Passengers(
+data class Passenger(
     @SerializedName("booking_id")
-    val bookingId: Any,
+    val bookingId: Int,
     @SerializedName("born_date")
     val bornDate: String,
     @SerializedName("citizen")

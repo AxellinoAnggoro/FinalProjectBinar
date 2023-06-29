@@ -2,11 +2,11 @@ package com.example.finalproject.network
 
 import com.example.finalproject.model.airports.AirportsResponse
 import com.example.finalproject.model.detail.FlightIdResponse
-import com.example.finalproject.model.flight.DataFlight
 import com.example.finalproject.model.flight.FlightResponse
 import com.example.finalproject.model.login.LoginResponse
 import com.example.finalproject.model.otp.OtpResponse
-import com.example.finalproject.model.passenger.ResponsePassenger
+import com.example.finalproject.model.passenger.post.Passengers
+import com.example.finalproject.model.passenger.post.ResponsePassenger
 import com.example.finalproject.model.profile.User
 import com.example.finalproject.model.register.RegisterResponse
 import com.example.finalproject.model.reset.ResponseReset
@@ -47,6 +47,7 @@ interface ApiService {
     fun getFlightByQuery(
         @Query("departure") departureAirport : String,
         @Query("arrival") arrivalAirport : String,
+        @Query("departure_time")  departureTime : String
     ): Call<FlightResponse>
 
     @GET("flight/{id}")
@@ -100,11 +101,11 @@ interface ApiService {
     fun postPassengers(
         @Header("Authorization") token: String,
         @Field("name") name: String,
-        @Field("born_date") date: String,
+        @Field("born_date") bornDate: String,
         @Field("citizen") citizen : String,
         @Field("identity_number") idNumber : String,
         @Field("publisher_country") country : String,
-        @Field("valid_until") validUntil : String,
-        @Field("booking_id") bookId : Int
-    ) : Call<ResponsePassenger>
+//        @Field("valid_until") validUntil : String,
+//        @Field("booking_id") bookId : Int
+    ) : Call<Passengers>
 }

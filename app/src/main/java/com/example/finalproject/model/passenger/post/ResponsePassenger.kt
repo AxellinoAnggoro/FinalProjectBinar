@@ -1,4 +1,4 @@
-package com.example.finalproject.model.passenger
+package com.example.finalproject.model.passenger.post
 
 
 import com.google.gson.annotations.SerializedName

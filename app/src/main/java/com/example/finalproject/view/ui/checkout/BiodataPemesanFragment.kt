@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
@@ -35,6 +36,16 @@ class BiodataPemesanFragment : Fragment() {
         regPref = requireContext().getSharedPreferences("data_regis", Context.MODE_PRIVATE)
         checkoutVm = ViewModelProvider(this)[CheckoutViewModel::class.java]
 
+        binding.switchKeluarga.setOnCheckedChangeListener{ p0, isChecked ->
+            if (isChecked){
+                binding.tvNamaKeluarga.visibility = View.VISIBLE
+                binding.inputFamilyName.visibility = View.VISIBLE
+            }else{
+                binding.tvNamaKeluarga.visibility = View.GONE
+                binding.inputFamilyName.visibility = View.GONE
+            }
+        }
+
         binding.btnSimpan.setOnClickListener {
             val token = pref.getString("token", "").toString()
 
@@ -49,7 +60,14 @@ class BiodataPemesanFragment : Fragment() {
             save.apply()
 
             checkoutVm.updateProfile(token, dataName, dataEmail, dataPhone)
-            findNavController().navigate(R.id.action_biodataPemesanFragment_to_biodataPenumpangFragment)
+            checkoutVm.liveDataProfile.observe(viewLifecycleOwner){
+                if (it != null){
+                    Toast.makeText(context, "Profile Updated", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_biodataPemesanFragment_to_biodataPenumpangFragment)
+                }else{
+                    Toast.makeText(context, "Profile Update Failed", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
 //        binding.topAppBar.setNavigationOnClickListener{
