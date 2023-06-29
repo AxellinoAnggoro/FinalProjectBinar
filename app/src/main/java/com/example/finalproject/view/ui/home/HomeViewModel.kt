@@ -77,6 +77,10 @@ class HomeViewModel @Inject constructor(
         editor.apply()
     }
 
+    fun getIdTicket():Int?{
+        return sharedPreferences.getInt("idTicket",0)
+    }
+
     fun saveCheckSwitch(isCheck: Boolean){
         val editor = sharedPreferences.edit()
         editor.putBoolean("check",isCheck)
