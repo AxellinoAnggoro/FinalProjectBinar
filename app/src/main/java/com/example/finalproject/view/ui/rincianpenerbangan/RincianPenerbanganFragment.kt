@@ -67,8 +67,6 @@ class RincianPenerbanganFragment : Fragment() {
                 val price = Utill.getPriceIdFormat(getPrice)
 
 
-//                binding.tvjamberangkat
-
 
             }
         }
