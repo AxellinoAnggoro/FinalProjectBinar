@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.example.finalproject.model.datastore.PassengersPreferences
 import com.example.finalproject.model.detail.DataDetail
 import com.example.finalproject.model.detail.FlightIdResponse
 import com.example.finalproject.model.flight.DataFlight
@@ -18,7 +20,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiService, private val sharedPreferences: SharedPreferences) :
+class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiService, private val sharedPreferences: SharedPreferences, private val preferences:PassengersPreferences) :
     ViewModel() {
     var liveDataFlight: MutableLiveData<List<DataFlight?>?> = MutableLiveData()
     fun fetchTicket() {
@@ -92,4 +94,7 @@ class NonLoginHasilPencarianViewModel @Inject constructor(private val api: ApiSe
         editor.putInt("idReturn",idReturn)
         editor.apply()
     }
+
+    //filter
+    fun getFilter():LiveData<String> = preferences.getSelectFilter().asLiveData()
 }

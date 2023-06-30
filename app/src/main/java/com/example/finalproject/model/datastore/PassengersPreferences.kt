@@ -57,4 +57,16 @@ class PassengersPreferences @Inject constructor(private val datastore: DataStore
     fun getTanggalPulang():Flow<String> = datastore.data.map {
         it[stringPreferencesKey("tanggalPulang")] ?:""
     }
+
+    //select filter
+
+    suspend fun setSelectFilter(filter:String){
+        datastore.edit {
+            it[stringPreferencesKey("filterHarga")] = filter
+        }
+    }
+
+    fun getSelectFilter():Flow<String> = datastore.data.map {
+        it[stringPreferencesKey("filterHarga")] ?:""
+    }
 }

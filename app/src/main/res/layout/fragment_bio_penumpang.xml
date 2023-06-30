@@ -351,23 +351,25 @@
                                     android:inputType="textPersonName" />
                             </com.google.android.material.textfield.TextInputLayout>
 
-                            <Button
+                            <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btnSave"
-                                android:background="@drawable/shape_button_primary"
+                                android:backgroundTint="@color/darkblue04"
+                                app:cornerRadius="10dp"
                                 android:layout_width="match_parent"
                                 android:layout_marginHorizontal="20dp"
-                                android:layout_height="48dp"
+                                android:layout_height="55dp"
                                 android:text="Save"
                                 android:layout_marginBottom="30dp"
                                 android:layout_below="@+id/et_neg_penerb"
                                 android:textAllCaps="false"/>
 
-                            <Button
+                            <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btn_lanjut_kursi"
-                                android:background="@drawable/shape_button_primary"
+                                android:backgroundTint="@color/darkblue04"
                                 android:layout_width="match_parent"
                                 android:layout_marginHorizontal="20dp"
-                                android:layout_height="48dp"
+                                android:layout_height="55dp"
+                                app:cornerRadius="10dp"
                                 android:text="Lanjut Pilih Kursi"
                                 android:layout_marginBottom="30dp"
                                 android:layout_below="@+id/btnSave"

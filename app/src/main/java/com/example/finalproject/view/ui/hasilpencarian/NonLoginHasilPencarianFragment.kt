@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,7 @@ import com.example.finalproject.model.detail.DataDetail
 import com.example.finalproject.model.flight.DataFlight
 import com.example.finalproject.view.ui.adapter.JadwalAdapter
 import com.example.finalproject.view.ui.bottomsheet.BottomSheetAdapter
+import com.example.finalproject.view.ui.bottomsheetfilterharga.BottomSheetFilterHargaFragment
 import com.example.finalproject.view.ui.detailpenerbangan.DetailPenerbanganFragment
 import com.example.finalproject.view.ui.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -105,6 +107,12 @@ class NonLoginHasilPencarianFragment : Fragment(), PencarianAdapter.OnItemClickL
             findNavController().navigate(R.id.action_nonLoginHasilPencarianFragment_to_homeFragment)
         }
 
+        binding.btnFilter.setOnClickListener {
+            BottomSheetFilterHargaFragment().show(requireActivity().supportFragmentManager,BottomSheetFilterHargaFragment.bottomTag)
+        }
+        setFilter()
+
+
     }
     override fun onItemClick(data: DataFlight) {
         val id = data.id
@@ -112,5 +120,17 @@ class NonLoginHasilPencarianFragment : Fragment(), PencarianAdapter.OnItemClickL
         bundle.putInt("id",id)
         Log.d("NonLogin Frag", "onclick")
         findNavController().navigate(R.id.action_nonLoginHasilPencarianFragment_to_detailPenerbanganFragment,bundle)
+    }
+
+    private fun setFilter(){
+        flightSearchVm.getFilter().observe(viewLifecycleOwner){
+            if (it!=""){
+                binding.setFilter.text = it.substringAfter("")
+                binding.setFilter.setTextColor(ContextCompat.getColor(requireContext(),R.color.darkblue05))
+                val save = arrivalPref.edit()
+                save.putString("filterHarga",it)
+                save.apply()
+            }
+        }
     }
 }
