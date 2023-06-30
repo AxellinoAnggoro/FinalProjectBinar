@@ -54,18 +54,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/estimasiWaktu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppinsbold"
-                android:text="(4h 0m)"
-                android:textColor="@color/neutral05"
-                android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@id/tvDestinasi"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvDetailPenerbangan"
@@ -74,7 +62,7 @@
                 app:layout_constraintBottom_toTopOf="@id/tvRincianHarga"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/estimasiWaktu">
+                app:layout_constraintTop_toBottomOf="@id/tvDestinasi">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -302,110 +290,6 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvRincianHarga" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/typePassengerBaby"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppinsregular"
-                android:text="2 Adults"
-                android:textColor="@color/neutral05"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/typePassengerAdult" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/setHargaBaby"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/poppinsregular"
-                android:text="IDR 9.550.000"
-                android:textColor="@color/neutral05"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setHargaAdult" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/typePassengerKids"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppinsregular"
-                android:text="2 Adults"
-                android:textColor="@color/neutral05"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/typePassengerBaby" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/setHargaKids"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/poppinsregular"
-                android:text="IDR 9.550.000"
-                android:textColor="@color/neutral05"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setHargaBaby" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvTax"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppinsregular"
-                android:text="Tax"
-                android:textColor="@color/neutral05"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/typePassengerKids" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/setHargaTax"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/poppinsregular"
-                android:text="IDR 9.550.000"
-                android:textColor="@color/neutral05"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setHargaKids" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvPromo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppinsregular"
-                android:text="Promo"
-                android:textColor="@color/neutral05"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTax" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/setHargaPromo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/poppinsregular"
-                android:text="IDR 9.550.000"
-                android:textColor="@color/neutral05"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setHargaTax" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

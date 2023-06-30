@@ -21,17 +21,17 @@ import java.util.*
 
 @AndroidEntryPoint
 class RincianPenerbanganFragment : Fragment() {
-    lateinit var binding : FragmentRincianPenerbanganBinding
+    lateinit var binding: FragmentRincianPenerbanganBinding
     private lateinit var detailVm: DetailPenerbanganViewModel
-    lateinit var passengerPref : SharedPreferences
+    lateinit var passengerPref: SharedPreferences
     lateinit var homePref: SharedPreferences
-    private val homeVm : HomeViewModel by viewModels()
+    private val homeVm: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRincianPenerbanganBinding.inflate(inflater,container,false)
+        binding = FragmentRincianPenerbanganBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -44,7 +44,6 @@ class RincianPenerbanganFragment : Fragment() {
         homePref = requireContext().getSharedPreferences("login_data", Context.MODE_PRIVATE)
         val token = homePref.getString("token", "")
         passengerPref = requireContext().getSharedPreferences("data_penumpang", Context.MODE_PRIVATE)
-        val totalPassenger = passengerPref.getString("passenger","")
 
 
         binding.apply {
@@ -57,18 +56,35 @@ class RincianPenerbanganFragment : Fragment() {
         }
 
         detailVm.fetchTicketId(id!!)
-        detailVm.liveDataFlightId.observe(viewLifecycleOwner){ detail ->
-            binding.apply {
-                val departureTime = detail!!.departureTime
-                val setDeparture = getHourFromDateTime(departureTime)
-                val arrivalTime = detail.arrivalTime
-                val setArrival = getHourFromDateTime(arrivalTime)
-                val getPrice = detail.economyClassPrice
-                val price = Utill.getPriceIdFormat(getPrice)
+        detailVm.liveDataFlightId.observe(viewLifecycleOwner) { detail ->
+            val totalPassenger = passengerPref.getString("passenger", "")?.toInt()
+            if (detail != null){
+                binding.apply {
+                    val departureTime = detail!!.departureTime
+                    val setDeparture = getHourFromDateTime(departureTime)
+                    val arrivalTime = detail.arrivalTime
+                    val setArrival = getHourFromDateTime(arrivalTime)
+                    val getPrice = detail.economyClassPrice
+                    val price = Utill.getPriceIdFormat(getPrice)
+                    val totalPrice = totalPassenger?.times(getPrice)
+                    val totalPriceFormatted = Utill.getPriceIdFormat(totalPrice!!)
 
-
-
+                    tvJamBerangkat.text = setDeparture
+                    tvJamDatang.text = setArrival
+                    tvBandara.text = detail.departureAirport.airportName
+                    tvBandaraDatang.text = detail.arrivalAirport.airportName
+                    tvClassPesawat.text = detail.airline.airlineName
+                    tvBookingCode.text = detail.flightCode
+                    informasiSatu.text = "Baggage ${detail.airline.baggage}kg"
+                    informasiDua.text = "Cabbin baggage ${detail.airline.cabinBaggage}kg"
+                    setHargaTotal.text = price
+                    tvDestinasi.text = "${detail.departureAirport.city} -> ${detail.arrivalAirport.city}"
+                    typePassengerAdult.text = "${totalPassenger} Passengers"
+                    setHargaAdult.text = "${totalPassenger} x ${price}"
+                    setHargaTotal.text = totalPriceFormatted
+                }
             }
+
         }
     }
 
