@@ -1,351 +1,383 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ui.checkout.BioPenumpangFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/darkblue05"
-            app:layout_anchor="@id/constraintLayout"
-            app:layout_anchorGravity="center"
-            app:navigationIcon="@drawable/ic_back_white"
-            app:title="Biodata Penumpang" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/app_bar">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvDataPenumpang"
-                android:layout_width="343dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/roundedtop_cardview">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvPassengerList"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/poppinsmedium"
-                        android:text="@string/passenger_1_adult"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:foreground="@drawable/card_border"
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:background="@drawable/card_border"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cvDataPenumpang">
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="20dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <!--Card Image-->
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/img"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/outline_cardview">
+                    android:layout_height="40dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cardheader"
+                    app:riv_corner_radius_top_left="10dp"
+                    app:riv_corner_radius_top_right="10dp"
+                    app:riv_corner_radius_bottom_left="0dp"
+                    app:riv_corner_radius_bottom_right="0dp"/>
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvTitle"
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!--Title & Description Text-->
+                    <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/poppinsbold"
-                        android:text="@string/title"
-                        android:textColor="@color/darkblue05"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_gravity="start|top"
+                        android:orientation="vertical">
+                        <!--Title Card Header-->
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:text="Passenger 1 - Adult"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"
+                                android:paddingStart="15dp"
+                                android:paddingTop="5dp"/>
+                        </FrameLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/inputTitle"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:hint="@string/mr"
-                        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+                        <!--Body-->
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <!--title Section-->
+                            <TextView
+                                android:id="@+id/tv_Passengers"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="50dp"
+                                android:text="Title"
+                                android:textColor="@color/darkblue05"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
-                        <AutoCompleteTextView
-                            android:id="@+id/dropdownTitle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:editable="false"
-                            android:inputType="none" />
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/et_title"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_Passengers"
+                                android:layout_marginStart="21dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="21dp"
+                                app:boxCornerRadiusBottomEnd="4dp"
+                                app:boxCornerRadiusBottomStart="4dp"
+                                app:boxCornerRadiusTopEnd="4dp"
+                                app:boxCornerRadiusTopStart="4dp"
+                                app:errorEnabled="false">
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                                <AutoCompleteTextView
+                                    android:id="@+id/titlePassenger"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:inputType="none"
+                                    android:text="Mr" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvNamaLengkap"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/poppinsbold"
-                        android:text="@string/nama_lengkap"
-                        android:textColor="@color/darkblue05"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/inputTitle" />
+                            <!--Nama Section-->
+                            <TextView
+                                android:id="@+id/tv_nama"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="20dp"
+                                android:text="Nama Lengkap"
+                                android:layout_below="@id/et_title"
+                                android:textColor="@color/darkblue05"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/inputNameLay"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/harry"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvNamaLengkap">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/et_nama"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_nama"
+                                android:layout_marginStart="21dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="21dp"
+                                app:boxCornerRadiusBottomEnd="4dp"
+                                app:boxCornerRadiusBottomStart="4dp"
+                                app:boxCornerRadiusTopEnd="4dp"
+                                app:boxCornerRadiusTopStart="4dp"
+                                app:errorEnabled="false">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/inputName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp" />
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/txt_input_layout_nama"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Nama Lengkap"
+                                    android:inputType="textPersonName" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            <!--Horizon Switch Section-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/et_nama"
+                                android:layout_marginStart="25dp"
+                                android:layout_marginTop="15dp"
+                                android:orientation="horizontal">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvSwitchKeluarga"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/poppinsregular"
-                        android:text="@string/punya_nama_keluarga"
-                        android:textColor="@color/neutral05"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/inputNameLay" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Punya Nama Keluarga?"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchKeluarga"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/inputNameLay" />
+                                <Switch
+                                    android:id="@+id/optionClan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:layout_marginEnd="20dp"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:gravity="end"
+                                    android:thumb="@drawable/ic_thumb"
+                                    android:track="@drawable/switch_bg_track" />
+                            </LinearLayout>
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvNamaKeluarga"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/poppinsbold"
-                        android:text="@string/nama_keluarga"
-                        android:textColor="@color/darkblue05"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvSwitchKeluarga" />
+                            <!--Nama Keluarga Section-->
+                            <TextView
+                                android:id="@+id/tv_nama_keluarga"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/et_nama"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="60dp"
+                                android:text="Nama Keluarga"
+                                android:textColor="@color/darkblue05"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/inputNamaKeluarga"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="20dp"
-                        android:hint="@string/potter"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvNamaKeluarga">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/et_nama_keluarga"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_nama_keluarga"
+                                android:layout_marginStart="21dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="21dp"
+                                app:boxCornerRadiusBottomEnd="4dp"
+                                app:boxCornerRadiusBottomStart="4dp"
+                                app:boxCornerRadiusTopEnd="4dp"
+                                app:boxCornerRadiusTopStart="4dp"
+                                app:errorEnabled="false">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/txt_input_layout_nama_keluarga"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Nama Keluarga"
+                                    android:inputType="textPersonName" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            <!--Tanggal Lahir Section-->
+                            <TextView
+                                android:id="@+id/tv_birth_day"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/et_nama_keluarga"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="20dp"
+                                android:text="Tanggal Lahir"
+                                android:textColor="@color/darkblue05"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvTanggalLahir"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/poppinsbold"
-                        android:text="@string/tanggal_lahir"
-                        android:textColor="@color/darkblue05"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/inputNamaKeluarga" />
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/et_birth_day"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_birth_day"
+                                android:layout_marginStart="21dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="21dp"
+                                app:boxCornerRadiusBottomEnd="4dp"
+                                app:boxCornerRadiusBottomStart="4dp"
+                                app:boxCornerRadiusTopEnd="4dp"
+                                app:boxCornerRadiusTopStart="4dp"
+                                app:errorEnabled="false">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/inputTanggalLahir"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="20dp"
-                        android:hint="@string/dd_mm_yy"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvTanggalLahir">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/txt_input_layout_birth_day"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="dd/mm/yy"
+                                    android:inputType="textPersonName" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/inputBorndate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            <!--Nation Section-->
+                            <TextView
+                                android:id="@+id/tv_kewarga"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/et_birth_day"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="20dp"
+                                android:text="Kewarganegaraan"
+                                android:textColor="@color/darkblue05"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/et_kewarga"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_kewarga"
+                                android:layout_marginStart="21dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="21dp"
+                                app:boxCornerRadiusBottomEnd="4dp"
+                                app:boxCornerRadiusBottomStart="4dp"
+                                app:boxCornerRadiusTopEnd="4dp"
+                                app:boxCornerRadiusTopStart="4dp"
+                                app:errorEnabled="false">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvKewarganegaraan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/poppinsbold"
-                        android:text="@string/kewarganegaraan"
-                        android:textColor="@color/darkblue05"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/inputTanggalLahir" />
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/txt_input_layout_kewarga"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Contoh: Indonesia"
+                                    android:inputType="textPersonName" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/inputKewarganegaraan"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvKewarganegaraan">
+                            <!--Ktp / Passpor Section-->
+                            <TextView
+                                android:id="@+id/tv_ktp_paspor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/et_kewarga"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="20dp"
+                                android:text="KTP/Paspor"
+                                android:textColor="@color/darkblue05"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/inputCitizen"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/et_ktp_paspor"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_ktp_paspor"
+                                android:layout_marginStart="21dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="21dp"
+                                app:boxCornerRadiusBottomEnd="4dp"
+                                app:boxCornerRadiusBottomStart="4dp"
+                                app:boxCornerRadiusTopEnd="4dp"
+                                app:boxCornerRadiusTopStart="4dp"
+                                app:errorEnabled="false">
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/txt_input_ktp_paspor"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Input Nomor KTP/Paspor"
+                                    android:inputType="textPersonName" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvKtp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/poppinsbold"
-                        android:text="@string/ktp_paspor"
-                        android:textColor="@color/darkblue05"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/inputKewarganegaraan" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/inputKtp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvKtp">
+                            <!--Country Penerbit Section-->
+                            <TextView
+                                android:id="@+id/tv_neg_penerb"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/et_ktp_paspor"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="20dp"
+                                android:text="Negara Penerbit"
+                                android:textColor="@color/darkblue05"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/inputIdNumber"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/et_neg_penerb"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_neg_penerb"
+                                android:layout_marginStart="21dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="21dp"
+                                android:layout_marginBottom="20dp"
+                                app:boxCornerRadiusBottomEnd="4dp"
+                                app:boxCornerRadiusBottomStart="4dp"
+                                app:boxCornerRadiusTopEnd="4dp"
+                                app:boxCornerRadiusTopStart="4dp"
+                                app:errorEnabled="false">
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/txt_input_neg_penerb"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Input Negara"
+                                    android:inputType="textPersonName" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvNegaraPenerbit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/poppinsbold"
-                        android:text="@string/negara_penerbit"
-                        android:textColor="@color/darkblue05"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/inputKtp" />
+                            <Button
+                                android:id="@+id/btnSave"
+                                android:background="@drawable/shape_button_primary"
+                                android:layout_width="match_parent"
+                                android:layout_marginHorizontal="20dp"
+                                android:layout_height="48dp"
+                                android:text="Save"
+                                android:layout_marginBottom="30dp"
+                                android:layout_below="@+id/et_neg_penerb"
+                                android:textAllCaps="false"/>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/inputNegaraPenerbit"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvNegaraPenerbit">
+                            <Button
+                                android:id="@+id/btn_lanjut_kursi"
+                                android:background="@drawable/shape_button_primary"
+                                android:layout_width="match_parent"
+                                android:layout_marginHorizontal="20dp"
+                                android:layout_height="48dp"
+                                android:text="Lanjut Pilih Kursi"
+                                android:layout_marginBottom="30dp"
+                                android:layout_below="@+id/btnSave"
+                                android:textAllCaps="false"/>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/inputCountry"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLanjutRincianPenerbangan"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="25dp"
-        android:backgroundTint="@color/darkblue04"
-        android:fontFamily="@font/poppinsregular"
-        android:text="@string/lanjut_rincian_penerbangan"
-        android:textAllCaps="false"
-        app:cornerRadius="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

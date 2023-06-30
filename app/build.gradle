@@ -98,4 +98,8 @@ dependencies {
 
     //otp
     implementation 'io.github.chaosleung:pinview:1.4.4'
+
+    //rounded image view
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
 }

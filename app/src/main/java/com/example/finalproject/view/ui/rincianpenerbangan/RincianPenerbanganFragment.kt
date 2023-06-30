@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,7 @@ class RincianPenerbanganFragment : Fragment() {
     lateinit var passengerPref: SharedPreferences
     lateinit var homePref: SharedPreferences
     private val homeVm: HomeViewModel by viewModels()
+    lateinit var roundtripPref: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +45,9 @@ class RincianPenerbanganFragment : Fragment() {
 //        val id = arguments?.getInt("id")
         homePref = requireContext().getSharedPreferences("login_data", Context.MODE_PRIVATE)
         val token = homePref.getString("token", "")
-        passengerPref = requireContext().getSharedPreferences("data_penumpang", Context.MODE_PRIVATE)
+        passengerPref =
+            requireContext().getSharedPreferences("data_penumpang", Context.MODE_PRIVATE)
+//        roundtripPref = requireContext().getSharedPreferences("roundtrip", Context.MODE_PRIVATE)
 
 
         binding.apply {
@@ -58,7 +62,10 @@ class RincianPenerbanganFragment : Fragment() {
         detailVm.fetchTicketId(id!!)
         detailVm.liveDataFlightId.observe(viewLifecycleOwner) { detail ->
             val totalPassenger = passengerPref.getString("passenger", "")?.toInt()
-            if (detail != null){
+//            val roundtripStatus = roundtripPref.getBoolean("roundtrip_status", false)
+//            Log.d("Checkout", "status roundtrip: $roundtripStatus")
+
+            if (detail != null) {
                 binding.apply {
                     val departureTime = detail!!.departureTime
                     val setDeparture = getHourFromDateTime(departureTime)
@@ -68,6 +75,8 @@ class RincianPenerbanganFragment : Fragment() {
                     val price = Utill.getPriceIdFormat(getPrice)
                     val totalPrice = totalPassenger?.times(getPrice)
                     val totalPriceFormatted = Utill.getPriceIdFormat(totalPrice!!)
+                    val totalPriceRoundtrip = totalPrice.times(2)
+                    val totalRoundtripFormatted = Utill.getPriceIdFormat(totalPriceRoundtrip)
 
                     tvJamBerangkat.text = setDeparture
                     tvJamDatang.text = setArrival
@@ -78,10 +87,30 @@ class RincianPenerbanganFragment : Fragment() {
                     informasiSatu.text = "Baggage ${detail.airline.baggage}kg"
                     informasiDua.text = "Cabbin baggage ${detail.airline.cabinBaggage}kg"
                     setHargaTotal.text = price
-                    tvDestinasi.text = "${detail.departureAirport.city} -> ${detail.arrivalAirport.city}"
+                    tvDestinasi.text =
+                        "${detail.departureAirport.city} -> ${detail.arrivalAirport.city}"
                     typePassengerAdult.text = "${totalPassenger} Passengers"
                     setHargaAdult.text = "${totalPassenger} x ${price}"
                     setHargaTotal.text = totalPriceFormatted
+
+//                    if (roundtripStatus) {
+//                        tvJamBerangkat.text = setDeparture
+//                        tvJamDatang.text = setArrival
+//                        tvBandara.text = detail.departureAirport.airportName
+//                        tvBandaraDatang.text = detail.arrivalAirport.airportName
+//                        tvClassPesawat.text = detail.airline.airlineName
+//                        tvBookingCode.text = detail.flightCode
+//                        informasiSatu.text = "Baggage ${detail.airline.baggage}kg"
+//                        informasiDua.text = "Cabbin baggage ${detail.airline.cabinBaggage}kg"
+//                        setHargaTotal.text = price
+//                        tvDestinasi.text =
+//                            "${detail.departureAirport.city} -> ${detail.arrivalAirport.city}"
+//                        typePassengerAdult.text = "${totalPassenger} Passengers Roundtrip"
+//                        setHargaAdult.text = "${totalPassenger} x ${price} x 2"
+//                        setHargaTotal.text = totalRoundtripFormatted
+//
+//
+//                    }
                 }
             }
 

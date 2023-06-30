@@ -35,46 +35,50 @@ class BioPenumpangFragment : Fragment() {
         tokenPref = requireContext().getSharedPreferences("login_data", Context.MODE_PRIVATE)
         bioVm = ViewModelProvider(this)[CheckoutViewModel::class.java]
 
-        binding.btnLanjutRincianPenerbangan.setOnClickListener {
+        binding.btnSave.setOnClickListener {
             getInputPassenger()
+        }
+
+        binding.btnLanjutKursi.setOnClickListener {
+            findNavController().navigate(R.id.action_bioPenumpangFragment_to_rincianPenerbanganFragment2)
         }
 
     }
 
     fun getInputPassenger() {
         val token = tokenPref.getString("token", "").toString()
-        val name = binding.inputName.text.toString()
-        val bornDate = binding.inputBorndate.text.toString()
-        val citizen = binding.inputCitizen.text.toString()
-        val idNumber = binding.inputIdNumber.text.toString()
-        val country = binding.inputCountry.text.toString()
+        val name = binding.txtInputLayoutNama.text.toString()
+        val bornDate = binding.txtInputLayoutBirthDay.text.toString()
+        val citizen = binding.txtInputLayoutKewarga.text.toString()
+        val idNumber = binding.txtInputKtpPaspor.text.toString()
+        val country = binding.txtInputNegPenerb.text.toString()
 
         if (name.isEmpty()) {
-            binding.inputName.error = "Name Still Empty"
-            binding.inputName.requestFocus()
+            binding.txtInputLayoutNama.error = "Name Still Empty"
+            binding.txtInputLayoutNama.requestFocus()
             return
         } else if (bornDate.isEmpty()) {
-            binding.inputBorndate.error = "Name Still Empty"
-            binding.inputBorndate.requestFocus()
+            binding.txtInputLayoutBirthDay.error = "Born Date Still Empty"
+            binding.txtInputLayoutBirthDay.requestFocus()
             return
         } else if (citizen.isEmpty()) {
-            binding.inputCitizen.error = "Name Still Empty"
-            binding.inputCitizen.requestFocus()
+            binding.txtInputLayoutKewarga.error = "Citizen Still Empty"
+            binding.txtInputLayoutKewarga.requestFocus()
             return
         } else if (idNumber.isEmpty()) {
-            binding.inputIdNumber.error = "Name Still Empty"
-            binding.inputIdNumber.requestFocus()
+            binding.txtInputKtpPaspor.error = "id number Still Empty"
+            binding.txtInputKtpPaspor.requestFocus()
             return
         } else if (country.isEmpty()) {
-            binding.inputCountry.error = "Name Still Empty"
-            binding.inputCountry.requestFocus()
+            binding.txtInputNegPenerb.error = "country Still Empty"
+            binding.txtInputNegPenerb.requestFocus()
             return
         } else {
             bioVm.addPassenger(token, name, bornDate, citizen, idNumber, country)
             bioVm.liveDataPassenger.observe(viewLifecycleOwner) {
                 if (it != null) {
                     Toast.makeText(context, "Success Add Passenger", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_bioPenumpangFragment_to_rincianPenerbanganFragment2)
+                    findNavController().navigate(R.id.bioPenumpangFragment)
                 }else{
                     Toast.makeText(context, "Fail Add Passenger", Toast.LENGTH_SHORT).show()
                 }

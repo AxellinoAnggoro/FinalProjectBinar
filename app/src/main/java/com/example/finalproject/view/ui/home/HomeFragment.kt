@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
     lateinit var arrivalPref :SharedPreferences
     lateinit var fromInput : SharedPreferences
     lateinit var toInput : SharedPreferences
-
+    lateinit var roundtripPref :SharedPreferences
 
     companion object{
         var isSwitchOn = false
@@ -69,6 +69,8 @@ class HomeFragment : Fragment() {
         arrivalPref = requireContext().getSharedPreferences("data_pulang", Context.MODE_PRIVATE)
         fromInput = requireContext().getSharedPreferences("input_from", Context.MODE_PRIVATE)
         toInput = requireContext().getSharedPreferences("input_to", Context.MODE_PRIVATE)
+//        roundtripPref = requireContext().getSharedPreferences("roundtrip", Context.MODE_PRIVATE)
+
 
         val token = homePref.getString("token", "")
         val from = fromPref.getString("city", "")
@@ -140,6 +142,10 @@ class HomeFragment : Fragment() {
             }else{
                 binding.btnRoundTrip.visibility = View.GONE
             }
+//            val save = roundtripPref.edit()
+//            save.putBoolean("roundtrip_status", isSwitchOn)
+//            Log.d("roundtrip", isSwitchOn.toString())
+//            save.apply()
         }
 
         binding.btnRoundTrip.setOnClickListener {
