@@ -154,7 +154,7 @@ class NonLoginHasilPencarianReturnFragment : Fragment(), PencarianAdapter.OnItem
                 bundle.putInt("hargaPergi", hargaPergi)
             }
             bundle.putInt("hargaPulang", priceReturn)
-            findNavController().navigate(R.id.action_nonLoginHasilPencarianReturnFragment_to_detailPenerbanganRoundtripFragment)
+            findNavController().navigate(R.id.action_nonLoginHasilPencarianReturnFragment_to_detailPenerbanganRoundtripFragment, bundle)
 
         }
     }

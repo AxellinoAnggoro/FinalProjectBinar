@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
+import com.example.finalproject.Util.Utill
 import com.example.finalproject.databinding.FragmentDetailPenerbanganRoundtripBinding
 import com.example.finalproject.view.ui.detailpenerbangan.DetailPenerbanganViewModel
 import com.example.finalproject.view.ui.home.HomeViewModel
@@ -36,6 +37,9 @@ class DetailPenerbanganRoundtripFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         pref = requireContext().getSharedPreferences("login_data",Context.MODE_PRIVATE)
 
+        val hargaPergi = arguments?.getInt("hargaPergi")
+        val hargaPulang = arguments?.getInt("hargaPulang")
+
         val sectionPagerAdapter = SectionPagerAdapter(activity as AppCompatActivity)
         binding.viewPager.adapter = sectionPagerAdapter
         TabLayoutMediator(binding.tabs,binding.viewPager){
@@ -43,6 +47,9 @@ class DetailPenerbanganRoundtripFragment : Fragment() {
             TAB_TITLES[position]
         )
         }.attach()
+
+        val priceTotal = hargaPergi?.plus(hargaPulang!!)
+        binding.txtHargaTotal.text = Utill.getPriceIdFormat(priceTotal!!)
 
         binding.btnPilih.setOnClickListener {
             homeVm.saveIdTicket(id!!)
