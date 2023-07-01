@@ -30,22 +30,23 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private lateinit var binding : FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var homeAdapter: HomeAdapter
-//    private var homeVm: HomeViewModel by viewModels()
-    lateinit var homeVm : HomeViewModel
-    lateinit var homePref : SharedPreferences
-    lateinit var fromPref : SharedPreferences
-    lateinit var toPref : SharedPreferences
-    lateinit var passengerPref : SharedPreferences
-    lateinit var classPref : SharedPreferences
-    lateinit var departurePref: SharedPreferences
-    lateinit var arrivalPref :SharedPreferences
-    lateinit var fromInput : SharedPreferences
-    lateinit var toInput : SharedPreferences
-    lateinit var roundtripPref :SharedPreferences
 
-    companion object{
+    //    private var homeVm: HomeViewModel by viewModels()
+    lateinit var homeVm: HomeViewModel
+    lateinit var homePref: SharedPreferences
+    lateinit var fromPref: SharedPreferences
+    lateinit var toPref: SharedPreferences
+    lateinit var passengerPref: SharedPreferences
+    lateinit var classPref: SharedPreferences
+    lateinit var departurePref: SharedPreferences
+    lateinit var arrivalPref: SharedPreferences
+    lateinit var fromInput: SharedPreferences
+    lateinit var toInput: SharedPreferences
+    lateinit var roundtripPref: SharedPreferences
+
+    companion object {
         var isSwitchOn = false
     }
 
@@ -53,7 +54,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(layoutInflater,container,false)
+        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -63,13 +64,15 @@ class HomeFragment : Fragment() {
         homePref = requireContext().getSharedPreferences("login_data", Context.MODE_PRIVATE)
         fromPref = requireContext().getSharedPreferences("data_asal", Context.MODE_PRIVATE)
         toPref = requireContext().getSharedPreferences("data_tujuan", Context.MODE_PRIVATE)
-        passengerPref = requireContext().getSharedPreferences("data_penumpang", Context.MODE_PRIVATE)
+        passengerPref =
+            requireContext().getSharedPreferences("data_penumpang", Context.MODE_PRIVATE)
         classPref = requireContext().getSharedPreferences("data_class", Context.MODE_PRIVATE)
-        departurePref = requireContext().getSharedPreferences("data_berangkat", Context.MODE_PRIVATE)
+        departurePref =
+            requireContext().getSharedPreferences("data_berangkat", Context.MODE_PRIVATE)
         arrivalPref = requireContext().getSharedPreferences("data_pulang", Context.MODE_PRIVATE)
         fromInput = requireContext().getSharedPreferences("input_from", Context.MODE_PRIVATE)
         toInput = requireContext().getSharedPreferences("input_to", Context.MODE_PRIVATE)
-//        roundtripPref = requireContext().getSharedPreferences("roundtrip", Context.MODE_PRIVATE)
+        roundtripPref = requireContext().getSharedPreferences("roundtrip", Context.MODE_PRIVATE)
 
 
         val token = homePref.getString("token", "")
@@ -97,14 +100,14 @@ class HomeFragment : Fragment() {
 
         homeAdapter = HomeAdapter(emptyList())
         binding.rvDestinasi.apply {
-            layoutManager = LinearLayoutManager(context,RecyclerView.HORIZONTAL,false)
+            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             adapter = homeAdapter
         }
 
         homeVm = ViewModelProvider(this)[HomeViewModel::class.java]
         homeVm.fetchFav()
-        homeVm.liveDataFav.observe(viewLifecycleOwner){ dataFavList->
-            dataFavList?.let { fav->
+        homeVm.liveDataFav.observe(viewLifecycleOwner) { dataFavList ->
+            dataFavList?.let { fav ->
                 homeAdapter.updateData(fav as List<DataFlight>)
             }
         }
@@ -124,28 +127,40 @@ class HomeFragment : Fragment() {
         }
 
         binding.setPassengers.setOnClickListener {
-            BottomSheetPenumpangFragment().show(requireActivity().supportFragmentManager,BottomSheetPenumpangFragment.bottomTag)
+            BottomSheetPenumpangFragment().show(
+                requireActivity().supportFragmentManager,
+                BottomSheetPenumpangFragment.bottomTag
+            )
         }
         binding.setReturn.setOnClickListener {
-            BottomSheetDatePickerFragment().show(requireActivity().supportFragmentManager,BottomSheetDatePickerFragment.bottomTag)
+            BottomSheetDatePickerFragment().show(
+                requireActivity().supportFragmentManager,
+                BottomSheetDatePickerFragment.bottomTag
+            )
         }
         binding.setDepature.setOnClickListener {
-            BottomSheetDatePickerFragment().show(requireActivity().supportFragmentManager,BottomSheetDatePickerFragment.bottomTag)
+            BottomSheetDatePickerFragment().show(
+                requireActivity().supportFragmentManager,
+                BottomSheetDatePickerFragment.bottomTag
+            )
         }
         binding.setSeat.setOnClickListener {
-            BottomSheetSeatClassFragment().show(requireActivity().supportFragmentManager,BottomSheetSeatClassFragment.bottomTag)
+            BottomSheetSeatClassFragment().show(
+                requireActivity().supportFragmentManager,
+                BottomSheetSeatClassFragment.bottomTag
+            )
         }
 
-        binding.btnSwitch.setOnCheckedChangeListener{_, isChecked -> isSwitchOn = isChecked
-            if (isChecked){
+        binding.btnSwitch.setOnCheckedChangeListener { _, isChecked ->
+            isSwitchOn = isChecked
+            if (isChecked) {
                 binding.btnRoundTrip.visibility = View.VISIBLE
-            }else{
+            } else {
                 binding.btnRoundTrip.visibility = View.GONE
             }
-//            val save = roundtripPref.edit()
-//            save.putBoolean("roundtrip_status", isSwitchOn)
-//            Log.d("roundtrip", isSwitchOn.toString())
-//            save.apply()
+            val save = roundtripPref.edit()
+            save.putBoolean("roundtrip_status", isChecked)
+            save.apply()
         }
 
         binding.btnRoundTrip.setOnClickListener {
@@ -160,8 +175,8 @@ class HomeFragment : Fragment() {
             binding.tvPilihTo.text = fromText
         }
 
-        homeVm.getPassenger().observe(viewLifecycleOwner){
-            if(it != null) binding.setPassengers.text = "$it Penumpang"
+        homeVm.getPassenger().observe(viewLifecycleOwner) {
+            if (it != null) binding.setPassengers.text = "$it Penumpang"
             val save = passengerPref.edit()
             save.putString("passenger", it)
             save.apply()
@@ -174,10 +189,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun setSeatClass() {
-        homeVm.getSeatClass().observe(viewLifecycleOwner){
-            if (it != ""){
-                binding.setSeat.text =it
-                binding.setSeat.setTextColor(ContextCompat.getColor(requireContext(),R.color.neutral05))
+        homeVm.getSeatClass().observe(viewLifecycleOwner) {
+            if (it != "") {
+                binding.setSeat.text = it
+                binding.setSeat.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.neutral05
+                    )
+                )
                 val save = classPref.edit()
                 save.putString("class", it)
                 save.apply()
@@ -186,10 +206,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun setTanggalPulang() {
-        homeVm.getTanggalPulang().observe(viewLifecycleOwner){
-            if (it!=""){
+        homeVm.getTanggalPulang().observe(viewLifecycleOwner) {
+            if (it != "") {
                 binding.setReturn.text = it.substringAfter(", ")
-                binding.setReturn.setTextColor(ContextCompat.getColor(requireContext(),R.color.neutral05))
+                binding.setReturn.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.neutral05
+                    )
+                )
                 val save = arrivalPref.edit()
                 save.putString("arrival", it)
                 save.apply()
@@ -198,10 +223,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun setTanggalKeberangkatan() {
-        homeVm.getTanggalBerangkat().observe(viewLifecycleOwner){
-            if (it!=""){
+        homeVm.getTanggalBerangkat().observe(viewLifecycleOwner) {
+            if (it != "") {
                 binding.setDepature.text = it.substringAfter(", ")
-                binding.setDepature.setTextColor(ContextCompat.getColor(requireContext(),R.color.neutral05))
+                binding.setDepature.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.neutral05
+                    )
+                )
                 val save = departurePref.edit()
                 save.putString("departure", it)
                 Log.d("departure", "departure: $it")

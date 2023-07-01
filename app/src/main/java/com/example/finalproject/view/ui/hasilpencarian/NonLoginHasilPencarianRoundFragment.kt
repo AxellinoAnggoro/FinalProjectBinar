@@ -98,6 +98,7 @@ class NonLoginHasilPencarianRoundFragment : Fragment(), PencarianAdapter.OnItemC
         val hargaPergi = data.economyClassPrice
         val bundle = Bundle()
         homeVm.saveIdDeparture(id)
+        Log.d("Search Round", "id: ${id}")
         bundle.putInt("idDep", id)
         bundle.putInt("pricePergi", hargaPergi)
         findNavController().navigate(

@@ -40,14 +40,18 @@ class RincianPenerbanganFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         detailVm = ViewModelProvider(this)[DetailPenerbanganViewModel::class.java]
-        val id = homeVm.getIdTicket()
 
 //        val id = arguments?.getInt("id")
         homePref = requireContext().getSharedPreferences("login_data", Context.MODE_PRIVATE)
         val token = homePref.getString("token", "")
         passengerPref =
             requireContext().getSharedPreferences("data_penumpang", Context.MODE_PRIVATE)
-//        roundtripPref = requireContext().getSharedPreferences("roundtrip", Context.MODE_PRIVATE)
+        roundtripPref = requireContext().getSharedPreferences("roundtrip", Context.MODE_PRIVATE)
+
+        val roundtripStatus = roundtripPref.getBoolean("roundtrip_status", false)
+        Log.d("rincian", "status: $roundtripStatus")
+        val idSingle = homeVm.getIdTicket()
+        val idRound = homeVm.getIdDep()
 
 
         binding.apply {
@@ -59,11 +63,14 @@ class RincianPenerbanganFragment : Fragment() {
             }
         }
 
-        detailVm.fetchTicketId(id!!)
+        if (roundtripStatus) {
+            detailVm.fetchTicketId(idRound!!)
+        }else if (!roundtripStatus){
+            detailVm.fetchTicketId(idSingle!!)
+        }
         detailVm.liveDataFlightId.observe(viewLifecycleOwner) { detail ->
             val totalPassenger = passengerPref.getString("passenger", "")?.toInt()
-//            val roundtripStatus = roundtripPref.getBoolean("roundtrip_status", false)
-//            Log.d("Checkout", "status roundtrip: $roundtripStatus")
+//            val roundtripStatus = roundtripPref.getString("roundtrip_status", "")
 
             if (detail != null) {
                 binding.apply {
@@ -93,24 +100,25 @@ class RincianPenerbanganFragment : Fragment() {
                     setHargaAdult.text = "${totalPassenger} x ${price}"
                     setHargaTotal.text = totalPriceFormatted
 
-//                    if (roundtripStatus) {
-//                        tvJamBerangkat.text = setDeparture
-//                        tvJamDatang.text = setArrival
-//                        tvBandara.text = detail.departureAirport.airportName
-//                        tvBandaraDatang.text = detail.arrivalAirport.airportName
-//                        tvClassPesawat.text = detail.airline.airlineName
-//                        tvBookingCode.text = detail.flightCode
-//                        informasiSatu.text = "Baggage ${detail.airline.baggage}kg"
-//                        informasiDua.text = "Cabbin baggage ${detail.airline.cabinBaggage}kg"
-//                        setHargaTotal.text = price
-//                        tvDestinasi.text =
-//                            "${detail.departureAirport.city} -> ${detail.arrivalAirport.city}"
-//                        typePassengerAdult.text = "${totalPassenger} Passengers Roundtrip"
-//                        setHargaAdult.text = "${totalPassenger} x ${price} x 2"
-//                        setHargaTotal.text = totalRoundtripFormatted
-//
-//
-//                    }
+                    Log.d("Checkout", "status roundtrip: $roundtripStatus")
+                    if (roundtripStatus) {
+                        tvJamBerangkat.text = setDeparture
+                        tvJamDatang.text = setArrival
+                        tvBandara.text = detail.departureAirport.airportName
+                        tvBandaraDatang.text = detail.arrivalAirport.airportName
+                        tvClassPesawat.text = detail.airline.airlineName
+                        tvBookingCode.text = detail.flightCode
+                        informasiSatu.text = "Baggage ${detail.airline.baggage}kg"
+                       informasiDua.text = "Cabbin baggage ${detail.airline.cabinBaggage}kg"
+                        setHargaTotal.text = price
+                       tvDestinasi.text =
+                           "${detail.departureAirport.city} -> ${detail.arrivalAirport.city}"
+                        typePassengerAdult.text = "${totalPassenger} Passengers Roundtrip"
+                        setHargaAdult.text = "${totalPassenger} x ${price} x 2"
+                        setHargaTotal.text = totalRoundtripFormatted
+
+
+                    }
                 }
             }
 

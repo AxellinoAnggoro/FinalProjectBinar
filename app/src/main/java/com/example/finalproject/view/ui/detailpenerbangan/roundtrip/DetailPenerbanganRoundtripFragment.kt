@@ -3,6 +3,7 @@ package com.example.finalproject.view.ui.detailpenerbangan.roundtrip
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +38,8 @@ class DetailPenerbanganRoundtripFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         pref = requireContext().getSharedPreferences("login_data",Context.MODE_PRIVATE)
 
+        val id = arguments?.getInt("id")
+        Log.d("Detail Round", "id: ${id}")
         val hargaPergi = arguments?.getInt("hargaPergi")
         val hargaPulang = arguments?.getInt("hargaPulang")
 
