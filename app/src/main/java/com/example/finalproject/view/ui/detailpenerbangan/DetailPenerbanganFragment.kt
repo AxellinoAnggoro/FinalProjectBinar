@@ -76,6 +76,7 @@ class DetailPenerbanganFragment : Fragment() {
                 jmlCabin.text = detail.airline.cabinBaggage.toString()
                 setBandaraTujuan.text = detail.arrivalAirport.airportName
                 setHarga.text = price
+                setTujuan.text = "${detail.departureAirport.city} -> ${detail.arrivalAirport.city}"
             }
         }
 
