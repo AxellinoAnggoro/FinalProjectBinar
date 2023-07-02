@@ -56,11 +56,13 @@ class LoginFragment : Fragment() {
         val password = binding.inputPassword.text.toString()
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.inputEmailLay.error = "Invalid Email"
+//            binding.inputEmailLay.error = "Invalid Email"
+            emailToast()
             binding.inputEmailLay.requestFocus()
             return
         }else if (password.isEmpty()){
-            binding.inputPassLay.error = "Password is empty"
+//            binding.inputPassLay.error = "Password is empty"
+            passwordToast()
             binding.inputPassLay.requestFocus()
             return
         }else{
@@ -104,6 +106,29 @@ class LoginFragment : Fragment() {
 
         val textView = layout.findViewById<MaterialTextView>(R.id.tvAllert)
         textView.text = "Login Gagal"
+        val toast = Toast(requireContext())
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = layout
+        toast.show()
+    }
+
+    private fun passwordToast(){
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.toast_allert_failed,requireView().findViewById(R.id.customAllertFailed))
+
+        val textView = layout.findViewById<MaterialTextView>(R.id.tvAllertFailed)
+        textView.text = "Password tidak boleh kosong!"
+        val toast = Toast(requireContext())
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = layout
+        toast.show()
+    }
+    private fun emailToast(){
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.toast_allert_failed,requireView().findViewById(R.id.customAllertFailed))
+
+        val textView = layout.findViewById<MaterialTextView>(R.id.tvAllertFailed)
+        textView.text = "Email tidak boleh kosong!"
         val toast = Toast(requireContext())
         toast.duration = Toast.LENGTH_SHORT
         toast.view = layout

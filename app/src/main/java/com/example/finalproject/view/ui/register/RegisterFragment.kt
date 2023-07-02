@@ -54,18 +54,22 @@ class RegisterFragment : Fragment() {
         val phone = binding.inputPhone.text.toString()
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.inputRegEmailLay.error = "Invalid Email"
+//            binding.inputRegEmailLay.error = "Invalid Email"
+            emailToast()
             binding.inputRegEmailLay.requestFocus()
             return
         } else if (phone.isEmpty()) {
-            binding.inputRegNoTelp.error = "Phone still empty"
+//            binding.inputRegNoTelp.error = "Phone still empty"
+            phoneToast()
             binding.inputRegNoTelp.requestFocus()
         } else if (name.isEmpty()) {
-            binding.inputRegNamaLay.error = "Name still empty"
+//            binding.inputRegNamaLay.error = "Name still empty"
+            nameToast()
             binding.inputRegNamaLay.requestFocus()
             return
         } else if (password.length < 8) {
-            binding.inputRegPassLay.error = "Minimum password length is 8"
+//            binding.inputRegPassLay.error = "Minimum password length is 8"
+            passwordLengthToast()
             binding.inputRegPassLay.requestFocus()
             return
         } else {
@@ -111,6 +115,54 @@ class RegisterFragment : Fragment() {
 
         val textView = layout.findViewById<MaterialTextView>(R.id.tvAllertFailed)
         textView.text = "Register Gagal"
+        val toast = Toast(requireContext())
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = layout
+        toast.show()
+    }
+
+    private fun emailToast(){
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.toast_allert_failed,requireView().findViewById(R.id.customAllertFailed))
+
+        val textView = layout.findViewById<MaterialTextView>(R.id.tvAllertFailed)
+        textView.text = "Email tidak boleh kosong!"
+        val toast = Toast(requireContext())
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = layout
+        toast.show()
+    }
+
+    private fun phoneToast(){
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.toast_allert_failed,requireView().findViewById(R.id.customAllertFailed))
+
+        val textView = layout.findViewById<MaterialTextView>(R.id.tvAllertFailed)
+        textView.text = "Nomor telpon tidak boleh kosong!"
+        val toast = Toast(requireContext())
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = layout
+        toast.show()
+    }
+
+    private fun nameToast(){
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.toast_allert_failed,requireView().findViewById(R.id.customAllertFailed))
+
+        val textView = layout.findViewById<MaterialTextView>(R.id.tvAllertFailed)
+        textView.text = "Nama tidak boleh kosong!"
+        val toast = Toast(requireContext())
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = layout
+        toast.show()
+    }
+
+    private fun passwordLengthToast(){
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.toast_allert_failed,requireView().findViewById(R.id.customAllertFailed))
+
+        val textView = layout.findViewById<MaterialTextView>(R.id.tvAllertFailed)
+        textView.text = "Password minimal 8 karakter"
         val toast = Toast(requireContext())
         toast.duration = Toast.LENGTH_SHORT
         toast.view = layout
