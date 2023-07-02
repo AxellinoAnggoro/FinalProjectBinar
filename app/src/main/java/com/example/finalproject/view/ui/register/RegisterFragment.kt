@@ -15,6 +15,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentRegisterBinding
+import com.google.android.material.textview.MaterialTextView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -75,10 +76,12 @@ class RegisterFragment : Fragment() {
                     val dataPhone = it.data.newUserResponse.phoneNumber
                     val dataName = it.data.newUserResponse.name
                     storeEmail(dataEmail, dataPhone, dataName)
-                    Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
+                    allertOtp()
                     findNavController().navigate(R.id.action_registerFragment_to_otpFragment)
                 } else {
-                    Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
+                    allertRegisterFailed()
                 }
             }
         }
@@ -90,5 +93,27 @@ class RegisterFragment : Fragment() {
         save.putString("phone", phone)
         save.putString("name", name)
         save.apply()
+    }
+    private fun allertOtp(){
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.toast_allert_success,requireView().findViewById(R.id.customAllertSuccess))
+
+        val textView = layout.findViewById<MaterialTextView>(R.id.tvAllert)
+        textView.text = "Kode Otp Berhasil Dikirim"
+        val toast = Toast(requireContext())
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = layout
+        toast.show()
+    }
+    private fun allertRegisterFailed(){
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.toast_allert_failed,requireView().findViewById(R.id.customAllertFailed))
+
+        val textView = layout.findViewById<MaterialTextView>(R.id.tvAllertFailed)
+        textView.text = "Register Gagal"
+        val toast = Toast(requireContext())
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = layout
+        toast.show()
     }
 }

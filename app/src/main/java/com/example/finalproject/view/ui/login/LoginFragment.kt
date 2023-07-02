@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentLoginBinding
+import com.google.android.material.textview.MaterialTextView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -66,11 +67,13 @@ class LoginFragment : Fragment() {
             loginVm.authorizeLogin(email, password)
             loginVm.responseLogin.observe(viewLifecycleOwner){ response ->
                 if (response.status == "Success"){
-                    Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
                     val token = response.data.token
                     storeToken(token)
+                    allertLoginSuccess()
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 }else{
+                    allertLoginFailed()
                     Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -82,5 +85,28 @@ class LoginFragment : Fragment() {
         val save = loginPref.edit()
         save.putString("token", token)
         save.apply()
+    }
+
+    private fun allertLoginSuccess(){
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.toast_allert_success,requireView().findViewById(R.id.customAllertSuccess))
+
+        val textView = layout.findViewById<MaterialTextView>(R.id.tvAllert)
+        textView.text = "Login Berhasil"
+        val toast = Toast(requireContext())
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = layout
+        toast.show()
+    }
+    private fun allertLoginFailed(){
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.toast_allert_success,requireView().findViewById(R.id.customAllertSuccess))
+
+        val textView = layout.findViewById<MaterialTextView>(R.id.tvAllert)
+        textView.text = "Login Gagal"
+        val toast = Toast(requireContext())
+        toast.duration = Toast.LENGTH_SHORT
+        toast.view = layout
+        toast.show()
     }
 }
