@@ -77,4 +77,5 @@
     <string name="str_pergi">Pergi</string>
     <string name="str_pulang">Pulang</string>
     <string name="lanjut_pembayaran">Lanjut Pembayaran</string>
+    <string name="password">Password</string>
 </resources>

@@ -57,7 +57,7 @@
         android:id="@+id/tvPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/email_nomor_telepon"
+        android:text="@string/password"
         app:layout_constraintTop_toBottomOf="@id/inputEmailLay"
         android:layout_marginTop="16dp"
         android:textSize="12sp"
