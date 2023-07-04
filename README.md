@@ -1,7 +1,17 @@
 <h1 align="center"><strong>Travelisia✈️</strong></h1>
 <h3 align="center"><strong>Aplikasi Pemesanan Tiket Pesawat</strong></h3>
 
+
 Merupakan sebuah platform pemesanan tiket secara online berbasis android
+
+### Sneak peek Our App 
+<div align="center">
+<img src="image_1.jpeg" width="20%">
+  <img src="image_3.jpeg" width="20%">
+<img src="image_2.jpeg" width="20%">
+
+</div>
+  
 
 # Link Deploy APK
 - https://github.com/fikrihaikalr/FinalProject
@@ -60,11 +70,4 @@ Merupakan sebuah platform pemesanan tiket secara online berbasis android
 10. UI code using XML
 
 
-### Sneak peek Our App 
-<div align="center">
-<img src="image_1.jpeg" width="20%">
-  <img src="image_3.jpeg" width="20%">
-<img src="image_2.jpeg" width="20%">
 
-</div>
-  
