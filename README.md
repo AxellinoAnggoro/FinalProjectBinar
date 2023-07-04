@@ -63,7 +63,8 @@ Merupakan sebuah platform pemesanan tiket secara online berbasis android
 ### Sneak peek Our App 
 <div align="center">
 <img src="image_1.jpeg" width="20%">
+  <img src="image_3.jpeg" width="20%">
 <img src="image_2.jpeg" width="20%">
-<img src="image_3.jpeg" width="20%">
+
 </div>
   
