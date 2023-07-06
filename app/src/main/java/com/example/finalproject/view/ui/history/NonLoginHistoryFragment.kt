@@ -11,14 +11,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentNonLoginHistoryBinding
+import com.example.finalproject.model.ItemHistory
+import com.example.finalproject.view.ui.adapter.HistoryAdapter
 
 class NonLoginHistoryFragment : Fragment() {
 
     lateinit var binding : FragmentNonLoginHistoryBinding
     lateinit var pref : SharedPreferences
     private lateinit var viewModel: NonLoginHistoryViewModel
+    private lateinit var historyAdapter: HistoryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +60,14 @@ class NonLoginHistoryFragment : Fragment() {
             binding.historyLogin.visibility = View.VISIBLE
             Log.d("Berhasil Login", "berhasil")
             binding.layoutNoLogin.visibility = View.GONE
+
+            val layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
+            binding.rvHasilPencarian.layoutManager = layoutManager
+            val itemHistory = listOf(
+                ItemHistory("Bali","5 maret 2023","17:00","4h 0m","Bali","10 Maret 2023","18:00","132456789","First Class","Rp. 123456789"),
+            )
+            historyAdapter = HistoryAdapter(itemHistory)
+            binding.rvHasilPencarian.adapter = historyAdapter
 
         } else {
             binding.layoutNoLogin.visibility = View.VISIBLE

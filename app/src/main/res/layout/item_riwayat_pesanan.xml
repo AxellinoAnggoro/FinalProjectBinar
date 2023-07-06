@@ -18,25 +18,24 @@
             android:background="@drawable/radius_otp"
             >
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnUnpaid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/alert01"
-                android:fontFamily="@font/poppinsregular"
-                app:cornerRadius="16dp"
-                android:textSize="14sp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="22dp"
-                android:text="Unpaid"
-                android:textAllCaps="false"/>
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/btnUnpaid"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:backgroundTint="@color/alert01"-->
+<!--                android:fontFamily="@font/poppinsregular"-->
+<!--                app:cornerRadius="16dp"-->
+<!--                android:textSize="14sp"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginBottom="22dp"-->
+<!--                android:text="Unpaid"-->
+<!--                android:textAllCaps="false"/>-->
 
             <ImageView
                 android:id="@+id/icLocation1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_location"
-                android:layout_below="@id/btnUnpaid"
                 android:layout_marginEnd="12.35dp"/>
 
             <com.google.android.material.textview.MaterialTextView
@@ -44,7 +43,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jakarta"
-                android:layout_below="@id/btnUnpaid"
                 android:layout_toRightOf="@id/icLocation1"
                 android:textColor="@color/neutral05"
                 android:fontFamily="@font/poppinsbold"
@@ -76,13 +74,14 @@
                 android:id="@+id/tvDurasiPenerbangan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4h 0m"
+                android:layout_below="@id/tvAsalPenerbangan"
                 android:layout_centerHorizontal="true"
-                android:textSize="12sp"
+                android:layout_marginTop="-1dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/poppinsregular"
+                android:text="4h 0m"
                 android:textColor="@color/neutral05"
-                android:layout_below="@id/tvAsalPenerbangan" />
+                android:textSize="12sp" />
 
             <ImageView
                 android:id="@+id/panahDurasi"
@@ -108,7 +107,6 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tvDurasiPenerbangan"
                 android:src="@drawable/ic_location"
-                android:layout_below="@id/btnUnpaid"
                 android:layout_marginEnd="12.35dp"/>
 
             <com.google.android.material.textview.MaterialTextView
@@ -116,7 +114,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Melbourne"
-                android:layout_below="@id/btnUnpaid"
                 android:layout_toEndOf="@+id/icLocation2"
                 android:textColor="@color/neutral05"
                 android:fontFamily="@font/poppinsbold"
