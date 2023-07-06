@@ -34,7 +34,7 @@ class BottomSheetPaymentSuccessFragment : BottomSheetDialogFragment() {
 
         binding.btnClose.setOnClickListener {
             dismiss()
-            findNavController().navigate(R.id.rincianPenerbanganFragment2)
+            findNavController().navigate(R.id.homeFragment)
         }
     }
 

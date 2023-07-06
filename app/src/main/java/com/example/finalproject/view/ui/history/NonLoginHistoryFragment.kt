@@ -64,8 +64,10 @@ class NonLoginHistoryFragment : Fragment() {
             val layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
             binding.rvHasilPencarian.layoutManager = layoutManager
             val itemHistory = listOf(
-                ItemHistory("Bali","5 maret 2023","17:00","4h 0m","Bali","10 Maret 2023","18:00","132456789","First Class","Rp. 123456789"),
-            )
+                ItemHistory("Surabaya","5 Maret 2023","17:00","1h 0m","Bali","5 Maret 2023","18:00","247539","First Class","Rp. 11.000.000"),
+                ItemHistory("Lombok","6 Juli 2023","10:00","2h 0m","Jakarta","6 Juli 2023","12:00","494320","Economy","Rp. 1.000.000"),
+                ItemHistory("Jakarta","10 Juli 2023","20:00","12h 0m","London","11 Juli 2023","08:00","927772","Business","Rp. 21.000.000")
+                )
             historyAdapter = HistoryAdapter(itemHistory)
             binding.rvHasilPencarian.adapter = historyAdapter
 
