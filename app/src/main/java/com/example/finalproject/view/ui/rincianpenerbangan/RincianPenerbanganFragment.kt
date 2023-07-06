@@ -28,6 +28,8 @@ class RincianPenerbanganFragment : Fragment() {
     lateinit var homePref: SharedPreferences
     private val homeVm: HomeViewModel by viewModels()
     lateinit var roundtripPref: SharedPreferences
+    lateinit var pricePref : SharedPreferences
+    lateinit var rtPricePref : SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +49,8 @@ class RincianPenerbanganFragment : Fragment() {
         passengerPref =
             requireContext().getSharedPreferences("data_penumpang", Context.MODE_PRIVATE)
         roundtripPref = requireContext().getSharedPreferences("roundtrip", Context.MODE_PRIVATE)
+        pricePref = requireContext().getSharedPreferences("price", Context.MODE_PRIVATE)
+        rtPricePref = requireContext().getSharedPreferences("rtprice", Context.MODE_PRIVATE)
 
         val roundtripStatus = roundtripPref.getBoolean("roundtrip_status", false)
         Log.d("rincian", "status: $roundtripStatus")
@@ -82,8 +86,15 @@ class RincianPenerbanganFragment : Fragment() {
                     val price = Utill.getPriceIdFormat(getPrice)
                     val totalPrice = totalPassenger?.times(getPrice)
                     val totalPriceFormatted = Utill.getPriceIdFormat(totalPrice!!)
+                    val savePrice =  pricePref.edit()
+                    savePrice.putString("price",totalPriceFormatted)
+                    savePrice.apply()
+
                     val totalPriceRoundtrip = totalPrice.times(2)
                     val totalRoundtripFormatted = Utill.getPriceIdFormat(totalPriceRoundtrip)
+                    val saveRtPrice =  rtPricePref.edit()
+                    saveRtPrice.putString("rtprice",totalRoundtripFormatted)
+                    saveRtPrice.apply()
 
                     tvJamBerangkat.text = setDeparture
                     tvJamDatang.text = setArrival
