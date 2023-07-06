@@ -3,6 +3,7 @@ package com.example.finalproject.view.ui.checkout
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +36,16 @@ class BiodataPemesanFragment : Fragment() {
         pref = requireContext().getSharedPreferences("login_data", Context.MODE_PRIVATE)
         regPref = requireContext().getSharedPreferences("data_regis", Context.MODE_PRIVATE)
         checkoutVm = ViewModelProvider(this)[CheckoutViewModel::class.java]
+
+        val dataNameReg = regPref.getString("name","")
+        val dataEmailReg = regPref.getString("email","")
+        val dataPhoneReg = regPref.getString("phone","")
+
+        Log.d("bio pemesan", dataNameReg.toString())
+
+        binding.inputName.setText(dataNameReg)
+        binding.inputEmail.setText(dataEmailReg)
+        binding.inputPhone.setText(dataPhoneReg)
 
         binding.switchKeluarga.setOnCheckedChangeListener{ p0, isChecked ->
             if (isChecked){
